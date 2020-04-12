@@ -1,7 +1,5 @@
 .form {
-  background-color: #a1a1a1;
-  @font-face {
-    font-family: "baloo";
-    src: url("https://fonts.google.com/specimen/Baloo+Paaji+2");
-  }
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
