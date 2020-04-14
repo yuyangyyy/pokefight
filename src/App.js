@@ -6,8 +6,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form name="First name" />
-        <Form name="Last name" />
+        <Form />
       </div>
     );
   }
