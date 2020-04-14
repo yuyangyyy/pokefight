@@ -1,25 +1,29 @@
 .titre {
   width: 40%;
   display: block;
-  margin: 20px auto 200px auto;
+  margin: 5% auto;
+  animation: titleDown 1.5s forwards;
+  position: relative;
 }
 .pokeball{
-    width: 5%;
-    display: block;margin: 0 auto;
+    width: 0%;
+    margin: 0 auto;
+    display: block;
+    animation: grow 1.3s 2.5s forwards;
+    /*animation: Pokeball-spin 0.3s 4s infinite linear;*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .pokeball {
-    animation: Pokeball-spin infinite 0.3s linear;
-  }
+@keyframes  titleDown { 
+    0% {top: -350px}
+    70% {top: 0px}
+    85% {top: -50px}
+    100% {top: 0px}}
+
+@keyframes grow {
+    from {width: 0%;}
+    to {width: 10%;}
 }
-
-
 @keyframes Pokeball-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
 }
