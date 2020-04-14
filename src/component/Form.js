@@ -30,7 +30,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="container">
         <form className="form">
           <label htmlFor="firstName">First name:</label>
           <input
