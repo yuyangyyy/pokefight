@@ -1,24 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import DialogBox from './components/DialogBox';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <DialogBox textDialog="Bienvenue dans l'univers de PokeFight ! Commence par rentrer ton pseudo :" idDialogBox="pseudoPlayer1" firstButton="Valider" placeholder="Pseudo n°1"/>
+      <DialogBox textDialog="Qui souhaites-tu affronter ?!" firstButton="Ordinateur" scndButton="Ami"/>
+      <DialogBox textDialog="Renseigne le nom de ton ami :" idDialogBox="pseudoPlayer2" firstButton="Valider" placeholder="Pseudo n°2"/>
+      <DialogBox textDialog="Maintenant, 'Player 1' choisis ton Pokémon !" dialogSize="280px" />
     </div>
   );
 }
