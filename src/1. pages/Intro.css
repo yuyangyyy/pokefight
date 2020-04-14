@@ -1,0 +1,19 @@
+img {
+  width: 40%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pokeball {
+    animation: Pokeball-spin infinite 1s linear;
+  }
+}
+
+
+@keyframes Pokeball-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
