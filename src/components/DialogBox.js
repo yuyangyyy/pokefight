@@ -5,6 +5,12 @@ import './DialogBox.css'
 class DialogBox extends React.Component{
     constructor(props){
         super(props)
+        this.state = {firstPlayer: ""}
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        this.setState({firstPlayer: event.target.value})
     }
 
 
@@ -22,6 +28,8 @@ class DialogBox extends React.Component{
                     id={this.idDialogBox}
                     name={this.idDialogBox}
                     type="text"
+                    value={this.state.title}
+                    onChange={this.handleChange}
                     placeholder={this.props.placeholder}/>
                     <div className="button-group">
                         <button className={firsTButtonIsTrue ? "" : "display-none"}>{this.props.firstButton}</button>
