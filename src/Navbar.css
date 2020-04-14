@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+div .navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-color: #a1a1a1;
+}
+
+.sousnavbar {
+  display: flex;
+  background-color: #313131;
+  color: white;
+}
+
+div .sousnavbar .logo {
+  font-size: 40px;
+  padding: 20px;
+  color: whitesmoke;
+}
+
+div .sousnavbar .links ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+div .sousnavbar .links ul li {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  border-left: 1px solid white;
+}
+
+div .sousnavbar .links ul li.new-game {
+  border-bottom: 5px solid orange;
+}
+div .sousnavbar .links ul li.pokedex {
+  border-bottom: 5px solid turquoise;
+}
+div .sousnavbar .links ul li.classement {
+  border-bottom: 5px solid lime;
+}
+
+div .sousnavbar .links ul li.contact {
+  border-bottom: 5px solid crimson;
+}
+
+div .sousnavbar .links ul li a {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 30px;
+  font-size: 20px;
+  height: 100%;
+  text-decoration: none;
+}
+
+div .sousnavbar .links ul li a:hover {
+  background-color: goldenrod;
+}
