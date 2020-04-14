@@ -21,5 +21,14 @@
 
 #pts,
 #times {
-  padding-left: 200px;
+  padding-left: 60px;
+}
+
+@media screen and (max-width: 625px) {
+  #container {
+    flex-direction: column;
+  }
+  .player {
+    width: 100%;
+  }
 }
