@@ -1,11 +1,12 @@
 import React from "react";
 import "./Navbar.css";
+import logo from "./PokeFight_logo.png";
 
 function Navbar() {
   return (
     <div className="navbar">
       <div className="sousnavbar">
-        <div className="logo">PokeFight</div>
+        <img className="navlogo" src={logo} alt="logoPokemon" />
 
         <div className="links">
           <ul>

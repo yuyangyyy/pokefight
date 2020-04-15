@@ -7,28 +7,7 @@ function App() {
     <div>
       <Navbar />
 
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
-      <div>Blabla</div>
+      <div className="test">Blabla</div>
     </div>
   );
 }

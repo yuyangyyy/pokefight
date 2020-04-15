@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+/* .test {
+  height: 1500px;
+} */
+
+.sousnavbar .navlogo {
+  width: 200px;
+  padding: 15px;
+}
+
 div .navbar {
   display: flex;
   justify-content: center;
@@ -40,6 +49,7 @@ div .sousnavbar .links ul li {
   padding: 0;
   margin: 0;
   height: 100%;
+  white-space: nowrap;
   border-left: 1px solid white;
 }
 
@@ -67,6 +77,33 @@ div .sousnavbar .links ul li a {
   text-decoration: none;
 }
 
-div .sousnavbar .links ul li a:hover {
-  background-color: goldenrod;
+div .new-game:hover {
+  background-color: orange;
+}
+
+.pokedex:hover {
+  background-color: turquoise;
+}
+
+.classement:hover {
+  background-color: lime;
+}
+
+.contact:hover {
+  background-color: crimson;
+}
+
+@media screen and (max-width: 800px) {
+  .sousnavbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .sousnavbar .links {
+    height: 40px;
+  }
+
+  .navbar .sousnavbar .links li:first-child {
+    border-left: none;
+  }
 }
