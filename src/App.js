@@ -1,11 +1,11 @@
 import React from 'react';
 //import './App.css';
-import Intro from './1. pages/Intro'
+import Transition from './1. pages/Transition';
 
 function App() {
   return (
     <div className="App">
-      <Intro />
+      <Transition />
     </div>
   );
 }
