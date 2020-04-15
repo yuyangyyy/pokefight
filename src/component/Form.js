@@ -10,63 +10,60 @@ class Form extends React.Component {
       email: "",
       message: "",
     };
-    this.changeFirstName = this.changeFirstName.bind(this);
-    this.changeLastName = this.changeLastName.bind(this);
-    this.changeEmail = this.changeEmail.bind(this);
-    this.changeMessage = this.changeMessage.bind(this);
   }
-  changeFirstName(event) {
-    this.setState({ firstName: event.target.value });
-  }
-  changeLastName(event) {
-    this.setState({ lastName: event.target.value });
-  }
-  changeEmail(event) {
-    this.setState({ email: event.target.value });
-  }
-  changeMessage(event) {
-    this.setState({ message: event.target.value });
-  }
+  changeInput = (event) => {
+    const name = event.target.name;
+    this.setState({ [name]: event.target.value });
+  };
 
   render() {
+    const { firstName, lastName, email, message } = this.state;
     return (
       <div id="container">
         <form className="form">
-          <label htmlFor="firstName">First name:</label>
-          <input
-            id="firstName"
-            className="text"
-            name="firstName"
-            type="text"
-            value={this.state.firstName}
-            onChange={this.changeFirstName}
-          />
-          <label htmlFor="lastName">Last name:</label>
-          <input
-            id="lastName"
-            className="text"
-            name="lastName"
-            type="text"
-            value={this.state.lastName}
-            onChange={this.changeLastName}
-          />
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            className="text"
-            name="email"
-            type="email"
-            value={this.state.email}
-            onChange={this.changeEmail}
-          />
-          <label htmlFor="message">Your message:</label>
-          <textarea
-            id="message"
-            className="text"
-            name="message"
-            value={this.state.message}
-            onChange={this.changeMessage}
-          ></textarea>
+          <div className="formContainer">
+            <label htmlFor="firstName">First name:</label>
+            <input
+              id="firstName"
+              className="text"
+              name="firstName"
+              type="text"
+              value={firstName}
+              onChange={this.changeInput}
+            />
+          </div>
+          <div className="formContainer">
+            <label htmlFor="lastName">Last name:</label>
+            <input
+              id="lastName"
+              className="text"
+              name="lastName"
+              type="text"
+              value={lastName}
+              onChange={this.changeInput}
+            />
+          </div>
+          <div className="formContainer">
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              className="text"
+              name="email"
+              type="email"
+              value={email}
+              onChange={this.changeInput}
+            />
+          </div>
+          <div className="formContainer">
+            <label htmlFor="message">Your message:</label>
+            <textarea
+              id="message"
+              className="text"
+              name="message"
+              value={message}
+              onChange={this.changeInput}
+            ></textarea>
+          </div>
           <input id="button" type="submit" value="Submit" />
         </form>
       </div>
