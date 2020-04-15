@@ -13,18 +13,15 @@ class DialogBox extends React.Component{
         this.setState({firstPlayer: event.target.value})
     }
 
-
     render(){
-        let firsTButtonIsTrue = this.props.firstButton != undefined ? true: false
-        let scndBtnIsTrue = this.props.scndButton != undefined ? true: false
-        let inputIsTrue = this.props.idDialogBox != undefined ? true: false
+        const {firstButton, scndButton, idDialogBox} = this.props
 
         return(
             <div className="box">
                 <div className="DialogBox" style={{width: this.props.dialogSize}}>
                     <p>{this.props.textDialog}</p>
                     <input 
-                    className={inputIsTrue ? "" : "display-none"}
+                    className={idDialogBox ? "" : "display-none"}
                     id={this.idDialogBox}
                     name={this.idDialogBox}
                     type="text"
@@ -32,8 +29,8 @@ class DialogBox extends React.Component{
                     onChange={this.handleChange}
                     placeholder={this.props.placeholder}/>
                     <div className="button-group">
-                        <button className={firsTButtonIsTrue ? "" : "display-none"}>{this.props.firstButton}</button>
-                        <button className={scndBtnIsTrue ? "" : "display-none"}>{this.props.scndButton}</button>
+                        <button className={firstButton ? "" : "display-none"}>{firstButton}</button> 
+                        <button className={scndButton ? "" : "display-none"}>{scndButton}</button>
                     </div>
                 </div>
             </div>
