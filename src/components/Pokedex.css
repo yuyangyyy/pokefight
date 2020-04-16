@@ -1,0 +1,16 @@
+body{
+   background-color: #313131; 
+}
+
+.Pokedex{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+} 
+.pokemon-card{
+    border: 1px solid #313131;
+    text-align: center;
+    margin-right: 20px;
+}
