@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import PokemonCard from './PokemonCard'
 import './Pokedex.css'
 
 class Pokedex extends React.Component {
@@ -9,8 +8,8 @@ class Pokedex extends React.Component {
 
     fecthPokemon = () => {
         const arrPokemons = []
-        const nbPokemons = 300
-        for (let i = 1; i < nbPokemons; i++) {
+        const nbPokemons = 20
+        for (let i = 1; i <= nbPokemons; i++) {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(response => {
                     arrPokemons.push(response.data)
@@ -31,12 +30,19 @@ class Pokedex extends React.Component {
         return (
 
             <div className="Pokedex">
+                {pokemons && pokemons.map((pokemon,id) => {
 
-                {pokemons && pokemons.map(pokemon => {
-                    return <div className="pokemon-card">
-                        <img src={pokemon.sprites.front_default} alt=""/>
-                        <p>{pokemon.name}</p>
-                    </div>
+                    let pokemonCard = 
+                    <div className="pokemon-card">
+                        <img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt=""/>
+                        <div className="pokemon-info">
+                            <h3>{pokemon.name}</h3>
+                            <p className={pokemon.types[0].type.name + " pokemon-type"}>{pokemon.types[0].type.name}</p>
+                            <p className={pokemon.types[1] && pokemon.types[1].type.name + " pokemon-type"}>{pokemon.types[1] && pokemon.types[1].type.name}</p>
+                        </div>
+                    </div>;
+
+                    return pokemonCard
                 })}
             </div>
         )
