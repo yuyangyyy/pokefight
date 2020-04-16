@@ -1,9 +1,9 @@
-
 import React from "react";
-import Ranking from "./component/Ranking";
-import React from 'react';
+
 import DialogBox from './components/DialogBox';
+import Navbar from "./components/Navbar";
 import Potion from './components/Potion'
+import Ranking from "./component/Ranking";
 import Transition from './1. pages/Transition';
 
 function App() {
