@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "./PokeFight_logo.png";
+import logo from "../img/PokeFight_logo.png";
 
 function Navbar() {
   return (
