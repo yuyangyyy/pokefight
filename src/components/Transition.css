@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    border: 1px solid black;
+    margin: 10% auto;
+    height: 500px;
+    display: flex;
+}
+.left {
+    width: 50%;
+    background-color:rgb(100, 182, 75);
+}
+.right {
+    width: 50%;
+    background-color: rgb(179, 176, 176);
+}
+
+.white {
+    background-color: #fff;
+    width: 10%; height: 20%;
+    position: absolute; left: 45%; top: 40%;
+    border-radius: 50%;
+    display: flex; justify-content: center;
+}
+
+#count {
+    align-self: center;
+    font-size: 10em;
+}
