@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from '../LogoPoke.png';
-// import logobis from '../LogoPokeBlanc.png';
-import logoFb from '../logo-fb.svg';
-import logoTwitter from '../logo_twitter.svg';
-import logoYoutube from '../logo_yt.svg';
+import logo from '../img/logo/LogoPoke.png';
+import logoFb from '../img/logo/logo-fb.svg';
+import logoTwitter from '../img/logo/logo_twitter.svg';
+import logoYoutube from '../img/logo/logo_yt.svg';
 
 
 import './Footer.css';
