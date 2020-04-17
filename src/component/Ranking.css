@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap%27");
+
+#container {
+  display: flex;
+  font-family: "Baloo Paaji 2", cursive;
+  background-color: #a1a1a1;
+}
+
+.player {
+  margin: 30px;
+  width: 40%;
+}
+
+.list {
+  list-style: none;
+}
+
+.listContainer {
+  display: flex;
+}
+
+#pts,
+#times {
+  padding-left: 60px;
+}
+
+@media screen and (max-width: 625px) {
+  #container {
+    flex-direction: column;
+  }
+  .player {
+    width: 100%;
+  }
+}
