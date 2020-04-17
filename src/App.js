@@ -1,6 +1,7 @@
 import React from "react";
 
 import DialogBox from './components/DialogBox';
+import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import Potion from './components/Potion'
 import Ranking from "./component/Ranking";
@@ -16,6 +17,7 @@ function App() {
       <DialogBox textDialog="Enter your friend's name :" idDialogBox="pseudoPlayer2" firstButton="Confirm" placeholder="Player 2"/>
       <DialogBox textDialog="Now, Player1 choose your Pokémon!" dialogSize="280px" />
       <Transition />
+      <Form />
     </div>
   );
 }
