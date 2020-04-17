@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    border: 1px solid black;
+    margin: 10% auto;
+    height: 500px;
+    display: flex;
+    position: relative;
+}
+.left {
+    width: 50%;
+    background-color:rgb(100, 182, 75);
+}
+.right {
+    width: 50%;
+    background-color: rgb(179, 176, 176);
+}
+
+.white {
+    background-color: #fff;
+    width: 140px;
+    height: 140px;
+    position: absolute; 
+    transform: translate(-50%, -50%);
+    left: 50%; 
+    top: 50%;
+    border-radius: 100%;
+    display: flex; 
+    justify-content: center;
+}
+
+#count {
+    align-self: center;
+    font-size: 10em;
+}
