@@ -1,5 +1,7 @@
 .App {
-  height:1000px; 
+  position: relative;
+  height: 950px;
+  bottom: 0;
   background-color: #4a524f;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
 }
