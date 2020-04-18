@@ -1,8 +1,12 @@
 
 
 footer {
-    background-color: #424242;
+    background-color: #313131;
     height: 150px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
 }
 
 

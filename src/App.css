@@ -1,7 +1,5 @@
-
-.prez-diagbox{
-    margin-top: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.App {
+  height:1000px; 
+  background-color: #4a524f;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
 }
