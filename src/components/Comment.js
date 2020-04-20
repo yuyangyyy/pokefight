@@ -10,7 +10,7 @@ class Comment extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({ comment: event.target.value });
+    this.setState({});
   };
 
   render() {
