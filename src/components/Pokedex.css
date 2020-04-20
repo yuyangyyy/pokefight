@@ -9,15 +9,19 @@ body{
    background-color: #313131; 
 }
 
+.Pokedex, .show-more{
+    width: 70%;
+    background-color: #fff;
+}
+
 .Pokedex{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
-    background-color: #fff;
     font-family: 'Baloo Paaji 2', cursive;
-    width: 70%;
     margin: 20px auto;
     padding: 30px;
+    margin-bottom: 0;
 } 
 
 .Pokedex h3{
@@ -47,6 +51,35 @@ body{
     display: block;
     background-color: #a1a1a1;
 }
+
+.show-more{
+    padding: 30px;
+    padding-top: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.show-more button{
+    font-family: 'Baloo Paaji 2', cursive;
+    font-size: 1.2rem;
+    background-color: #313131;
+    color: #fff;
+    margin: 0 10px;
+    padding: 0 30px;
+    height: 40px;
+    border: 2px solid #313131;
+    transition: all .1s ease-in-out;
+}
+
+.show-more button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.display-none{
+    display: none;
+}
+
 
 /* COLOR TYPE */
 .pokemon-type{
