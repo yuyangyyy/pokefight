@@ -1,5 +1,6 @@
 import React from "react";
 
+import Comment from "./components/Comment";
 import DialogBox from "./components/DialogBox";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
@@ -39,6 +40,16 @@ function App() {
         />
         <Ranking />
         <Transition />
+        <Comment commentText="Go! (PokemonName)!" />
+        <Comment commentText="(PokemonName) used (AttackName)!" />
+        <Comment commentText="Enemy (PokemonName) used (AttackName)!" />
+        <Comment commentText="It's super effective!" />
+        <Comment commentText="Critical hit!" />
+        <Comment commentText="(PokemonName)'s attack missed!" />
+        <Comment commentText="(PokemonName) used RECOVER!" />
+        <Comment commentText="(PokemonName) regained health!" />
+        <Comment commentText="(PokemonName) fainted!" />
+
         <Form />
         <Footer />
       </div>
