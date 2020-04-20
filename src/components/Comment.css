@@ -9,5 +9,9 @@
   border: 5px solid black;
   border-radius: 10px;
   font-family: "Pokemon";
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 15px 5px 2px #a1a1a1;
+  margin-bottom: 20px;
 }
