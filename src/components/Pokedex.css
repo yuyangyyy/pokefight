@@ -17,7 +17,7 @@ body{
     font-family: 'Baloo Paaji 2', cursive;
     width: 70%;
     margin: 20px auto;
-    padding: 20px;
+    padding: 30px;
 } 
 
 .Pokedex h3{
@@ -87,4 +87,24 @@ body{
 }
 .ground{
     background-color: rgb(146, 145, 58);
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1270px){
+    .Pokedex{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 950px){
+    .Pokedex{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 635px){
+    .Pokedex{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

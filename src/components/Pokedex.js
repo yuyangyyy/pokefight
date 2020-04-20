@@ -10,6 +10,7 @@ class Pokedex extends React.Component {
         const arrPokemons = []
         const arrPokemonsFr = []
         const nbPokemons = 20
+
         for (let i = 1; i <= nbPokemons; i++) {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(response => {
