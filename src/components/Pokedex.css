@@ -9,9 +9,16 @@ body{
    background-color: #313131; 
 }
 
-.Pokedex, .show-more{
+.Pokedex, .show-more, .filter-pokemon{
     width: 70%;
     background-color: #fff;
+}
+
+.filter-pokemon{
+    padding: 30px;
+    padding-bottom: 10px;
+    margin: 20px auto;
+    margin-bottom: 0;
 }
 
 .Pokedex{
@@ -20,6 +27,7 @@ body{
     grid-gap: 15px;
     font-family: 'Baloo Paaji 2', cursive;
     margin: 20px auto;
+    margin-top: 0;
     padding: 30px;
     margin-bottom: 0;
 } 
