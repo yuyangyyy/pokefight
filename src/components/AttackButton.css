@@ -3,7 +3,7 @@
   src: url("../fonts/Pokemon\ Classic.ttf");
 }
 
-.buttonContainer {
+.mainContainer {
   display: flex;
   flex-direction: column;
 }
@@ -22,5 +22,5 @@
 .button:hover {
   cursor: pointer;
   transform: scale(1.1);
-  box-shadow: 3px 2px green;
+  box-shadow: 3px 2px black;
 }

@@ -15,19 +15,23 @@ class AttackButton extends React.Component {
   render() {
     const { attack1, attack2, attack3, attack4 } = this.state;
     return (
-      <div classname="buttonContainer">
-        <button type="button" className="button">
-          {attack1}
-        </button>
-        <button type="button" className="button">
-          {attack2}
-        </button>
-        <button type="button" className="button">
-          {attack3}
-        </button>
-        <button type="button" className="button">
-          {attack4}
-        </button>
+      <div className="mainContainer">
+        <div className="container1">
+          <button type="button" className="button">
+            {attack1}
+          </button>
+          <button type="button" className="button">
+            {attack2}
+          </button>
+        </div>
+        <div className="container2">
+          <button type="button" className="button">
+            {attack3}
+          </button>
+          <button type="button" className="button">
+            {attack4}
+          </button>
+        </div>
       </div>
     );
   }
