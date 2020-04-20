@@ -1,17 +1,18 @@
 import React from "react";
-// import DialogBox from "./components/DialogBox";
+import DialogBox from "./components/DialogBox";
 import Footer from "./components/Footer";
-// import Form from "./components/Form";
+import Form from "./components/Form";
 import Navbar from "./components/Navbar";
-// import Potion from "./components/Potion";
-// import Ranking from "./components/Ranking";
+import Potion from "./components/Potion";
+import Ranking from "./components/Ranking";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import Transition from "./components/Transition";
-
 
 import "./App.css";
 
 function App() {
   return (
+    <Router>
       <div className="App">
         <Navbar />
         <Footer />
@@ -44,7 +45,15 @@ function App() {
         <Transition />
         <Form />
         <Footer /> */}
+        <Switch>
+          <Route exact path="/" />
+          <Route exact path="/new-game" component={DialogBox} />
+          <Route exact path="/pokedex" component={Potion} />
+          <Route path="/ranking" component={Ranking} />
+          <Route path="/contact" component={Form} />
+        </Switch>
       </div>
+    </Router>
   );
 }
 
