@@ -1,18 +1,19 @@
 import React from "react";
 import "./Picture.css";
 
-import Png from "../img/pokemon/Png.png";
-
 class Picture extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { picture: "" };
+    this.state = {
+      picture1: "",
+      picture2: "",
+    };
   }
 
   render() {
     return (
       <div className="picture">
-        <img src={Png} alt="Pikachu" />
+        <img src={this.props.pic} alt="Pikachu" />
       </div>
     );
   }

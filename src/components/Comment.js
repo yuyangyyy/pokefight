@@ -15,8 +15,10 @@ class Comment extends React.Component {
 
   render() {
     return (
-      <div className="commentBox">
-        <p>{this.props.commentText}</p>
+      <div className="C-container">
+        <div className="commentBox">
+          <p>{this.props.commentText}</p>
+        </div>
       </div>
     );
   }

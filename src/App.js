@@ -12,6 +12,10 @@ import StatutPokemon from "./components/StatutPokemon";
 import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 
+//pics for ex
+import Png from "./img/pokemon/Png.png";
+import Png2 from "./img/pokemon/Png2.png";
+
 import "./App.css";
 
 function App() {
@@ -41,13 +45,17 @@ function App() {
       />
       <Ranking />
       <Transition />
-      <div className="pic-stat">
-        <div className="pic">
-          <StatutPokemon />
+      <div className="pic-stat1">
+        <div className="stat">
           <StatutPokemon />
         </div>
-        <Picture />
-        <Picture />
+        <Picture pic={Png2} />
+      </div>
+      <div className="pic-stat2">
+        <div className="stat">
+          <StatutPokemon />
+        </div>
+        <Picture pic={Png} />
       </div>
       <AttackButton />
       <Potion />

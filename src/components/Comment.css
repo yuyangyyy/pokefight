@@ -16,3 +16,8 @@
   margin-bottom: 20px;
   padding: 10px;
 }
+
+.C-container {
+  display: flex;
+  justify-content: center;
+}
