@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import './Pokedex.css'
 import SortBox from './SortBox'
+// import ModalPokedex from './ModalPokedex'
 
 const propComparator = (propName) =>
     (a, b) => a[propName] == b[propName] ? 0 : a[propName] < b[propName] ? -1 : 1
@@ -10,7 +11,7 @@ class Pokedex extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            nbPokemons: 387,
+            nbPokemons: 20,
             pokemons: [],
             arrPokemonsType: [],
             showMore: false,
@@ -44,6 +45,11 @@ class Pokedex extends React.Component {
             })
     }
 
+    handleClickModal = (event) => {
+        // document.querySelector('.ModalPokedex').style.display = "block"
+        this.setState({selectPokemonName: event.target.parentNode.id})
+        console.log(event.target.parentNode)
+    }
 
     handleClick = () => {
         this.setState({ showMore: true })
@@ -51,7 +57,6 @@ class Pokedex extends React.Component {
    
     handleChange = (event) => {
         const idName = event.target.id
-        console.log(idName)
         this.setState({[idName]: event.target.value}) 
         
     }
@@ -67,12 +72,13 @@ class Pokedex extends React.Component {
 
     render() {
         const arrPokemonGene =["1st Generation", "2nd Generation", "3rd Generation"]
-
         const { nbPokemons, arrPokemonsType, pokemonsType, pokemons, showMore, nbShow, pokemonSearch, pokemonsGene } = this.state
         if (showMore)
             this.setState({ nbShow: nbShow + 12, showMore: false })
         return (
             <div>
+                {/* <ModalPokedex pokemonName={this.state.selectPokemonName}/> */}
+
                 <div className="filter-pokemon">
                     <SortBox method={this.handleChange} id="pokemonsGene" sortTitle="Sort by Generation" sortType={arrPokemonGene} sortBoxSize="200px" />
                     <SortBox method={this.handleChange} id="pokemonsType" sortTitle="Sort by Type" sortType={arrPokemonsType} sortBoxSize="160px" />
@@ -80,13 +86,13 @@ class Pokedex extends React.Component {
                 </div>
                 <div className="Pokedex">
                     {pokemons && pokemons.slice(0, pokemonSearch !== "" || pokemonsType !== "" || pokemonsGene !== "" ? nbPokemons : nbShow)
-                        .filter(pokemon => pokemon.name.toLowerCase().includes(pokemonSearch.toLowerCase())) //search
+                        .filter(pokemon => pokemon.name.toLowerCase().startsWith(pokemonSearch.toLowerCase())) //search
                         .filter(pokemon => pokemonsGene === "1st Generation" ? pokemon.id <= 151 : pokemonsGene === "2nd Generation" ? pokemon.id >= 152 && pokemon.id <= 251 : pokemonsGene === "3rd Generation" ? pokemon.id >= 252 && pokemon.id <= 387 : pokemon) //Sort Generation
                         .filter(pokemon => pokemon.types[0].type.name.includes(pokemonsType) || pokemon.types[1] &&pokemon.types[1].type.name.includes(pokemonsType)) //Sort Type
                         .map((pokemon, id) => {
                             let pokemonCard =
-                                <div className="pokemon-card" key={id}>
-                                    <img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt="" />
+                                <div className="pokemon-card" id={pokemon.name} key={id}>
+                                    <img onClick={this.handleClickModal} src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt="" />
                                     <div className="pokemon-info">
                                         <h3>{pokemon.name}</h3>
                                         <p className={pokemon.types[0].type.name + " pokemon-type"}>{pokemon.types[0].type.name}</p>

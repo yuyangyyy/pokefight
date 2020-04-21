@@ -1,0 +1,21 @@
+.ModalPokedex .modal{
+    background: rgba(0, 0, 0, 0.76);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.ModalPokedex .close{
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-weight: bolder;
+    font-size: 35px;
+    background-color: #CF283A;
+    padding: 0 10px;
+    border-radius: 10px;
+}
