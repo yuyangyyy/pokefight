@@ -16,6 +16,7 @@ body{
 
 .filter-pokemon{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     padding: 30px;
@@ -23,6 +24,15 @@ body{
     margin: 20px auto;
     margin-bottom: 0;
 }
+
+.filter-pokemon input{
+    margin: 20px 0;
+    border: 1px solid #313131;
+    border-radius: 2px;
+    height: 30px;
+    
+}
+
 
 .Pokedex{
     display: grid;
@@ -142,6 +152,7 @@ body{
 }
 
 @media screen and (max-width: 950px){
+
     .Pokedex{
         grid-template-columns: repeat(2, 1fr);
     }

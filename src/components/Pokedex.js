@@ -76,7 +76,7 @@ class Pokedex extends React.Component {
                 <div className="filter-pokemon">
                     <SortBox method={this.handleChange} id="pokemonsGene" sortTitle="Sort by Generation" sortType={arrPokemonGene} sortBoxSize="200px" />
                     <SortBox method={this.handleChange} id="pokemonsType" sortTitle="Sort by Type" sortType={arrPokemonsType} sortBoxSize="160px" />
-                    <input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="Search by Name" />
+                    <input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="  Search by Name (EN or FR)" />
                 </div>
                 <div className="Pokedex">
                     {pokemons && pokemons.slice(0, pokemonSearch !== "" || pokemonsType !== "" || pokemonsGene !== "" ? nbPokemons : nbShow)
