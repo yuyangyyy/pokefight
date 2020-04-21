@@ -1,5 +1,6 @@
 import React from "react";
 
+import AttackButton from "./components/AttackButton";
 import Comment from "./components/Comment";
 import DialogBox from "./components/DialogBox";
 import Footer from "./components/Footer";
@@ -48,7 +49,7 @@ function App() {
       <Comment commentText="(PokemonName) used RECOVER!" />
       <Comment commentText="(PokemonName) regained health!" />
       <Comment commentText="(PokemonName) fainted!" />
-
+      <AttackButton />
       <Form />
       <Footer />
     </div>
