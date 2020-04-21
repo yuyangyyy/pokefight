@@ -1,0 +1,9 @@
+.picture {
+  width: 25%;
+  margin: 10px;
+  border: 4px solid black;
+}
+
+.picture img {
+  width: 100%;
+}

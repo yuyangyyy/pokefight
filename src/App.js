@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import Potion from "./components/Potion";
+import Picture from "./components/Picture";
 import StatutPokemon from "./components/StatutPokemon";
 import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
@@ -17,7 +18,6 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Potion />
       <DialogBox
         textDialog="Welcome to the world of PokeFight! Start by entering your username"
         idDialogBox="pseudoPlayer1"
@@ -41,7 +41,17 @@ function App() {
       />
       <Ranking />
       <Transition />
-      <Comment commentText="Go! (PokemonName)!" />
+      <div className="pic-stat">
+        <div className="pic">
+          <StatutPokemon />
+          <StatutPokemon />
+        </div>
+        <Picture />
+        <Picture />
+      </div>
+      <AttackButton />
+      <Potion />
+      <Comment commentText="Go! Pikachu !" />
       <Comment commentText="(PokemonName) used (AttackName)!" />
       <Comment commentText="Enemy (PokemonName) used (AttackName)!" />
       <Comment commentText="It's super effective!" />
@@ -50,8 +60,6 @@ function App() {
       <Comment commentText="(PokemonName) used RECOVER!" />
       <Comment commentText="(PokemonName) regained health!" />
       <Comment commentText="(PokemonName) fainted!" />
-      <AttackButton />
-      <StatutPokemon />
       <Form />
       <Footer />
     </div>
