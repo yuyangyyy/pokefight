@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import Potion from "./components/Potion";
+import StatutPokemon from "./components/StatutPokemon";
 import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 
@@ -50,6 +51,7 @@ function App() {
       <Comment commentText="(PokemonName) regained health!" />
       <Comment commentText="(PokemonName) fainted!" />
       <AttackButton />
+      <StatutPokemon />
       <Form />
       <Footer />
     </div>
