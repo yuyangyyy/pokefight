@@ -1,8 +1,6 @@
 .picture {
   width: 25%;
   margin: 10px;
-  border: 4px solid black;
-  background-color: cadetblue;
 }
 
 .picture img {

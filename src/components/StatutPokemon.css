@@ -13,6 +13,7 @@
   flex-direction: column;
   font-family: "Pokemon";
   margin: 10px;
+  background-color: white;
 }
 
 .name {
