@@ -12,6 +12,8 @@ import "./Fight.css";
 import Png from "../img/pokemon/Png.png";
 import Png2 from "../img/pokemon/Png2.png";
 
+import emptyPotion from "../img/potions/02_empty_potion.png";
+
 class Fight extends React.Component {
   constructor(props) {
     super(props);
@@ -19,12 +21,12 @@ class Fight extends React.Component {
       name: "Pikachu",
       number: "025",
       health: 100,
-      healthColor: "",
+      healthColor: "rgb(100, 182, 75)",
       attack1: "Thunderbolt",
       attack2: "Slam",
       attack3: "Agility",
       attack4: "Thunder",
-      attack1Hit: 20,
+      attack1Hit: 10,
       attack2Hit: 15,
       attack3Hit: 25,
       attack4Hit: 30,
@@ -38,26 +40,42 @@ class Fight extends React.Component {
 
   //hit
   handleClickHit = (event) => {
+    // console.log(this.state.health, this.state.healthColor);
+
     const hit = event.target.value;
     if (hit > this.state.health) {
       this.setState({ health: 0 });
+      this.changePvColor();
     } else {
       this.setState({ health: this.state.health - hit });
+      this.changePvColor();
     }
   };
   //recover
-  handleClickPotion = () => {
-    if (this.state.health >= 80) {
+
+  handleClickPotion = (e) => {
+    if (e.target.src === emptyPotion) {
+      this.setState({ health: this.state.health });
+    } else if (this.state.health >= 80) {
       this.setState({ health: 100 });
     } else {
       this.setState({ health: this.state.health + 20 });
     }
+
+    e.target.src = emptyPotion;
+    this.changePvColor();
   };
 
   changePvColor = () => {
-    if (this.state.health > 40) {
+    //this.state.health > 40
+    // ? this.setState({ healthColor: "rgb(100, 182, 75)" })
+    // : this.state.health < 40 && this.state.health > 10
+    //? this.setState({ healthColor: "orange" })
+    //: this.setState({ healthColor: "red" });
+
+    if (this.state.health > 50) {
       this.setState({ healthColor: "rgb(100, 182, 75)" });
-    } else if (this.state.health < 40 && this.state.health > 10) {
+    } else if (this.state.health <= 50 && this.state.health > 25) {
       this.setState({ healthColor: "orange" });
     } else {
       this.setState({ healthColor: "red" });
@@ -86,7 +104,7 @@ class Fight extends React.Component {
           <Picture pic={Png} />
         </div>
         <AttackButton state={this.state} handleClickHit={this.handleClickHit} />
-        <Potion handleClickPotion={this.handleClickPotion} />
+        <Potion method={this.handleClickPotion} />
         <Comment commentText="Go! Pikachu !" />
         <Comment commentText="(PokemonName) used (AttackName)!" />
         <Comment commentText="Enemy (PokemonName) used (AttackName)!" />

@@ -3,6 +3,7 @@ import "./StatutPokemon.css";
 
 class StatutPokemon extends React.Component {
   render() {
+    // console.log(this.props.state.health, this.props.state.healthColor);
     return (
       <div className="statut">
         <div className="name">
@@ -13,7 +14,10 @@ class StatutPokemon extends React.Component {
           <p>PV</p>
           <div
             className="health"
-            style={{ width: `${this.props.state.health}%` }}
+            style={{
+              width: `${this.props.state.health}%`,
+              backgroundColor: ` ${this.props.state.healthColor}`,
+            }}
           ></div>
         </div>
       </div>
