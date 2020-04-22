@@ -1,16 +1,1 @@
-.pic-stat2 {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  background-color: cadetblue;
-}
 
-.pic-stat1 {
-  display: flex;
-  justify-content: flex-end;
-  background-color: cadetblue;
-}
-
-.stat {
-  align-self: flex-end;
-}

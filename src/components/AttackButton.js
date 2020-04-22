@@ -2,32 +2,10 @@ import React from "react";
 import "./AttackButton.css";
 
 class AttackButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      attack1: "Thunderbolt",
-      attack2: "Slam",
-      attack3: "Agility",
-      attack4: "Thunder",
-      attack1Hit: 20,
-      attack2Hit: 15,
-      attack3Hit: 25,
-      attack4Hit: 30,
-    };
-  }
-  //random attack hit method
-  attackHit = (max) => {
-    Math.floor(Math.random() * Math.floor(max));
-  };
-  //attack hit onClick method
-  handleClick = (event) => {
-    const hit = event.target.value;
-    return console.log({ hit });
-  };
-
   render() {
-    const { attack1, attack2, attack3, attack4 } = this.state;
-    const { attack1Hit, attack2Hit, attack3Hit, attack4Hit } = this.state;
+    const { attack1, attack2, attack3, attack4 } = this.props.state;
+    const { attack1Hit, attack2Hit, attack3Hit, attack4Hit } = this.props.state;
+    const { handleClickHit } = this.props;
     return (
       <div className="mainContainer">
         <div className="container1">
@@ -35,7 +13,7 @@ class AttackButton extends React.Component {
             type="button"
             className="button"
             value={attack1Hit}
-            onClick={this.handleClick}
+            onClick={handleClickHit}
           >
             {attack1}
           </button>
@@ -43,7 +21,7 @@ class AttackButton extends React.Component {
             type="button"
             className="button"
             value={attack2Hit}
-            onClick={this.handleClick}
+            onClick={handleClickHit}
           >
             {attack2}
           </button>
@@ -53,7 +31,7 @@ class AttackButton extends React.Component {
             type="button"
             className="button"
             value={attack3Hit}
-            onClick={this.handleClick}
+            onClick={handleClickHit}
           >
             {attack3}
           </button>
@@ -61,7 +39,7 @@ class AttackButton extends React.Component {
             type="button"
             className="button"
             value={attack4Hit}
-            onClick={this.handleClick}
+            onClick={handleClickHit}
           >
             {attack4}
           </button>
