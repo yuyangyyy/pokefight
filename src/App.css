@@ -1,7 +1,12 @@
+.prez-diagbox {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.prez-diagbox{
-    margin-top: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media screen and (max-width: 800px) {
+  .prez-diagbox {
+    margin-top: 0;
+  }
 }

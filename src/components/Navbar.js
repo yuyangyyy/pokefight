@@ -6,7 +6,12 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="sousnavbar">
-        <img className="navlogo" src={logo} alt="logoPokemon" />
+        <div className="navlogo">
+          <div className="burger">
+            <span></span>
+          </div>
+          <img src={logo} alt="logoPokemon" />
+        </div>
 
         <div className="links">
           <ul>

@@ -2,20 +2,16 @@
   box-sizing: border-box;
 }
 
-.sousnavbar .navlogo {
-  width: 200px;
-  padding: 15px;
-}
-
-div .navbar {
+.navbar {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
-  top: -59px;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 200px;
+  height: 175px;
   z-index: 1;
 }
 
@@ -25,14 +21,18 @@ div .navbar {
   color: white;
 }
 
-div .sousnavbar .logo {
-  font-size: 40px;
-  padding: 20px;
-  color: whitesmoke;
+.sousnavbar .navlogo img {
+  width: 200px;
+  padding: 15px;
 }
 
-div .sousnavbar .links ul {
+.sousnavbar .navlogo .burger {
+  display: none;
+}
+
+.sousnavbar .links ul {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   list-style: none;
@@ -41,7 +41,7 @@ div .sousnavbar .links ul {
   height: 100%;
 }
 
-div .sousnavbar .links ul li {
+.sousnavbar .links ul li {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -49,21 +49,23 @@ div .sousnavbar .links ul li {
   border-left: 1px solid white;
 }
 
-div .sousnavbar .links ul li.new-game {
+.sousnavbar .links ul li.new-game {
   border-bottom: 5px solid orange;
 }
-div .sousnavbar .links ul li.pokedex {
+
+.sousnavbar .links ul li.pokedex {
   border-bottom: 5px solid turquoise;
 }
-div .sousnavbar .links ul li.classement {
+
+.sousnavbar .links ul li.classement {
   border-bottom: 5px solid lime;
 }
 
-div .sousnavbar .links ul li.contact {
+.sousnavbar .links ul li.contact {
   border-bottom: 5px solid crimson;
 }
 
-div .sousnavbar .links ul li a {
+.sousnavbar .links ul li a {
   display: flex;
   align-items: center;
   color: white;
@@ -73,7 +75,7 @@ div .sousnavbar .links ul li a {
   text-decoration: none;
 }
 
-div .new-game:hover {
+.new-game:hover {
   background-color: orange;
 }
 
@@ -89,20 +91,107 @@ div .new-game:hover {
   background-color: crimson;
 }
 
+/* css pour menu burger*/
+.burger {
+  width: 50px;
+  height: 32px;
+  cursor: pointer;
+  position: relative;
+}
+
+.burger span {
+  width: 100%;
+  height: 5px;
+  background-color: grey;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.burger span::before,
+.burger span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: grey;
+  transition: transform 0.5s ease-in-out;
+}
+
+.burger span::before {
+  transform: translateY(-10px);
+}
+
+.burger span::after {
+  transform: translateY(10px);
+}
+
+.burger.active span {
+  background-color: transparent;
+}
+
+.burger.active span::before {
+  transform: translateY(0px) rotate(45deg);
+}
+
+.burger.active span::after {
+  transform: translateY(0px) rotate(-45deg);
+}
+
 @media screen and (max-width: 800px) {
-  div .navbar{
-    top:-45px;
+  .navbar {
+    background: black;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    width: 250px;
   }
+
   .sousnavbar {
     flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .sousnavbar .navlogo {
+    width: 100%;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
-  .navbar .sousnavbar .links {
+  .sousnavbar .navlogo img {
+    width: 180px;
+  }
+
+  .sousnavbar .navlogo .burger {
+    display: block;
+    padding: 10px;
+  }
+
+  .sousnavbar .links {
+    width: 100%;
+  }
+
+  .sousnavbar .links ul {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sousnavbar .links ul li {
+    width: 100%;
+    height: 75px;
+  }
+
+  /* .navbar .sousnavbar .links {
     height: 40px;
-  }
+  } */
 
-  .navbar .sousnavbar .links li:first-child {
+  /* .navbar .sousnavbar .links li:first-child {
     border-left: none;
-  }
+  } */
 }
