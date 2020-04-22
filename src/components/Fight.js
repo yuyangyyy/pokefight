@@ -19,7 +19,7 @@ class Fight extends React.Component {
       name: "Pikachu",
       number: "025",
       health: 100,
-      healthColor: "rgb(100, 182, 75)",
+      healthColor: "",
       attack1: "Thunderbolt",
       attack2: "Slam",
       attack3: "Agility",
@@ -39,17 +39,28 @@ class Fight extends React.Component {
   //hit
   handleClickHit = (event) => {
     const hit = event.target.value;
-    console.log({ hit });
-    this.setState({ health: this.state.health - hit });
+    if (hit > this.state.health) {
+      this.setState({ health: 0 });
+    } else {
+      this.setState({ health: this.state.health - hit });
+    }
   };
   //recover
   handleClickPotion = () => {
-    this.setState({ health: this.state.health + 20 });
+    if (this.state.health >= 80) {
+      this.setState({ health: 100 });
+    } else {
+      this.setState({ health: this.state.health + 20 });
+    }
   };
 
-  handleChangePvColor = () => {
-    if (this.state.health < 50) {
+  changePvColor = () => {
+    if (this.state.health > 40) {
+      this.setState({ healthColor: "rgb(100, 182, 75)" });
+    } else if (this.state.health < 40 && this.state.health > 10) {
       this.setState({ healthColor: "orange" });
+    } else {
+      this.setState({ healthColor: "red" });
     }
   };
 
@@ -60,7 +71,7 @@ class Fight extends React.Component {
           <div className="stat">
             <StatutPokemon
               state={this.state}
-              handleChangePvColor={this.handleChangePvColor}
+              ChangePvColor={this.changePvColor}
             />
           </div>
           <Picture pic={Png2} />
@@ -69,7 +80,7 @@ class Fight extends React.Component {
           <div className="stat">
             <StatutPokemon
               state={this.state}
-              handleChangePvColor={this.handleChangePvColor}
+              ChangePvColor={this.changePvColor}
             />
           </div>
           <Picture pic={Png} />

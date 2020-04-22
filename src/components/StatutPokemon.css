@@ -41,8 +41,6 @@
   background-color: rgb(100, 182, 75);
   border-radius: 10px;
   width: 100%;
-  max-width: 100%;
-  min-width: 0%;
   padding-left: 5px;
   transition: width 0.4s ease-in;
 }
