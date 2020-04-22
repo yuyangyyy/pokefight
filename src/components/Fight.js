@@ -18,7 +18,8 @@ class Fight extends React.Component {
     this.state = {
       name: "Pikachu",
       number: "025",
-      health: "",
+      health: 100,
+      healthColor: "rgb(100, 182, 75)",
       attack1: "Thunderbolt",
       attack2: "Slam",
       attack3: "Agility",
@@ -30,15 +31,26 @@ class Fight extends React.Component {
     };
   }
 
-  //random attack hit method
+  //random hit
   attackHit = (max) => {
     Math.floor(Math.random() * Math.floor(max));
   };
 
-  //attack hit onClick method
+  //hit
   handleClickHit = (event) => {
     const hit = event.target.value;
-    return { hit };
+    console.log({ hit });
+    this.setState({ health: this.state.health - hit });
+  };
+  //recover
+  handleClickPotion = () => {
+    this.setState({ health: this.state.health + 20 });
+  };
+
+  handleChangePvColor = () => {
+    if (this.state.health < 50) {
+      this.setState({ healthColor: "orange" });
+    }
   };
 
   render() {
@@ -46,18 +58,24 @@ class Fight extends React.Component {
       <div className="fight">
         <div className="pic-stat1">
           <div className="stat">
-            <StatutPokemon state={this.state} />
+            <StatutPokemon
+              state={this.state}
+              handleChangePvColor={this.handleChangePvColor}
+            />
           </div>
           <Picture pic={Png2} />
         </div>
         <div className="pic-stat2">
           <div className="stat">
-            <StatutPokemon state={this.state} />
+            <StatutPokemon
+              state={this.state}
+              handleChangePvColor={this.handleChangePvColor}
+            />
           </div>
           <Picture pic={Png} />
         </div>
         <AttackButton state={this.state} handleClickHit={this.handleClickHit} />
-        <Potion />
+        <Potion handleClickPotion={this.handleClickPotion} />
         <Comment commentText="Go! Pikachu !" />
         <Comment commentText="(PokemonName) used (AttackName)!" />
         <Comment commentText="Enemy (PokemonName) used (AttackName)!" />

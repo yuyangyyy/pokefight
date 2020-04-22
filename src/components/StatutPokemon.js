@@ -11,7 +11,11 @@ class StatutPokemon extends React.Component {
         </div>
         <div className="pv">
           <p>PV</p>
-          <div className="health"></div>
+          <div
+            className="health"
+            style={{ width: `${this.props.state.health}%` }}
+            onChange={this.props.handleChangePvColor}
+          ></div>
         </div>
       </div>
     );

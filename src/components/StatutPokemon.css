@@ -44,4 +44,5 @@
   max-width: 100%;
   min-width: 0%;
   padding-left: 5px;
+  transition: width 0.4s ease-in;
 }
