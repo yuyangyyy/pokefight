@@ -2,8 +2,9 @@
 
 #container {
   display: flex;
+  justify-content: space-evenly;
   font-family: "Baloo Paaji 2", cursive;
-  background-color: #a1a1a1;
+  margin-top: 200px;
 }
 
 .player {

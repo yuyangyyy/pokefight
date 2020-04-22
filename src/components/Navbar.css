@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 .sousnavbar .navlogo {
   width: 200px;
@@ -13,9 +11,8 @@ div .navbar {
   align-items: center;
   position: fixed;
   width: 100%;
-  /* z-index: 1;
-  top: -59px;
-  height: 200px; */
+  z-index: 1;
+  top: 0;
 }
 
 .sousnavbar {

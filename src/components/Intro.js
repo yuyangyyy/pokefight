@@ -1,15 +1,17 @@
-import React from 'react'
-import title from '../3. images/Poketitre.png'
-import ball from '../3. images/Pokeball.png'
-import './Intro.css'
+import React from "react";
+import title from "../img/logo/LogoPoke.png";
+import ball from "../img/logo/Pokeball.png";
+import "./Intro.css";
 
-const Intro = () =>{
+class Intro extends React.Component {
+  render() {
     return (
-        <div>
-            <img className='titre' src={title} alt="title"/>
-            <img className='pokeball' src={ball} alt='pokeball'/>
-        </div>
-    )
+      <div>
+        <img className="titre" src={title} alt="title" />
+        <img className="pokeball" src={ball} alt="pokeball" onClick={this.props.makeVisible} />
+      </div>
+    );
+  }
 }
 
-export default Intro
+export default Intro;

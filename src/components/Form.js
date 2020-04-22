@@ -20,7 +20,6 @@ class Form extends React.Component {
     const { firstName, lastName, email, message } = this.state;
     return (
       <div>
-        <div id="empty"></div>
         <form className="form">
           <div className="formContainer">
             <div className="label">

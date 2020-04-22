@@ -1,7 +1,13 @@
+body {
+    background-color: #4a524f;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+}
 .App {
-  position: relative;
-  height: 950px;
-  bottom: 0;
-  background-color: #4a524f;
-  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    /* height: 100%; */
 }

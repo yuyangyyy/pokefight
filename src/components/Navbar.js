@@ -1,16 +1,15 @@
 import React from "react";
 import "./Navbar.css";
+import Footer from './Footer'
 import logo from "../img/logo/LogoPokeBlanc.png";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import DialogBox from "./DialogBox";
-import Form from "./Form";
-import Potion from "./Potion";
-import Ranking from "./Ranking";
+import {Link} from "react-router-dom";
 
-function Navbar() {
+
+
+function Navbar(props) {
   return (
-    <div className="page-container">
-      <div className="navbar">
+    <div className="page-container" >
+      <div className="navbar" style={{visibility: props.style}}>
         <div className="sousnavbar">
           <Link to="/">
             <img className="navlogo" src={logo} alt="logoPokemon" />
@@ -38,6 +37,7 @@ function Navbar() {
         </div>
       </div>
     </div>
+    
   );
 }
 
