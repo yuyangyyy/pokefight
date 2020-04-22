@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import './Pokedex.css'
 import SortBox from './SortBox'
-// import ModalPokedex from './ModalPokedex'
+import ModalPokedex from './ModalPokedex'
 
 const propComparator = (propName) =>
     (a, b) => a[propName] == b[propName] ? 0 : a[propName] < b[propName] ? -1 : 1
@@ -11,7 +11,7 @@ class Pokedex extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            nbPokemons: 20,
+            nbPokemons: 50, //387
             pokemons: [],
             arrPokemonsType: [],
             showMore: false,
@@ -20,7 +20,8 @@ class Pokedex extends React.Component {
             pokemonsGene: "",
             pokemonsType: "",
             sortGene: false,
-            sortType: false
+            sortType: false,
+            displayModal: false
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -46,9 +47,10 @@ class Pokedex extends React.Component {
     }
 
     handleClickModal = (event) => {
-        // document.querySelector('.ModalPokedex').style.display = "block"
         this.setState({selectPokemonName: event.target.parentNode.id})
-        console.log(event.target.parentNode)
+        event.target.className === 'close' ? this.setState({displayModal: false}) : this.setState({displayModal: true})
+        document.body.style.overflowY = this.state.displayModal ? "scroll" : "hidden"
+        console.log(event.target)
     }
 
     handleClick = () => {
@@ -77,7 +79,7 @@ class Pokedex extends React.Component {
             this.setState({ nbShow: nbShow + 12, showMore: false })
         return (
             <div>
-                {/* <ModalPokedex pokemonName={this.state.selectPokemonName}/> */}
+                <ModalPokedex method={this.handleClickModal} displayModal={this.state.displayModal}/>
 
                 <div className="filter-pokemon">
                     <SortBox method={this.handleChange} id="pokemonsGene" sortTitle="Sort by Generation" sortType={arrPokemonGene} sortBoxSize="200px" />
