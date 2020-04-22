@@ -8,6 +8,15 @@ body {
     flex-direction: column;
 }
 
-html {
-    /* height: 100%; */
+.diag-pack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.diag-pack img {
+    width: 200px;
+    margin-right: 42px;
+
 }

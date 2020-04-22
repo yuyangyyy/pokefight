@@ -20,9 +20,9 @@
 
 @keyframes  titleDown { 
     0% {top: -350px}
-    70% {top: 0px}
-    85% {top: -50px}
-    100% {top: 0px}}
+    70% {top: 50px}
+    85% {top: 0px}
+    100% {top: 50px}}
 
 @keyframes grow {
     from {width: 0%;}
