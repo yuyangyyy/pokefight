@@ -2,40 +2,39 @@ import React from "react"
 import './ModalPokedex.css'
 
 class ModalPokedex extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     // handleClickModal(event){
     //     const close = document.getElementsByClassName("ModalPokedex")
     //     close[0].style.display = 'none'
     //     console.log(close[0])
     // }
-    render() {
-        const attacks = ["Bump", "Tarzan-wip", "Roar", "Grass Cut"]
-        const weakness = ['Fire', 'Flight', 'Psy', 'Ice']
+    render() {        
         let isDisplay = this.props.displayModal ? "block" : "none"
+        const {pokemon} = this.props
+        const attacks = pokemon && pokemon.moves.slice(0, 4).map(attack => attack.move.name)
+        const weakness = ['Fire', 'Flight', 'Psy', 'Ice']
+        const firstType = pokemon && pokemon.types[0].type.name
+        const scdType = pokemon && pokemon.types[1] ? pokemon.types[1].type.name : ""
         return (
             <div className="ModalPokedex" style={{display: isDisplay}}>
                 <div className="modal">
                     <div className="modal-content">
                     <span onClick={this.props.method} className="close">&times;</span>
-                        <h3>Bulbizar<span> No.001</span></h3>
+                        <h3>{pokemon.name}<span> {pokemon.id <= 9 ? "No.00"+pokemon.id : pokemon.id >= 10 && pokemon.id < 100 ? "No.0"+pokemon.id : "No."+pokemon.id }</span></h3>
                         <button>Play</button>
                         <div className="modal-container">
-                            <img src="https://pokeres.bastionbot.org/images/pokemon/1.png" alt={"picture"} />
+                            <img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt="picture-pokemon" />
                             <div>
-                                <p>Bulbizarre passe son temps à faire la sieste sous le soleil. Il y a une graine sur son dos. Il absorbe les rayons du soleil pour faire doucement pousser la graine. </p>
+                                <p>{this.props.pokemonDescription}</p>
                                 <div className="stats-container">
-                                    <h4>Type : <span>Grass</span></h4>
+                                    <h4>Type : <span>{firstType} {scdType && scdType}</span></h4>
                                     <div className="simple-data">
-                                        <h4>Size : <span>0,70 m</span></h4>
-                                        <h4>Weight : <span>6,9 kg</span></h4>
+                                        <h4>Size : <span>{pokemon.height/10} m</span></h4>
+                                        <h4>Weight : <span>{pokemon.weight/10} kg</span></h4>
                                     </div>
                                    <div className="usual-attacks">
                                         <h4>Usual attacks :</h4>
                                         <ul>
-                                            {attacks.map((attack, id) => <li>{id === 3 ? attack : attack + " - "}</li>)}
+                                            {attacks && attacks.map((attack, id) => <li>{id === 3 ? attack : attack + " - "}</li>)}
                                         </ul>
                                     </div>
                                     <div className='weakness-types'>
