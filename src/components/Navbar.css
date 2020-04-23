@@ -1,16 +1,11 @@
-
-
 .navbar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   position: fixed;
-<<<<<<< HEAD
   top: 0;
   left: 0;
-=======
->>>>>>> 5a135e210b26f94cedd928f6fc5a61a454cf0613
   width: 100%;
   z-index: 1;
   top: 0;
@@ -19,7 +14,6 @@
 .sousnavbar {
   display: flex;
   background-color: #313131;
-  /* color: white; */
 }
 
 .sousnavbar .navlogo img {
@@ -155,20 +149,14 @@
 }
 
 @media screen and (max-width: 800px) {
-<<<<<<< HEAD
   .navbar {
     background: #313131;
     flex-direction: column;
-    /* justify-content: flex-start; */
-    /* height: 100%; */
+
     width: 100%;
     left: -100%;
     transition: all 0.2s;
     left: -100%;
-=======
-  div .navbar {
-    top: -45px;
->>>>>>> 5a135e210b26f94cedd928f6fc5a61a454cf0613
   }
   .navbar.isOpen {
     left: 0;
@@ -176,7 +164,7 @@
 
   .sousnavbar {
     flex-direction: column;
-    /* align-items: flex-start; */
+
     width: 100%;
     margin-left: 0px;
   }
@@ -206,7 +194,6 @@
   .sousnavbar .links ul {
     width: 100%;
     flex-direction: column;
-    /*align-items: flex-start;*/
   }
 
   .sousnavbar .links ul li {

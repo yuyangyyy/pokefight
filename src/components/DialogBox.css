@@ -13,8 +13,8 @@
   margin: 50px 10px;
 }
 
-<<<<<<< HEAD
 .DialogBox {
+  position: relative;
   font-family: "Pokemon";
   font-size: 0.6rem;
   display: flex;
@@ -25,22 +25,8 @@
   border: 1px solid;
   border-radius: 3px;
   width: 350px;
-=======
-.DialogBox{
-    position: relative;
-    font-family: 'Pokemon';
-    font-size: 0.6rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color:#313131; 
-    padding:15px 10px; 
-    border: 1px solid;
-    border-radius:3px; 
-    width: 350px;
-    margin: 0 auto;
-    background-color: #fff;
->>>>>>> 5a135e210b26f94cedd928f6fc5a61a454cf0613
+  margin: 0 auto;
+  background-color: #fff;
 }
 
 .DialogBox::before {
