@@ -1,3 +1,8 @@
+
+.fight {
+  background-color: cadetblue;
+  border: 20px solid black;
+}
 body {
     background-color: #4a524f;
     background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
@@ -19,3 +24,4 @@ body {
     width: 200px;
     margin-right: 42px;
 }
+
