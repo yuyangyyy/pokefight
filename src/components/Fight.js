@@ -79,23 +79,30 @@ class Fight extends React.Component {
 
   handleClickPotion = (e) => {
     e.target.src === emptyPotion
-      ? this.setState({ health: this.state.health })
+      ? this.setState({
+          health: this.state.health,
+          commentText: "It's empty..!",
+        })
       : this.state.health >= 80
-      ? this.setState({ health: 100 })
-      : this.setState({ health: this.state.health + 20 });
+      ? this.setState({
+          health: 100,
+          commentText: `${this.state.name} used RECOVER!`,
+        })
+      : this.setState({
+          health: this.state.health + 20,
+          commentText: `${this.state.name} used RECOVER!`,
+        });
 
     e.target.src = emptyPotion;
     this.changePvColor();
-
-    e.target.src === emptyPotion
-      ? this.setState({ commentText: `${this.state.name} used RECOVER!` })
-      : this.setState({ commentText: "It's empty..!" });
   };
 
   changePvColor = () => {
     this.state.health > 50
       ? this.setState({ healthColor: "rgb(100, 182, 75)" })
       : this.state.health <= 50 && this.state.health > 25
+      ? this.setState({ healthColor: "yellow" })
+      : this.state.health <= 25 && this.state.health > 0
       ? this.setState({ healthColor: "orange" })
       : this.setState({ healthColor: "red" });
   };
@@ -106,7 +113,10 @@ class Fight extends React.Component {
         <div className="pic-stat1">
           <div className="stat">
             <StatutPokemon
-              state={this.state}
+              name={this.state.name}
+              number={this.state.number}
+              health={this.state.health}
+              healthColor={this.state.healthColor}
               ChangePvColor={this.changePvColor}
             />
           </div>
@@ -115,7 +125,10 @@ class Fight extends React.Component {
         <div className="pic-stat2">
           <div className="stat">
             <StatutPokemon
-              state={this.state}
+              name={this.state.name}
+              number={this.state.number}
+              health={this.state.health}
+              healthColor={this.state.healthColor}
               ChangePvColor={this.changePvColor}
             />
           </div>
