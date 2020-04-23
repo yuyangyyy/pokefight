@@ -1,15 +1,11 @@
-
-
-.sousnavbar .navlogo {
-  width: 200px;
-  padding: 15px;
-}
-
-div .navbar {
+.navbar {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   z-index: 1;
   top: 0;
@@ -18,17 +14,20 @@ div .navbar {
 .sousnavbar {
   display: flex;
   background-color: #313131;
-  color: white;
 }
 
-div .sousnavbar .logo {
-  font-size: 40px;
-  padding: 20px;
-  color: whitesmoke;
+.sousnavbar .navlogo img {
+  width: 200px;
+  padding: 15px;
 }
 
-div .sousnavbar .links ul {
+.sousnavbar .navlogo .burger {
+  display: none;
+}
+
+.sousnavbar .links ul {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   list-style: none;
@@ -37,29 +36,31 @@ div .sousnavbar .links ul {
   height: 100%;
 }
 
-div .sousnavbar .links ul li {
+.sousnavbar .links ul li {
   padding: 0;
   margin: 0;
   height: 100%;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   border-left: 1px solid white;
 }
 
-div .sousnavbar .links ul li.new-game {
+.sousnavbar .links ul li.new-game {
   border-bottom: 5px solid orange;
 }
-div .sousnavbar .links ul li.pokedex {
+
+.sousnavbar .links ul li.pokedex {
   border-bottom: 5px solid turquoise;
 }
-div .sousnavbar .links ul li.classement {
+
+.sousnavbar .links ul li.classement {
   border-bottom: 5px solid lime;
 }
 
-div .sousnavbar .links ul li.contact {
+.sousnavbar .links ul li.contact {
   border-bottom: 5px solid crimson;
 }
 
-div .sousnavbar .links ul li a {
+.sousnavbar .links ul li a {
   display: flex;
   align-items: center;
   color: white;
@@ -69,7 +70,7 @@ div .sousnavbar .links ul li a {
   text-decoration: none;
 }
 
-div .new-game:hover {
+.new-game:hover {
   background-color: orange;
 }
 
@@ -85,20 +86,131 @@ div .new-game:hover {
   background-color: crimson;
 }
 
+/* css pour menu burger*/
+.spanbar {
+  display: flex;
+  background-color: #313131;
+  width: 800px;
+  height: 60px;
+  top: -10px;
+  left: -10px;
+  position: relative;
+  padding-left: 10px;
+}
+.burger {
+  width: 40px;
+  height: 42px;
+  cursor: pointer;
+  /*position: relative;*/
+}
+
+.burger span {
+  width: 40px;
+  height: 4px;
+  background-color: grey;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.burger span::before,
+.burger span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: grey;
+  transition: transform 0.5s ease-in-out;
+}
+
+.burger span::before {
+  transform: translateY(-10px);
+}
+
+.burger span::after {
+  transform: translateY(10px);
+}
+
+.burger.active span {
+  background-color: transparent;
+  position: relative;
+  left: -60px;
+  top: 30px;
+}
+
+.burger.active span::before {
+  transform: translateY(0px) rotate(45deg);
+}
+
+.burger.active span::after {
+  transform: translateY(0px) rotate(-45deg);
+}
+
 @media screen and (max-width: 800px) {
-  div .navbar {
-    top: -45px;
+  .navbar {
+    background: #313131;
+    flex-direction: column;
+
+    width: 100%;
+    left: -100%;
+    transition: all 0.2s;
+    left: -100%;
   }
+  .navbar.isOpen {
+    left: 0;
+  }
+
   .sousnavbar {
     flex-direction: column;
+
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .sousnavbar .navlogo {
+    position: relative;
+    width: 100%;
+    display: flex;
     align-items: center;
   }
 
-  .navbar .sousnavbar .links {
-    height: 40px;
+  .sousnavbar .navlogo img {
+    width: 180px;
   }
 
-  .navbar .sousnavbar .links li:first-child {
-    border-left: none;
+  .sousnavbar .navlogo .burger {
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    display: block;
+  }
+
+  .sousnavbar .links {
+    width: 100%;
+  }
+
+  .sousnavbar .links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .sousnavbar .links ul li {
+    width: 100%;
+    height: 80px;
+  }
+
+  .sousnavbar .links ul li a {
+    color: white;
+    font-size: 28px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 22px;
+  }
+
+  .sousnavbar .navlogo img {
+    width: 68px;
+    justify-self: flex-end;
   }
 }

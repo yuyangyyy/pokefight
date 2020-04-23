@@ -1,93 +1,81 @@
 @font-face {
-    font-family: "Pokemon";
-    src: url('../fonts/Pokemon\ Classic.ttf')
+  font-family: "Pokemon";
+  src: url("../fonts/Pokemon\ Classic.ttf");
 }
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap");
 
-*{
-    padding: 0;
-    margin: 0;
+* {
+  padding: 0;
+  margin: 0;
 }
-.box{
-    position: relative;
-    margin: 50px 10px;
-}
-
-.DialogBox{
-    position: relative;
-    font-family: 'Pokemon';
-    font-size: 0.6rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color:#313131; 
-    padding:15px 10px; 
-    border: 1px solid;
-    border-radius:3px; 
-    width: 350px;
-    margin: 0 auto;
-    background-color: #fff;
+.box {
+  position: relative;
+  margin: 50px 10px;
 }
 
-.DialogBox::before{
-content:""; 
-border-left: 20px solid #313131;
-border-right: 20px solid transparent;
-border-bottom: 20px solid transparent;
-position: absolute;
-top: 0px;
-left: 0;
+.DialogBox {
+  position: relative;
+  font-family: "Pokemon";
+  font-size: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #313131;
+  padding: 15px 10px;
+  border: 1px solid;
+  border-radius: 3px;
+  width: 350px;
+  margin: 0 auto;
+  background-color: #fff;
 }
 
-.DialogBox p, .DialogBox input {
-    margin-bottom: 20px;
+.DialogBox::before {
+  content: "";
+  border-left: 20px solid #313131;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+
+.DialogBox p,
+.DialogBox input {
+  margin-bottom: 20px;
 }
 
 .DialogBox p {
-    text-align: center;
+  text-align: center;
 }
 
-.DialogBox input{
-    border-radius: 0px;
-    height: 30px;
-    width: 80%;
+.DialogBox input {
+  border-radius: 0px;
+  height: 30px;
+  width: 80%;
 }
 
-.DialogBox button{
-    font-family: 'Baloo Paaji 2', cursive;
-    background-color: #313131;
-    color: #fff;
-    margin: 0 10px;
-    padding: 0 20px;
-    height: 40px;
-    border: 2px solid #313131;
-    transition: all .1s ease-in-out;
+.DialogBox button {
+  font-family: "Baloo Paaji 2", cursive;
+  background-color: #313131;
+  color: #fff;
+  margin: 0 10px;
+  padding: 0 20px;
+  height: 40px;
+  border: 2px solid #313131;
+  transition: all 0.1s ease-in-out;
 }
 
-.DialogBox button:hover{
-    cursor: pointer;
-    transform: scale(1.1);
+.DialogBox button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-.button-group{
-    display: flex;
-    justify-content: center;
-    margin: auto;
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .display-none {
-    display: none;
+  display: none;
 }
-
-@media screen and (max-width: 392px){
-    .DialogBox{
-        width: 90%;
-    }
-    .button-group{
-        flex-direction: column;
-    }
-    .DialogBox button{
-        margin-bottom: 10px;
-    }
-}
-
