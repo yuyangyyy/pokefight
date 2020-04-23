@@ -89,9 +89,10 @@
 /* css pour menu burger*/
 .spanbar {
   display: flex;
+  align-items: center;
   background-color: #313131;
   width: 800px;
-  height: 60px;
+  height: 70px;
   top: -10px;
   left: -10px;
   position: relative;
@@ -110,7 +111,6 @@
   background-color: grey;
   display: block;
   position: absolute;
-  top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.5s ease-in-out;
 }
@@ -137,7 +137,6 @@
   background-color: transparent;
   position: relative;
   left: -60px;
-  top: 30px;
 }
 
 .burger.active span::before {
@@ -149,6 +148,7 @@
 }
 
 @media screen and (max-width: 800px) {
+
   .navbar {
     background: #313131;
     flex-direction: column;
@@ -209,8 +209,14 @@
     padding-top: 22px;
   }
 
-  .sousnavbar .navlogo img {
-    width: 68px;
-    justify-self: flex-end;
+  .sousnavbar .navlogo #pokeballnavbar {
+    width: 40px;
+    margin-left: 670px;
   }
+  .sousnavbar .navlogo #logo-pokefight {
+    width: 150px;
+    text-align: center;
+  }
+
+
 }

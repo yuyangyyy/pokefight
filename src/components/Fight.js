@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from 'react-router-dom';
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
 import Potion from "./Potion";
@@ -136,7 +136,7 @@ class Fight extends React.Component {
           handleClickHit={this.handleClickHit}
         />
         <Potion method={this.handleClickPotion} />
-        <Comment commentText={this.state.commentText} />
+        <Link to='/new-game-7' className='link'><Comment commentText={this.state.commentText} /></Link>
       </div>
     );
   }

@@ -1,8 +1,9 @@
 .picture {
-  width: 25%;
+  width: 20%;
   margin: 10px;
+  text-align: center;
 }
 
 .picture img {
-  width: 100%;
+  width: 75%;
 }
