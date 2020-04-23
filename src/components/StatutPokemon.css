@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Pokemon";
+  src: url("../fonts/Pokemon\ Classic.ttf");
+}
+
+.statut {
+  width: 285px;
+  min-width: 220px;
+  height: 65px;
+  border: 4px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Pokemon";
+  margin: 10px;
+  background-color: white;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.pv {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: orange;
+  background-color: grey;
+  font-size: 10px;
+  width: 95%;
+  height: 20px;
+  padding-left: 5px;
+  align-self: center;
+}
+
+.health {
+  display: flex;
+  border: 3px solid black;
+  background-color: rgb(100, 182, 75);
+  border-radius: 10px;
+  width: 100%;
+  padding-left: 5px;
+  transition: width 0.4s ease-in;
+}
