@@ -58,6 +58,7 @@ class Fight extends React.Component {
     //: hit <= 10 && hit > 0
     //? this.setState({ commentText: "It's effective!" })
     //: this.setState({ commentText: `${this.state.name}'s attack missed!` }),
+
     this.endGame();
   };
 
