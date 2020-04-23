@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "../img/logo/LogoPokeBlanc.png";
-import pokeball from "../img/logo/pokeball_contour_fin.png";
+import pokeball from "../img/logo/Pokeball.png";
 
 class Navbar extends React.Component {
   constructor(props) {
