@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import Footer from "./Footer";
 import logo from "../img/logo/LogoPokeBlanc.png";
 import pokeball from "../img/logo/Pokeball.png";
 

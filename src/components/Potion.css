@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .Potions {
   display: flex;
   margin: 30px;
@@ -9,6 +10,19 @@
 .Potions img {
   width: 90px;
   transition: 0.1s ease-out;
+=======
+.Potions{
+    display: flex;
+    margin: 30px;
+    padding: 20px;
+    border: 2px solid #313131;
+    border-radius: 5px;
+}
+
+.Potions img {
+    width: 90px;
+    transition: .1s ease-out;
+>>>>>>> 5a135e210b26f94cedd928f6fc5a61a454cf0613
 }
 
 .Potions img:hover {

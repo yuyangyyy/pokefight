@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 .navbar {
   display: flex;
@@ -8,10 +6,14 @@
   justify-content: center;
   align-items: flex-start;
   position: fixed;
+<<<<<<< HEAD
   top: 0;
   left: 0;
+=======
+>>>>>>> 5a135e210b26f94cedd928f6fc5a61a454cf0613
   width: 100%;
   z-index: 1;
+  top: 0;
 }
 
 .sousnavbar {
@@ -153,6 +155,7 @@
 }
 
 @media screen and (max-width: 800px) {
+<<<<<<< HEAD
   .navbar {
     background: #313131;
     flex-direction: column;
@@ -162,6 +165,10 @@
     left: -100%;
     transition: all 0.2s;
     left: -100%;
+=======
+  div .navbar {
+    top: -45px;
+>>>>>>> 5a135e210b26f94cedd928f6fc5a61a454cf0613
   }
   .navbar.isOpen {
     left: 0;
