@@ -1,6 +1,6 @@
 import React from "react";
 import title from "../img/logo/LogoPoke.png";
-import ball from "../img/logo/Pokeball.png";
+import ball from "../img/logo/pokeball contour fin.png";
 import "./Intro.css";
 import {Link} from "react-router-dom"
 
