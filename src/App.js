@@ -37,7 +37,9 @@ function App() {
       />
       <Ranking />
       <Transition />
-      <Fight />
+      <div className="fight">
+        <Fight />
+      </div>
       <Form />
       <Footer />
     </div>

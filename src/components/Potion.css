@@ -1,13 +1,14 @@
 .Potions {
   display: flex;
-  margin: 10px;
+  margin: 15px;
   padding: 20px;
-  border: 2px solid #313131;
+  border: 5px solid #313131;
   border-radius: 5px;
   width: 25%;
   min-width: 300px;
   height: 100px;
   justify-content: center;
+  background-color: cornsilk;
 }
 
 .Potions img {

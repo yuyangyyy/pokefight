@@ -26,10 +26,11 @@ class Fight extends React.Component {
       attack2: "Slam",
       attack3: "Agility",
       attack4: "Thunder",
-      attack1Hit: 10,
-      attack2Hit: 15,
-      attack3Hit: 25,
+      attack1Hit: 0,
+      attack2Hit: 10,
+      attack3Hit: 15,
       attack4Hit: 30,
+      commentText: "Go! Pikachu !",
     };
   }
 
@@ -40,8 +41,6 @@ class Fight extends React.Component {
 
   //hit
   handleClickHit = (event) => {
-    // console.log(this.state.health, this.state.healthColor);
-
     const hit = event.target.value;
     if (hit > this.state.health) {
       this.setState({ health: 0 });
@@ -50,36 +49,55 @@ class Fight extends React.Component {
       this.setState({ health: this.state.health - hit });
       this.changePvColor();
     }
+
+    //TO DO
+    //this.setState({
+    // commentText: `${this.state.name} used attackName`,
+    //});
+
+    hit > 20
+      ? this.setState({ commentText: "Critical hit!" })
+      : hit <= 20 && hit > 10
+      ? this.setState({ commentText: "It's super effective!" })
+      : hit <= 10 && hit > 0
+      ? this.setState({ commentText: "It's effective!" })
+      : this.setState({ commentText: `${this.state.name}'s attack missed!` });
+
+    this.endGame();
   };
+
+  endGame = () => {
+    if (this.state.health === 0) {
+      this.setState({ commentText: `${this.state.name} fainted!` });
+    }
+  };
+
+  //TO DO
+  //commentText="Enemy (PokemonName) used (AttackName)!"
+
   //recover
 
   handleClickPotion = (e) => {
-    if (e.target.src === emptyPotion) {
-      this.setState({ health: this.state.health });
-    } else if (this.state.health >= 80) {
-      this.setState({ health: 100 });
-    } else {
-      this.setState({ health: this.state.health + 20 });
-    }
+    e.target.src === emptyPotion
+      ? this.setState({ health: this.state.health })
+      : this.state.health >= 80
+      ? this.setState({ health: 100 })
+      : this.setState({ health: this.state.health + 20 });
 
     e.target.src = emptyPotion;
     this.changePvColor();
+
+    e.target.src === emptyPotion
+      ? this.setState({ commentText: `${this.state.name} used RECOVER!` })
+      : this.setState({ commentText: "It's empty..!" });
   };
 
   changePvColor = () => {
-    //this.state.health > 40
-    // ? this.setState({ healthColor: "rgb(100, 182, 75)" })
-    // : this.state.health < 40 && this.state.health > 10
-    //? this.setState({ healthColor: "orange" })
-    //: this.setState({ healthColor: "red" });
-
-    if (this.state.health > 50) {
-      this.setState({ healthColor: "rgb(100, 182, 75)" });
-    } else if (this.state.health <= 50 && this.state.health > 25) {
-      this.setState({ healthColor: "orange" });
-    } else {
-      this.setState({ healthColor: "red" });
-    }
+    this.state.health > 50
+      ? this.setState({ healthColor: "rgb(100, 182, 75)" })
+      : this.state.health <= 50 && this.state.health > 25
+      ? this.setState({ healthColor: "orange" })
+      : this.setState({ healthColor: "red" });
   };
 
   render() {
@@ -105,15 +123,7 @@ class Fight extends React.Component {
         </div>
         <AttackButton state={this.state} handleClickHit={this.handleClickHit} />
         <Potion method={this.handleClickPotion} />
-        <Comment commentText="Go! Pikachu !" />
-        <Comment commentText="(PokemonName) used (AttackName)!" />
-        <Comment commentText="Enemy (PokemonName) used (AttackName)!" />
-        <Comment commentText="It's super effective!" />
-        <Comment commentText="Critical hit!" />
-        <Comment commentText="(PokemonName)'s attack missed!" />
-        <Comment commentText="(PokemonName) used RECOVER!" />
-        <Comment commentText="(PokemonName) regained health!" />
-        <Comment commentText="(PokemonName) fainted!" />
+        <Comment commentText={this.state.commentText} />
       </div>
     );
   }
