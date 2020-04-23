@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+   background-color: #313131; 
+}
+
+.Pokedex, .show-more, .filter-pokemon{
+    width: 70%;
+    background-color: #fff;
+}
+
+.filter-pokemon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px;
+    padding-bottom: 10px;
+    margin: 20px auto;
+    margin-bottom: 0;
+}
+
+.filter-pokemon input{
+    margin: 20px 0;
+    border: 1px solid #313131;
+    border-radius: 2px;
+    height: 30px;
+    
+}
+
+
+.Pokedex{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    font-family: 'Baloo Paaji 2', cursive;
+    margin: 20px auto;
+    margin-top: 0;
+    padding: 30px;
+    margin-bottom: 0;
+} 
+
+.Pokedex h3{
+    font-weight: normal;
+    font-size: 1.6rem;
+}
+
+.pokemon-info{
+    border: 2px solid #313131;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.pokemon-card{
+    background-color: #a1a1a1;
+    transition: .1s ease-out;
+}
+
+.pokemon-card:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.pokemon-card img{
+    width: 70%;
+    margin: 10px auto;
+    display: block;
+    background-color: #a1a1a1;
+}
+
+.show-more{
+    padding: 30px;
+    padding-top: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.show-more button{
+    font-family: 'Baloo Paaji 2', cursive;
+    font-size: 1.2rem;
+    background-color: #313131;
+    color: #fff;
+    margin: 0 10px;
+    padding: 0 30px;
+    height: 40px;
+    border: 2px solid #313131;
+    transition: all .1s ease-in-out;
+}
+
+.show-more button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.display-none{
+    display: none;
+}
+
+
+/* COLOR TYPE */
+.pokemon-type{
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #fff;
+    text-align: center;
+    width: 90px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 3px;
+    margin-right: 3px;
+}
+
+.poison{
+    background-color: rgb(101, 80, 196);
+}
+.fire{
+    background-color: rgb(204, 145, 78);
+}
+.water{
+    background-color: rgb(69, 138, 194);
+}
+.flying{
+    background-color: rgb(115, 116, 115);
+}
+.grass{
+    background-color: rgb(100, 182, 97);
+}
+.bug{
+    background-color: rgb(48, 99, 46);
+}
+.normal{
+    background-color: rgb(59, 59, 59);
+}
+.electric{
+    background-color: rgb(205, 214, 77);
+}
+.ground{
+    background-color: rgb(146, 145, 58);
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1270px){
+    .Pokedex{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 950px){
+
+    .Pokedex{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 635px){
+    .Pokedex{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
