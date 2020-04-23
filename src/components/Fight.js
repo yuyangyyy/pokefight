@@ -22,14 +22,8 @@ class Fight extends React.Component {
       number: "025",
       health: 100,
       healthColor: "rgb(100, 182, 75)",
-      attack1: "Thunderbolt",
-      attack2: "Slam",
-      attack3: "Agility",
-      attack4: "Thunder",
-      attack1Hit: 0,
-      attack2Hit: 10,
-      attack3Hit: 15,
-      attack4Hit: 30,
+      attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
+      attackHit: [20, 10, 15, 30],
       commentText: "Go! Pikachu !",
     };
   }
@@ -51,19 +45,20 @@ class Fight extends React.Component {
     }
 
     //TO DO
-    //this.setState({
-    // commentText: `${this.state.name} used attackName`,
-    //});
+    this.setState({
+      commentText: `${this.state.name} used ${
+        this.state.attack[event.target.id]
+      }`,
+    });
 
-    hit > 20
-      ? this.setState({ commentText: "Critical hit!" })
-      : hit <= 20 && hit > 10
-      ? this.setState({ commentText: "It's super effective!" })
-      : hit <= 10 && hit > 0
-      ? this.setState({ commentText: "It's effective!" })
-      : this.setState({ commentText: `${this.state.name}'s attack missed!` });
-
-    this.endGame();
+    //hit > 20
+    //? this.setState({ commentText: "Critical hit!" })
+    //: hit <= 20 && hit > 10
+    //? this.setState({ commentText: "It's super effective!" })
+    //: hit <= 10 && hit > 0
+    //? this.setState({ commentText: "It's effective!" })
+    //: this.setState({ commentText: `${this.state.name}'s attack missed!` }),
+    //this.endGame();
   };
 
   endGame = () => {
@@ -134,7 +129,11 @@ class Fight extends React.Component {
           </div>
           <Picture pic={Png} />
         </div>
-        <AttackButton state={this.state} handleClickHit={this.handleClickHit} />
+        <AttackButton
+          attackHit={this.state.attackHit}
+          attack={this.state.attack}
+          handleClickHit={this.handleClickHit}
+        />
         <Potion method={this.handleClickPotion} />
         <Comment commentText={this.state.commentText} />
       </div>

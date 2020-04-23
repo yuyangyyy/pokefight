@@ -3,8 +3,6 @@ import "./AttackButton.css";
 
 class AttackButton extends React.Component {
   render() {
-    const { attack1, attack2, attack3, attack4 } = this.props.state;
-    const { attack1Hit, attack2Hit, attack3Hit, attack4Hit } = this.props.state;
     const { handleClickHit } = this.props;
     return (
       <div className="mainContainer">
@@ -12,36 +10,40 @@ class AttackButton extends React.Component {
           <button
             type="button"
             className="button"
-            value={attack1Hit}
+            id="0"
+            value={this.props.attackHit[0]}
             onClick={handleClickHit}
           >
-            {attack1}
+            {this.props.attack[0]}
           </button>
           <button
             type="button"
             className="button"
-            value={attack2Hit}
+            id="1"
+            value={this.props.attackHit[1]}
             onClick={handleClickHit}
           >
-            {attack2}
+            {this.props.attack[1]}
           </button>
         </div>
         <div className="container2">
           <button
             type="button"
             className="button"
-            value={attack3Hit}
+            id="2"
+            value={this.props.attackHit[2]}
             onClick={handleClickHit}
           >
-            {attack3}
+            {this.props.attack[2]}
           </button>
           <button
             type="button"
             className="button"
-            value={attack4Hit}
+            id="3"
+            value={this.props.attackHit[3]}
             onClick={handleClickHit}
           >
-            {attack4}
+            {this.props.attack[3]}
           </button>
         </div>
       </div>
