@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "../img/logo/LogoPokeBlanc.png";
+import pokeball from "../img/logo/pokeball_contour_fin.png";
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -23,7 +24,14 @@ class Navbar extends React.Component {
               onClick={this.toggleNavbar}
               className={this.state.isOpen ? "burger active" : "burger"}
             >
-              <span></span>
+              <div className="spanbar">
+                <span></span>
+                <img
+                  id="pokeballnavbar"
+                  src={pokeball}
+                  alt="pokeball_contour_fin"
+                />
+              </div>
             </div>
             <img src={logo} alt="logoPokemon" />
           </div>

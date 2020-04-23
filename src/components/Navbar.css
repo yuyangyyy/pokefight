@@ -11,14 +11,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 200px;
   z-index: 1;
 }
 
 .sousnavbar {
   display: flex;
   background-color: #313131;
-  color: white;
+  /* color: white; */
 }
 
 .sousnavbar .navlogo img {
@@ -92,17 +91,27 @@
 }
 
 /* css pour menu burger*/
-.burger {
-  width: 45px;
-  height: 32px;
-  cursor: pointer;
+.spanbar {
+  display: flex;
+  background-color: #313131;
+  width: 800px;
+  height: 60px;
+  top: -10px;
+  left: -10px;
   position: relative;
+  padding-left: 10px;
+}
+.burger {
+  width: 40px;
+  height: 42px;
+  cursor: pointer;
+  /*position: relative;*/
 }
 
 .burger span {
-  width: 100%;
+  width: 40px;
   height: 4px;
-  background-color: orange;
+  background-color: grey;
   display: block;
   position: absolute;
   top: 50%;
@@ -116,7 +125,7 @@
   position: absolute;
   width: 100%;
   height: 4px;
-  background-color: orange;
+  background-color: grey;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -130,6 +139,9 @@
 
 .burger.active span {
   background-color: transparent;
+  position: relative;
+  left: -60px;
+  top: 30px;
 }
 
 .burger.active span::before {
@@ -144,12 +156,12 @@
   .navbar {
     background: #313131;
     flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    width: 230px;
-    left: -230px;
+    /* justify-content: flex-start; */
+    /* height: 100%; */
+    width: 100%;
+    left: -100%;
     transition: all 0.2s;
-    left: -230px;
+    left: -100%;
   }
   .navbar.isOpen {
     left: 0;
@@ -157,7 +169,7 @@
 
   .sousnavbar {
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     width: 100%;
     margin-left: 0px;
   }
@@ -167,8 +179,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    border: 1px solid red;
-    /*justify-content: space-between;*/
   }
 
   .sousnavbar .navlogo img {
@@ -189,11 +199,24 @@
   .sousnavbar .links ul {
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    /*align-items: flex-start;*/
   }
 
   .sousnavbar .links ul li {
     width: 100%;
     height: 80px;
+  }
+
+  .sousnavbar .links ul li a {
+    color: white;
+    font-size: 28px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 22px;
+  }
+
+  .sousnavbar .navlogo img {
+    width: 68px;
+    justify-self: flex-end;
   }
 }

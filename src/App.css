@@ -1,4 +1,4 @@
-.prez-diagbox {
+/* .prez-diagbox {
   margin-top: 150px;
   display: flex;
   flex-direction: column;
@@ -9,4 +9,8 @@
   .prez-diagbox {
     margin-top: 0;
   }
+} */
+
+.App {
+  margin-top: 100px;
 }
