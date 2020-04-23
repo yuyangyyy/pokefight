@@ -1,0 +1,17 @@
+.Potions{
+    display: flex;
+    margin: 30px;
+    padding: 20px;
+    border: 2px solid #313131;
+    border-radius: 5px;
+}
+
+.Potions img {
+    width: 90px;
+    transition: .1s ease-out;
+}
+
+.Potions img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
