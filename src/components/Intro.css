@@ -9,21 +9,22 @@
     width: 0%;
     margin: 0 auto;
     display: block;
-    animation: grow 1.3s 2.5s forwards;
-    /*animation: Pokeball-spin 0.3s 4s infinite linear;*/
+    animation: grow 1.3s 2s forwards;
+    transition: 0.2s ease-out;
+}
+
+.pokeball:hover {
+    transform: scale(1.089);
+    cursor: pointer;
 }
 
 @keyframes  titleDown { 
     0% {top: -350px}
-    70% {top: 0px}
-    85% {top: -50px}
-    100% {top: 0px}}
+    70% {top: 50px}
+    85% {top: 0px}
+    100% {top: 50px}}
 
 @keyframes grow {
     from {width: 0%;}
-    to {width: 10%;}
-}
-@keyframes Pokeball-spin {
-    from {transform: rotate(0deg)}
-    to {transform: rotate(360deg)}
+    to {width: 13%;}
 }
