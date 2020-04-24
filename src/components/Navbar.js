@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Footer from "./Footer";
 import logo from "../img/logo/LogoPokeBlanc.png";
 import pokeball from "../img/logo/Pokeball.png";
 
@@ -27,32 +27,34 @@ class Navbar extends React.Component {
             >
               <div className="spanbar">
                 <span></span>
-                <img
+                {/* <img
                   id="pokeballnavbar"
                   src={pokeball}
                   alt="pokeball_contour_fin"
-                />
+                /> */}
               </div>
             </div>
-            <img src={logo} alt="logoPokemon" />
+            <Link to="/">
+              <img src={logo} alt="logoPokemon" />
+            </Link>
           </div>
 
           <div className="links">
             <ul>
               <li className="new-game">
-                <a href="#Nouvellepartie">New game</a>
+                <Link to="/new-game">New game</Link>
               </li>
 
               <li className="pokedex">
-                <a href="#PokéDex">PokéDex</a>
+                <Link to="/pokedex">PokéDex</Link>
               </li>
 
               <li className="classement">
-                <a href="#Classement">Ranking</a>
+                <Link to='/ranking'>Ranking</Link>
               </li>
 
               <li className="contact">
-                <a href="#Contact">Contact</a>
+                <Link to='contact'>Contact</Link>
               </li>
             </ul>
           </div>

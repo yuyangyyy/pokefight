@@ -15,7 +15,7 @@ class EndGame extends React.Component {
     render() {
         return (
             <div className="boxEndgame">
-                <h3>Stats du combat :</h3>
+                <h3>Fight statistics :</h3>
                 <div className="container-endgame">
 
                     <div className="EndGame-line1">
@@ -24,18 +24,18 @@ class EndGame extends React.Component {
                         <p>Player 2</p>
                     </div>
 
-                    <StatBar nbAttack={this.state.nbAttack} statName="Number of attack" className="EndGame-line2" />
+                    <StatBar nbAttack={this.state.nbAttack} statName="Number of attacks" className="EndGame-line2" />
 
-                    <StatBar nbAttack={this.state.missAttack} statName="Miss attack" className="EndGame-line3" />
+                    <StatBar nbAttack={this.state.missAttack} statName="Missed attacks" className="EndGame-line3" />
 
-                    <StatBar nbAttack={this.state.damage} statName="Damage inflicted" className="EndGame-line4" />
+                    <StatBar nbAttack={this.state.damage} statName="Damages inflicted" className="EndGame-line4" />
 
                 </div>
 
                 <div className="EndGame-stat-global">
-                    <p>Durée du combat :</p>
-                    <p>Attaques totales :</p>
-                    <p>Dégâts totaux :</p>
+                    <p>Fight duration :</p>
+                    <p>Total attacks :</p>
+                    <p>Global damages :</p>
                 </div>
 
                 <div className="button-endgame">

@@ -5,9 +5,6 @@
     margin: 0;
 }
 
-body{
-   background-color: #313131; 
-}
 
 .Pokedex, .show-more, .filter-pokemon{
     width: 70%;

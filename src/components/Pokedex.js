@@ -12,7 +12,7 @@ class Pokedex extends React.Component {
         super(props)
         this.state = {
             selectPokemon: 0,
-            nbPokemons: 102, //387
+            nbPokemons: 387, //387
             pokemons: [],
             pokemonDescription: [],
             arrPokemonsType: [],
@@ -96,7 +96,7 @@ class Pokedex extends React.Component {
         if (showMore)
             this.setState({ nbShow: nbShow + 12, showMore: false })
         return (
-            <div>
+            <div className='global-Pokedex'>
                 <ModalPokedex method={this.handleClickModal} pokemon={this.state.selectPokemon} pokemonDescription = {this.state.pokemonDescription}displayModal={this.state.displayModal} />
 
                 <div className="filter-pokemon">

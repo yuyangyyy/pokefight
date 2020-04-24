@@ -1,6 +1,8 @@
 .fight {
-  background-color: cadetblue;
-  border: 20px solid black;
+  width: 1200px;
+  height: auto;
+  background-color: #A1A1A1;
+  border: 3px solid #313131;
 }
 body {
   background-color: #4a524f;
@@ -22,4 +24,15 @@ body {
 .diag-pack img {
   width: 200px;
   margin-right: 42px;
+}
+
+.global-Pokedex, .boxEndgame, .fight {
+  margin: 150px auto;
+}
+
+a {
+  text-decoration: none;
+}
+.link {
+  color: #000;
 }

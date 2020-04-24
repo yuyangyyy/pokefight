@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import DialogBox from "./components/DialogBox";
 import Fight from "./components/Fight";
@@ -8,23 +9,16 @@ import Form from "./components/Form";
 import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
 import Ranking from "./components/Ranking";
-import Transition from "./components/Transition";
-import Potion from "./components/Potion";
+import Pokedex from "./components/Pokedex";
+import Transition from './components/Transition'
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import pkball from "./img/logo/Pokeball.png";
+import pkball from './img/logo/pokeball contour fin.png'
 
 import "./App.css";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
+  
   render() {
-    const isHidden = this.state.navfootHidden ? "hidden" : "visible";
     return (
       <Router>
         <div className="App">
@@ -44,9 +38,9 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-            <Route exact path="/new-game-1">
+            <Route path="/new-game-1">
               <div className="diag-pack">
-                <Link exact to="/new-game-2">
+                <Link to="/new-game-2">
                   <img src={pkball} />
                 </Link>
                 <DialogBox
@@ -56,9 +50,9 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-            <Route exact path="/new-game-2">
+            <Route path="/new-game-2">
               <div className="diag-pack">
-                <Link exact to="/new-game-3">
+                <Link to="/new-game-3">
                   <img src={pkball} />
                 </Link>
                 <DialogBox
@@ -69,9 +63,9 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-            <Route exact path="/new-game-3">
+            <Route path="/new-game-3">
               <div className="diag-pack">
-                <Link exact to="/new-game-4">
+                <Link to="/new-game-4">
                   <img src={pkball} />
                 </Link>
                 <DialogBox
@@ -80,7 +74,11 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-            <Route path="/pokedex" component={Potion} />
+            <Route path='/new-game-4' component={Pokedex}/>
+            <Route path='/new-game-5' component={Transition} />
+            <Route path='/new-game-6' component={Fight} />
+            <Route path='/new-game-7' component={EndGame} />
+            <Route path="/pokedex" component={Pokedex} />
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
           </Switch>

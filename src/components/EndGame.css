@@ -7,14 +7,13 @@
 
 
 .boxEndgame {
-    width: 70%;
-    border : 3px solid black ;
-    margin: auto;
-    margin-bottom: 5em;
-    margin-top: 5em;
-    background-color: rgb(134, 133, 131);
+    width: 1200px;
+    height: 766px;
+    border : 3px solid #313131 ;
+    background-color: #A1A1A1;
     border-radius: 5px;
-    padding: 30px 0;
+    padding-top: 30px;
+    padding-bottom: -30px;
 
 }
 .boxEndgame h3 {
@@ -75,8 +74,7 @@
 .EndGame-stat-global {
     text-align: left;
     width: 40%;
-    margin: 50px auto;
-    margin-bottom: 40px;
+    margin: 100px auto;
     background-color: #fff;
     border: 2px solid #313131 ;
     border-radius: 5px;
@@ -85,7 +83,6 @@
 
 .EndGame-stat-global p {
     margin-bottom: 10px;
-    
 }
 
 /* BUTTON */
@@ -93,7 +90,6 @@
 .button-endgame {
     display: flex;
     justify-content: center;
-    
 }
 
 .button-endgame button{
