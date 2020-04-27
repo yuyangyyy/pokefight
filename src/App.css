@@ -1,25 +1,40 @@
 .fight {
-  background-color: cadetblue;
-  border: 20px solid black;
-}
-body {
+  width: 1200px;
+  height: auto;
+  background-color: #A1A1A1;
+  border: 3px solid #313131;
+  }
+  body {
   background-color: #4a524f;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-}
-.App {
+  }
+  .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.diag-pack {
+  align-items: center;
+  }
+  
+  .diag-pack {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 200px;
-}
-
-.diag-pack img {
+  }
+  
+  .diag-pack img {
   width: 200px;
   margin-right: 42px;
-}
+  }
+  
+  .global-Pokedex, .boxEndgame, .fight {
+  margin: 150px auto;
+  }
+  
+  a {
+  text-decoration: none;
+  }
+  .link {
+  color: #000;
+  }
+  

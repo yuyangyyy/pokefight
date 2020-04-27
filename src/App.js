@@ -7,6 +7,7 @@ import EndGame from "./components/EndGame";
 import Form from "./components/Form";
 import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
+import Pokedex from "./components/Pokedex"
 import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 import Potion from "./components/Potion";
@@ -80,7 +81,7 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-            <Route path="/pokedex" component={Potion} />
+            <Route path="/pokedex" component={Pokedex} />
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
           </Switch>
