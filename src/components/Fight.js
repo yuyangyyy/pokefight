@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
 import Potion from "./Potion";
@@ -23,7 +23,7 @@ class Fight extends React.Component {
       health: 100,
       healthColor: "rgb(100, 182, 75)",
       attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
-      attackHit: [20, 10, 15, 30],
+      attackHit: [20, 0, 15, 30],
       commentText: "Go! Pikachu !",
     };
   }
@@ -44,20 +44,23 @@ class Fight extends React.Component {
       this.changePvColor();
     }
 
-    //TO DO
     this.setState({
       commentText: `${this.state.name} used ${
         this.state.attack[event.target.id]
       }`,
     });
-
-    //hit > 20
-    //? this.setState({ commentText: "Critical hit!" })
-    //: hit <= 20 && hit > 10
-    //? this.setState({ commentText: "It's super effective!" })
-    //: hit <= 10 && hit > 0
-    //? this.setState({ commentText: "It's effective!" })
-    //: this.setState({ commentText: `${this.state.name}'s attack missed!` }),
+    //attack damage comment
+    setTimeout(() => {
+      hit > 20
+        ? this.setState({ commentText: "Critical hit!" })
+        : hit <= 20 && hit > 10
+        ? this.setState({ commentText: "It's super effective!" })
+        : hit <= 10 && hit > 0
+        ? this.setState({ commentText: "It's effective!" })
+        : this.setState({
+            commentText: `${this.state.name}'s attack missed!`,
+          });
+    }, 1500);
 
     this.endGame();
   };
@@ -136,7 +139,9 @@ class Fight extends React.Component {
           handleClickHit={this.handleClickHit}
         />
         <Potion method={this.handleClickPotion} />
-        <Link to='/new-game-7' className='link'><Comment commentText={this.state.commentText} /></Link>
+        <Link to="/new-game-7" className="link">
+          <Comment commentText={this.state.commentText} />
+        </Link>
       </div>
     );
   }
