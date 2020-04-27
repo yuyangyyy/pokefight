@@ -29,8 +29,8 @@ class Fight extends React.Component {
   }
 
   //random hit
-  attackHit = (max) => {
-    Math.floor(Math.random() * Math.floor(max));
+  attackRandomHit = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
   };
 
   //hit
@@ -38,10 +38,10 @@ class Fight extends React.Component {
     const hit = event.target.value;
     if (hit > this.state.health) {
       this.setState({ health: 0 });
-      this.changePvColor();
+      //this.changePvColor();
     } else {
       this.setState({ health: this.state.health - hit });
-      this.changePvColor();
+      //this.changePvColor();
     }
 
     this.setState({
@@ -49,6 +49,7 @@ class Fight extends React.Component {
         this.state.attack[event.target.id]
       }`,
     });
+
     //attack damage comment
     setTimeout(() => {
       hit > 20
@@ -63,6 +64,8 @@ class Fight extends React.Component {
     }, 1500);
 
     this.endGame();
+
+    this.attackRandomHit(3);
   };
 
   endGame = () => {
@@ -93,7 +96,6 @@ class Fight extends React.Component {
         });
 
     e.target.src = emptyPotion;
-    this.changePvColor();
   };
 
   changePvColor = () => {
@@ -105,6 +107,12 @@ class Fight extends React.Component {
       ? this.setState({ healthColor: "orange" })
       : this.setState({ healthColor: "red" });
   };
+
+  //componentDidUpdate(prevProps, prevState) {
+  //if (this.state.healthColor !== prevState) {
+  //this.changePvColor();
+  //}
+  //}
 
   render() {
     return (
