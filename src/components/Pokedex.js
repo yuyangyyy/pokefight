@@ -12,15 +12,17 @@ class Pokedex extends React.Component {
         super(props)
         this.state = {
             selectPokemon: 0,
-            nbPokemons: 387, //387
+            nbPokemons: 50, //387
             pokemons: [],
             pokemonDescription: [],
             arrPokemonsType: [],
             showMore: false,
             nbShow: 12,
+
             pokemonSearch: "",
             pokemonsGene: "",
             pokemonsType: "",
+            
             sortGene: false,
             sortType: false,
             displayModal: false
@@ -35,7 +37,7 @@ class Pokedex extends React.Component {
                 .then(response => {
                     let arrPokemons = [...this.state.pokemons, response.data]
                     this.setState({ pokemons: arrPokemons })
-                    this.state.pokemons.sort(propComparator("id"))
+                    this.state.pokemons.sort(propComparator("id")) 
                 })
         }
     }
@@ -58,7 +60,14 @@ class Pokedex extends React.Component {
             
     }
 
+    choiceGeneration = (pokemon) => {
+        const {pokemonsGene} = this.state
+        const pokemonId = pokemon.id
+        return pokemonsGene === "1st Generation" ? pokemonId <= 151 : pokemonsGene === "2nd Generation" ? pokemonId >= 152 && pokemonId <= 251 : pokemonsGene === "3rd Generation" ? pokemonId >= 252 && pokemonId <= 387 : pokemonId
+    }
+
     handleClickModal = (event) => {
+        console.log(event.target.parentNode)
         const numPokemon = event.target.parentNode.dataset.numpokemon
         this.setState({ selectPokemon: this.state.pokemons[numPokemon] })
 
@@ -93,10 +102,11 @@ class Pokedex extends React.Component {
         // console.log(this.state.pokemonsDescription)
         const arrPokemonGene = ["1st Generation", "2nd Generation", "3rd Generation"]
         const { nbPokemons, arrPokemonsType, pokemonsType, pokemons, showMore, nbShow, pokemonSearch, pokemonsGene } = this.state
+        console.log(pokemons)
         if (showMore)
             this.setState({ nbShow: nbShow + 12, showMore: false })
         return (
-            <div className='global-Pokedex'>
+            <div className="global-pokedex">
                 <ModalPokedex method={this.handleClickModal} pokemon={this.state.selectPokemon} pokemonDescription = {this.state.pokemonDescription}displayModal={this.state.displayModal} />
 
                 <div className="filter-pokemon">
@@ -104,10 +114,11 @@ class Pokedex extends React.Component {
                     <SortBox method={this.handleChange} id="pokemonsType" sortTitle="Sort by Type" sortType={arrPokemonsType} sortBoxSize="160px" />
                     <input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="  Search by Name (EN or FR)" />
                 </div>
+                
                 <div className="Pokedex">
                     {pokemons && pokemons.slice(0, pokemonSearch !== "" || pokemonsType !== "" || pokemonsGene !== "" ? nbPokemons : nbShow)
                         .filter(pokemon => pokemon.name.toLowerCase().startsWith(pokemonSearch.toLowerCase())) //search
-                        .filter(pokemon => pokemonsGene === "1st Generation" ? pokemon.id <= 151 : pokemonsGene === "2nd Generation" ? pokemon.id >= 152 && pokemon.id <= 251 : pokemonsGene === "3rd Generation" ? pokemon.id >= 252 && pokemon.id <= 387 : pokemon) //Sort Generation
+                        .filter(pokemon =>  this.choiceGeneration(pokemon)) //Sort Generation
                         .filter(pokemon => pokemon.types[0].type.name.includes(pokemonsType) || pokemon.types[1] && pokemon.types[1].type.name.includes(pokemonsType)) //Sort Type
                         .map((pokemon, id) => {
                             let pokemonCard =

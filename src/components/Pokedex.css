@@ -5,10 +5,14 @@
     margin: 0;
 }
 
+.global-pokedex{
+    margin-top: 150px;
+}
 
 .Pokedex, .show-more, .filter-pokemon{
     width: 70%;
     background-color: #fff;
+
 }
 
 .filter-pokemon{
