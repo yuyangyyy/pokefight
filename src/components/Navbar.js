@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./Navbar.css";
 import logo from "../img/logo/LogoPokeBlanc.png";
-import pokeball from "../img/logo/Pokeball.png";
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-  }
+  state = { isOpen: false };
 
   toggleNavbar = () => {
     this.setState({
@@ -27,11 +24,6 @@ class Navbar extends React.Component {
             >
               <div className="spanbar">
                 <span></span>
-                {/* <img
-                  id="pokeballnavbar"
-                  src={pokeball}
-                  alt="pokeball_contour_fin"
-                /> */}
               </div>
             </div>
             <Link to="/">

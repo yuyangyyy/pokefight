@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
 import Potion from "./Potion";
@@ -15,18 +15,15 @@ import Png2 from "../img/pokemon/Png2.png";
 import emptyPotion from "../img/potions/02_empty_potion.png";
 
 class Fight extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "Pikachu",
-      number: "025",
-      health: 100,
-      healthColor: "rgb(100, 182, 75)",
-      attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
-      attackHit: [20, 10, 15, 30],
-      commentText: "Go! Pikachu !",
-    };
-  }
+  state = {
+    name: "Pikachu",
+    number: "025",
+    health: 100,
+    healthColor: "rgb(100, 182, 75)",
+    attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
+    attackHit: [20, 10, 15, 30],
+    commentText: "Go! Pikachu !",
+  };
 
   //random hit
   attackHit = (max) => {
@@ -48,16 +45,8 @@ class Fight extends React.Component {
     this.setState({
       commentText: `${this.state.name} used ${
         this.state.attack[event.target.id]
-      }`,
+        }`,
     });
-
-    //hit > 20
-    //? this.setState({ commentText: "Critical hit!" })
-    //: hit <= 20 && hit > 10
-    //? this.setState({ commentText: "It's super effective!" })
-    //: hit <= 10 && hit > 0
-    //? this.setState({ commentText: "It's effective!" })
-    //: this.setState({ commentText: `${this.state.name}'s attack missed!` }),
 
     this.endGame();
   };
@@ -68,23 +57,19 @@ class Fight extends React.Component {
     }
   };
 
-  //TO DO
-  //commentText="Enemy (PokemonName) used (AttackName)!"
-
   //recover
-
   handleClickPotion = (e) => {
     e.target.src === emptyPotion
       ? this.setState({
-          health: this.state.health,
-          commentText: "It's empty..!",
-        })
+        health: this.state.health,
+        commentText: "It's empty..!",
+      })
       : this.state.health >= 80
-      ? this.setState({
+        ? this.setState({
           health: 100,
           commentText: `${this.state.name} used RECOVER!`,
         })
-      : this.setState({
+        : this.setState({
           health: this.state.health + 20,
           commentText: `${this.state.name} used RECOVER!`,
         });
@@ -97,10 +82,10 @@ class Fight extends React.Component {
     this.state.health > 50
       ? this.setState({ healthColor: "rgb(100, 182, 75)" })
       : this.state.health <= 50 && this.state.health > 25
-      ? this.setState({ healthColor: "yellow" })
-      : this.state.health <= 25 && this.state.health > 0
-      ? this.setState({ healthColor: "orange" })
-      : this.setState({ healthColor: "red" });
+        ? this.setState({ healthColor: "yellow" })
+        : this.state.health <= 25 && this.state.health > 0
+          ? this.setState({ healthColor: "orange" })
+          : this.setState({ healthColor: "red" });
   };
 
   render() {
