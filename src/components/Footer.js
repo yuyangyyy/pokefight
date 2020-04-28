@@ -4,49 +4,48 @@ import logoFb from '../img/logo/logo-fb.svg';
 import logoTwitter from '../img/logo/logo_twitter.svg';
 import logoYoutube from '../img/logo/logo_yt.svg';
 
-
 import './Footer.css';
 
 
 
 class Footer extends React.Component {
-    render() {
-        return (
-            <footer>
-                <div className="flex-footer">
+	render() {
+		return (
+			<footer>
+				<div className="flex-footer">
 
 
-                    <div className="flex-list">
-                        <ul>
-                            <li> <a href="R" >Contact Us</a></li>
-                            <li><a href="R" >Sponsors</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="R" >Legal Mentions</a></li>
-                            <li><a href="R" >Nintendo France</a></li>
-                        </ul>
-                    </div>
+					<div className="flex-list">
+						<ul>
+							<li> <a href="R" >Contact Us</a></li>
+							<li><a href="R" >Sponsors</a></li>
+						</ul>
+						<ul>
+							<li><a href="R" >Legal Mentions</a></li>
+							<li><a href="R" >Nintendo France</a></li>
+						</ul>
+					</div>
 
-                    <hr />
-                    <img className="logo-poke" src={logo} alt="Logo pokemon" />
-                    <hr />
+					<hr />
+					<img className="logo-poke" src={logo} alt="Logo pokemon" />
+					<hr />
 
-                    <div className="flex-logoReseau">
-                        <a href="https://www.facebook.fr" target="_blank" rel="noopener noreferrer"><img className="logo-fb" src={logoFb} alt="Logo facebook" /></a>
-
-
-                        <a href="https://twitter.com/explore" target="_blank" rel="noopener noreferrer"><img className="logo-twitter" src={logoTwitter} alt="Logo twitter" /></a>
+					<div className="flex-logoReseau">
+						<a href="https://www.facebook.fr" target="_blank" rel="noopener noreferrer"><img className="logo-fb" src={logoFb} alt="Logo facebook" /></a>
 
 
-                        <a href="https://www.youtube.fr" target="_blank" rel="noopener noreferrer"> <img className="logo-youtube" src={logoYoutube} alt="Logo youtube" /> </a>
-                    </div>
+						<a href="https://twitter.com/explore" target="_blank" rel="noopener noreferrer"><img className="logo-twitter" src={logoTwitter} alt="Logo twitter" /></a>
 
 
-                </div>
-            </footer>
+						<a href="https://www.youtube.fr" target="_blank" rel="noopener noreferrer"> <img className="logo-youtube" src={logoYoutube} alt="Logo youtube" /> </a>
+					</div>
 
-        )
-    }
+
+				</div>
+			</footer>
+
+		)
+	}
 }
 
 

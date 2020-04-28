@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./Potion.css";
 
 import fullPotion02 from "../img/potions/02_full_potion.png";
