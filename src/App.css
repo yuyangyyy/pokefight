@@ -1,7 +1,7 @@
 .fight {
   width: 1200px;
   height: auto;
-  background-color: #A1A1A1;
+  background-color: #a1a1a1;
   border: 3px solid #313131;
 }
 body {
@@ -26,7 +26,9 @@ body {
   margin-right: 42px;
 }
 
-.global-Pokedex, .boxEndgame, .fight {
+.global-Pokedex,
+.boxEndgame,
+.fight {
   margin: 150px auto;
 }
 
@@ -35,4 +37,7 @@ a {
 }
 .link {
   color: #000;
+}
+.header {
+  align-self: center;
 }
