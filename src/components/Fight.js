@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
 import Potion from "./Potion";
@@ -15,18 +16,15 @@ import Png2 from "../img/pokemon/Png2.png";
 import emptyPotion from "../img/potions/02_empty_potion.png";
 
 class Fight extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "Pikachu",
-      number: "025",
-      health: 100,
-      healthColor: "rgb(100, 182, 75)",
-      attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
-      attackHit: [20, 0, 15, 30],
-      commentText: "Go! Pikachu !",
-    };
-  }
+  state = {
+    name: "Pikachu",
+    number: "025",
+    health: 100,
+    healthColor: "rgb(100, 182, 75)",
+    attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
+    attackHit: [20, 10, 15, 30],
+    commentText: "Go! Pikachu !",
+  };
 
   //random damage TO DO
   attackRandomHit = (max) => {
@@ -72,11 +70,7 @@ class Fight extends React.Component {
     }
   };
 
-  //TO DO
-  //commentText="Enemy (PokemonName) used (AttackName)!"
-
   //recover
-
   handleClickPotion = (e) => {
     e.target.src === emptyPotion
       ? this.setState({
