@@ -36,10 +36,8 @@ class Fight extends React.Component {
     const hit = event.target.value;
     if (hit > this.state.health) {
       this.setState({ health: 0 });
-      //this.changePvColor();
     } else {
       this.setState({ health: this.state.health - hit });
-      //this.changePvColor();
     }
     //attack comment
     this.setState({
@@ -89,7 +87,7 @@ class Fight extends React.Component {
 
     e.target.src = emptyPotion;
   };
-
+  // change PV barr color
   changePvColor = () => {
     this.state.health > 50
       ? this.setState({ healthColor: "rgb(100, 182, 75)" })
@@ -100,11 +98,11 @@ class Fight extends React.Component {
       : this.setState({ healthColor: "red" });
   };
 
-  //componentDidUpdate(prevProps, prevState) {
-  //if (this.state.healthColor !== prevState) {
-  //this.changePvColor();
-  //}
-  //}
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.health !== prevState.health) {
+      this.changePvColor();
+    }
+  }
 
   render() {
     return (
