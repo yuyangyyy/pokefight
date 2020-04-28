@@ -28,12 +28,12 @@ class Fight extends React.Component {
     };
   }
 
-  //random hit
+  //random damage TO DO
   attackRandomHit = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
   };
 
-  //hit
+  //damage
   handleClickHit = (event) => {
     const hit = event.target.value;
     if (hit > this.state.health) {
@@ -43,14 +43,14 @@ class Fight extends React.Component {
       this.setState({ health: this.state.health - hit });
       //this.changePvColor();
     }
-
+    //attack comment
     this.setState({
       commentText: `${this.state.name} used ${
         this.state.attack[event.target.id]
       }`,
     });
 
-    //attack damage comment
+    //damage comment
     setTimeout(() => {
       hit > 20
         ? this.setState({ commentText: "Critical hit!" })
@@ -64,8 +64,6 @@ class Fight extends React.Component {
     }, 1500);
 
     this.endGame();
-
-    this.attackRandomHit(3);
   };
 
   endGame = () => {
