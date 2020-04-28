@@ -6,28 +6,38 @@ import logo from "../img/logo/LogoPokeBlanc.png";
 import "./Navbar.css";
 
 class Navbar extends React.Component {
+
+  state={
+    page: ''
+  }
+  getPageName = (event) => {
+    this.setState({page: event.target.id})
+  }
+
+
   render() {
     return (
       <div className="header">
         <Link exact to="/" className="logo">
           <img className="nav-logo" src={logo} />
         </Link>
+    <p className='nav-reminder'>{this.state.page}</p>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="nav-icon"></span>
         </label>
-        <ul className="menu">
+        <ul className="menu" onClick={this.getPageName}>
           <li id="orange">
-            <Link to="/new-game">New Game</Link>
+            <Link to="/new-game" id="New Game">New Game</Link>
           </li>
           <li id="cyan">
-            <Link to="/pokedex">Pokédex</Link>
+            <Link to="/pokedex" id="Pokedex">Pokédex</Link>
           </li>
           <li id="green">
-            <Link to="/ranking">Ranking</Link>
+            <Link to="/ranking" id='Ranking'>Ranking</Link>
           </li>
           <li id="red">
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact" id='Contact'>Contact</Link>
           </li>
         </ul>
       </div>

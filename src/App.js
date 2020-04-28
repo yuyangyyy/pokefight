@@ -8,11 +8,7 @@ import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
-<<<<<<< HEAD
 import Pokedex from "./components/Pokedex";
-=======
-import Pokedex from "./components/Pokedex"
->>>>>>> c04687aa88c2f54bb20b03403d0637af77d05211
 import Ranking from "./components/Ranking";
 import Transition from './components/Transition';
 
@@ -78,13 +74,10 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-<<<<<<< HEAD
             <Route path='/new-game-4' component={Pokedex}/>
             <Route path='/new-game-5' component={Transition} />
             <Route path='/new-game-6' component={Fight} />
             <Route path='/new-game-7' component={EndGame} />
-=======
->>>>>>> c04687aa88c2f54bb20b03403d0637af77d05211
             <Route path="/pokedex" component={Pokedex} />
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
