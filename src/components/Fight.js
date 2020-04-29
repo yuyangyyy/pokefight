@@ -32,8 +32,8 @@ class Fight extends React.Component {
   };
 
   //damage
-  handleClickHit = (event) => {
-    const hit = event.target.value;
+  handleClickHit = (e) => {
+    const hit = e.target.value;
     if (hit > this.state.health) {
       this.setState({ health: 0 });
     } else {
@@ -41,9 +41,7 @@ class Fight extends React.Component {
     }
     //attack comment
     this.setState({
-      commentText: `${this.state.name} used ${
-        this.state.attack[event.target.id]
-      }`,
+      commentText: `${this.state.name} used ${this.state.attack[e.target.id]}`,
     });
 
     //damage comment
@@ -75,13 +73,13 @@ class Fight extends React.Component {
           health: this.state.health,
           commentText: "It's empty..!",
         })
-      : this.state.health >= 80
+      : this.state.health >= 75
       ? this.setState({
           health: 100,
           commentText: `${this.state.name} used RECOVER!`,
         })
       : this.setState({
-          health: this.state.health + 20,
+          health: this.state.health + 25,
           commentText: `${this.state.name} used RECOVER!`,
         });
 
