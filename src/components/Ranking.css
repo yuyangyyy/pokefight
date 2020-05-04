@@ -4,8 +4,10 @@
   display: flex;
   justify-content: space-evenly;
   font-family: "Baloo Paaji 2", cursive;
-  margin-top: 200px;
+  margin: 280px auto 150px auto;
   width: 70%;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 .player {
@@ -15,12 +17,9 @@
 
 .player h3 {
   text-align: center;
-  border-bottom: 1px solid #fff;
+  color: #CF283A;
+  border-bottom: 1px solid #a1a1a1;
 }
-/* .player hr {
-  width: 100%;
-  
-} */
 
 .list {
   list-style: none;
@@ -34,6 +33,7 @@
 #pts,
 #times {
   padding-left: 60px;
+  font-weight: 800;
 }
 
 @media screen and (max-width: 800px) {
