@@ -117,6 +117,14 @@ class Fight extends React.Component {
           </div>
           <Picture pic={Png2} />
         </div>
+        <div className="button-potion">
+          <AttackButton
+            attackHit={this.state.attackHit}
+            attack={this.state.attack}
+            handleClickHit={this.handleClickHit}
+          />
+          <Potion method={this.handleClickPotion} />
+        </div>
         <div className="pic-stat2">
           <div className="stat">
             <StatutPokemon
