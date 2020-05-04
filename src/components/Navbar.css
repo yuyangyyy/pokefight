@@ -1,108 +1,169 @@
-* {
-  box-sizing: border-box;
-}
-
-.sousnavbar .navlogo {
-  width: 200px;
-  padding: 15px;
-}
-
-div .navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header {
+  background-color: #313131;
   position: fixed;
-  top: -59px;
-  left: 0;
   width: 100%;
-  height: 200px;
   z-index: 1;
 }
 
-.sousnavbar {
-  display: flex;
-  background-color: #313131;
-  color: white;
-}
-
-div .sousnavbar .logo {
-  font-size: 40px;
-  padding: 20px;
-  color: whitesmoke;
-}
-
-div .sousnavbar .links ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.header ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 100%;
+  overflow: hidden;
 }
 
-div .sousnavbar .links ul li {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  white-space: nowrap;
-  border-left: 1px solid white;
+.header ul a {
+  display: block;
+  padding: 20px 0 20px 50px;
+  border-right: 1px solid #aaa;
+  text-decoration: none;
+  color: #fff;
+  /* text-align: center; */
 }
 
-div .sousnavbar .links ul li.new-game {
+.header #orange {
   border-bottom: 5px solid orange;
+  border-left: 1px solid #aaa;
 }
-div .sousnavbar .links ul li.pokedex {
+.header #orange a:hover {
+  background-color: orange;
+}
+.header #cyan {
   border-bottom: 5px solid turquoise;
 }
-div .sousnavbar .links ul li.classement {
+.header #cyan a:hover {
+  background-color: turquoise;
+}
+.header #green {
   border-bottom: 5px solid lime;
 }
-
-div .sousnavbar .links ul li.contact {
+.header #green a:hover {
+  background-color: lime;
+}
+.header #red {
   border-bottom: 5px solid crimson;
 }
-
-div .sousnavbar .links ul li a {
-  display: flex;
-  align-items: center;
-  color: white;
-  padding: 0 30px;
-  font-size: 20px;
-  height: 100%;
-  text-decoration: none;
+.header #red a:hover {
+  background-color: crimson;
+}
+#red a {
+  border-right: none;
 }
 
-div .new-game:hover {
+.header ul a:hover {
   background-color: orange;
 }
 
-.pokedex:hover {
-  background-color: turquoise;
+.header .nav-logo {
+  width: 150px;
+  float: left;
+  padding: 15px;
 }
 
-.classement:hover {
-  background-color: lime;
+.header .nav-reminder {
+  float: right;
+  color: #aaa;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 25px 5px;
+  position: absolute;
+  text-align: right;
+  right: 75px;
 }
 
-.contact:hover {
-  background-color: crimson;
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
 }
 
-@media screen and (max-width: 800px) {
-  div .navbar{
-    top:-45px;
-  }
-  .sousnavbar {
-    flex-direction: column;
-    align-items: center;
-  }
+.header .menu-icon {
+  padding: 20px 12px;
+  position: relative;
+  float: right;
+  cursor: pointer;
+  border: 1px solid rgb(77, 75, 75);
+  border-radius: 6px;
+  margin: 18px 18px 18px 0;
+}
 
-  .navbar .sousnavbar .links {
-    height: 40px;
-  }
+.header .menu-icon .nav-icon {
+  background-color: #aaa;
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s ease-out;
+}
 
-  .navbar .sousnavbar .links li:first-child {
-    border-left: none;
+.header .menu-icon .nav-icon:before {
+  background-color: #aaa;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  top: 8px;
+}
+
+.header .menu-icon .nav-icon:after {
+  background-color: #aaa;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  top: -8px;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 255px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+@media (min-width: 48em) {
+  .header {
+    width: 800px;
+  }
+  .header li {
+    float: left;
+    height: 100%;
+  }
+  .header li a {
+    padding: 31px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon, .nav-reminder {
+    display: none;
+  }
+  .header .nav-logo {
+    padding: 12px 0 10px 48px;
+    width: 200px;
   }
 }

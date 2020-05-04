@@ -1,18 +1,23 @@
-.Potions{
-    display: flex;
-    margin: 30px;
-    padding: 20px;
-    border: 2px solid #313131;
-    border-radius: 5px;
-    width: 300px;
+.Potions {
+  display: flex;
+  margin: 15px;
+  padding: 20px;
+  border: 5px solid #313131;
+  border-radius: 15px;
+  width: 175px;
+  /* min-width: 300px; */
+  height: 50px;
+  justify-content: center;
+  background-color: cornsilk;
 }
 
 .Potions img {
-    width: 100%;
-    transition: .1s ease-out;
+  width: 33%;
+  height: 100%;
+  transition: 0.1s ease-out;
 }
 
-.Potions img:hover{
-    cursor: pointer;
-    transform: scale(1.1);
+.Potions img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }

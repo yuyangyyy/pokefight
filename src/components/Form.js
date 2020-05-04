@@ -1,16 +1,16 @@
 import React from "react";
+
 import "./Form.css";
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      message: "",
-    };
-  }
+
+  state = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  };
+
   changeInput = (event) => {
     const name = event.target.name;
     this.setState({ [name]: event.target.value });
@@ -20,7 +20,6 @@ class Form extends React.Component {
     const { firstName, lastName, email, message } = this.state;
     return (
       <div>
-        <div id="empty"></div>
         <form className="form">
           <div className="formContainer">
             <div className="label">

@@ -1,35 +1,47 @@
 import React from "react";
-import "./Navbar.css";
+import { Link } from "react-router-dom";
+
 import logo from "../img/logo/LogoPokeBlanc.png";
 
-function Navbar() {
-  return (
-    <div className="navbar">
-      <div className="sousnavbar">
-        <img className="navlogo" src={logo} alt="logoPokemon" />
+import "./Navbar.css";
 
-        <div className="links">
-          <ul>
-            <li className="new-game">
-              <a href="#Nouvellepartie">New game</a>
-            </li>
+class Navbar extends React.Component {
 
-            <li className="pokedex">
-              <a href="#PokéDex">PokéDex</a>
-            </li>
+  state={
+    page: ''
+  }
+  getPageName = (event) => {
+    this.setState({page: event.target.id})
+  }
 
-            <li className="classement">
-              <a href="#Classement">Ranking</a>
-            </li>
-
-            <li className="contact">
-              <a href="#Contact">Contact</a>
-            </li>
-          </ul>
-        </div>
+  render() {
+    return (
+      <div className="header">
+        <Link exact to="/" className="logo">
+          <img className="nav-logo" src={logo} />
+        </Link>
+    <p className='nav-reminder'>{this.state.page}</p>
+        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="nav-icon"></span>
+        </label>
+        <ul className="menu" onClick={this.getPageName}>
+          <li id="orange">
+            <Link to="/new-game" id="New Game">New Game</Link>
+          </li>
+          <li id="cyan">
+            <Link to="/pokedex" id="Pokedex">Pokédex</Link>
+          </li>
+          <li id="green">
+            <Link to="/ranking" id='Ranking'>Ranking</Link>
+          </li>
+          <li id="red">
+            <Link to="/contact" id='Contact'>Contact</Link>
+          </li>
+        </ul>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Navbar;

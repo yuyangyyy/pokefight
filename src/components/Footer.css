@@ -1,88 +1,83 @@
-
-
 footer {
-    background-color: #424242;
-    height: 150px;
-}
-
-
-
-
-
+  background-color: #313131;
+  width: 100%;
+  margin-top: auto;
+  }
 
 .logo-poke {
-    width: 40vh;
-    margin: 0 auto;    
+  width: 40vh;
+  margin: 0 auto;
 }
 
-.logo-fb, .logo-twitter, .logo-youtube{
-    width: 40px;
-    transition: 0.5s ease-out;
+.logo-fb,
+.logo-twitter,
+.logo-youtube {
+  width: 40px;
+  transition: 0.5s ease-out;
 }
 
-.logo-fb:hover, .logo-twitter:hover, .logo-youtube:hover{
-    transform: scale(1.35);
+.logo-fb:hover,
+.logo-twitter:hover,
+.logo-youtube:hover {
+  transform: scale(1.35);
 }
-
-
-
 
 .flex-footer hr {
-    height: 135px;
+  height: 135px;
 }
 
 .flex-footer {
-    display: flex;
-    align-items: center;
-    
+  display: flex;
+  align-items: center;
 }
 
 .flex-list {
-    display: flex;
-    justify-content: space-around;
-    align-self: center;
-    color: white;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  color: white;
+  margin: 0 auto;
 }
 
 .flex-logoReseau {
-    display: flex;
-    justify-content: space-around;
-    width :15%;
-    align-self: center;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  width: 15%;
+  align-self: center;
+  margin: 0 auto;
 }
 .flex-logoReseau img {
-    margin: 0px 5px ;
+  margin: 0px 5px;
 }
 
 .flex-list a {
-    color : #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
-.flex-list li{
-    list-style-type: none;
-    margin: 20px;
+.flex-list li {
+  list-style-type: none;
+  margin: 20px;
 }
-
 
 @media screen and (max-width: 840px) {
-    .flex-footer {
-        flex-direction: column;        
-    }
-    hr {
-        display: none;
-    }
-    footer {
-        height: 60%;
-        
-    }
-    .flex-logoReseau{
-        margin-bottom: 5%;
-    }
-    .logo-poke{
-        margin-bottom: 3%;
-    }
-
+  .flex-footer {
+    flex-direction: column;
+  }
+  .flex-list {
+    flex-direction: column;
+    text-align: center;
+  }
+  hr {
+    display: none;
+  }
+  footer {
+    height: 60%;
+  }
+  .flex-logoReseau {
+    margin-bottom: 5%;
+  }
+  .logo-poke {
+    margin-bottom: 3%;
+  }
 }
