@@ -11,8 +11,26 @@
   flex-direction: column;
   align-items: center;
   font-family: "Baloo Paaji 2", cursive;
-  
+  background-color: #fff;
+  padding: 20px 60px;
+  border-radius: 5px;
 }
+
+.form label {
+  padding-top: 15px;
+  font-size: 20px;
+  color: #A1A1A1;
+  font-weight: 900;
+}
+
+.form input {
+  background-color: #313131;
+  color: #fff;
+  border-radius: 5px;
+  font-family: "Baloo Paaji 2", cursive;
+  font-size: 20px;
+}
+
 
 .formContainer {
   display: flex;
@@ -21,59 +39,44 @@
   background-color: #f1f1f1;
 }
 
-.label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-}
-
-.text {
-  width: 20%;
-  margin: 15px;
-  padding: 10px;
-  background-color: #494949;
-  border: 0;
-  border-radius: 5px;
-  color: #f1f1f1;
-  font-family: "Baloo Paaji 2", cursive;
-  min-width: 200px;
-}
-
 #message {
-  height: 75px;
+  height: 150px;
+  background-color: #313131;
+  color:#fff;
+  border-radius: 5px;
+  font-family: "Baloo Paaji 2", cursive;
+  font-size: 20px;
 }
 
 #button {
-  width: 7em;
-  height: 30px;
+  width: 140px;
+  height: 50px;
   border: 0;
   border-radius: 5px;
-  background-color: grey;
+  background-color:#CF283A;
+  color: #fff;
+  font-weight: bold;
+  font-size: 23px;
   cursor: pointer;
-  margin: 20px;
+  margin: 30px;
 }
 
-@media screen and (max-width: 1024px) {
-  .text {
-    width: 80%;
-    margin-top: 0;
-    min-width: 0;
-  }
-  .formContainer {
-    flex-direction: column;
-    align-items: center;
-    padding-left: 0;
-    width: 80%;
-  }
-  .label {
-    width: 60%;
-    justify-content: center;
-  }
+#button:hover {
+  /* color: #CF283A; */
+  background-color: rgb(156, 18, 32);
 }
 
-@media screen and (max-width: 600px) {
-  .label {
+@media screen and (max-width: 800px) {
+
+  .form {
+    margin: 125px auto 50px auto;
+    width: 50%;
+  }
+  .form input {
     width: 100%;
   }
+  #message {
+    width: 100%;
+  }
+
 }
