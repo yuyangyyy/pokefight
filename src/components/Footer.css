@@ -64,6 +64,10 @@ footer {
   .flex-footer {
     flex-direction: column;
   }
+  .flex-list {
+    flex-direction: column;
+    text-align: center;
+  }
   hr {
     display: none;
   }
