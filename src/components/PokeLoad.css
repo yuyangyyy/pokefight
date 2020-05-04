@@ -1,0 +1,87 @@
+
+/* Poké Styles */
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.loading-box{
+  width: 70%;
+  background-color: #fff;
+  padding: 50px 0;
+  margin: auto;
+}
+
+.loading-box img {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+  width: 100px;
+  z-index: 1;
+  animation: fall .25s ease-in-out,
+            shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+}
+.__pokeball {
+    position: relative;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: inset -10px 10px 0 10px #ccc;
+    animation: fall .25s ease-in-out,
+               shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+  }
+  .__pokeball::before,
+  .__pokeball::after {
+    content:"";
+    position: absolute;
+  }
+  .__pokeball::before {
+    background: red;
+    width: 100%;
+    height: 50%;
+  }
+  .__pokeball::after {
+    top: calc(50% - 3px);
+    width: 100%;
+    height: 7px;
+    background: #000;
+  }
+  .pokeball__button {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 12px);
+    width: 30;
+    height: 30;
+    background: #7f8c8d;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 0 4px black;
+    animation: blink .5s alternate 7;
+  }
+  /* Animation */
+  @keyframes blink {
+    from { background: #eee;}
+    to { background: #e74c3c; }
+  }
+  @keyframes shake {
+    0 { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+  @keyframes fall {
+    0% { top: -200px }
+    60% { top: 0 }
+    80% { top: -20px }
+    100% { top: 0 }
+  }

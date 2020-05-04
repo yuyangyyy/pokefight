@@ -1,14 +1,12 @@
 import React from "react";
+
 import "./Picture.css";
 
 class Picture extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      picture1: "",
-      picture2: "",
-    };
-  }
+  state = {
+    picture1: "",
+    picture2: "",
+  };
 
   render() {
     return (

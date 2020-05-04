@@ -2,15 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import DialogBox from "./components/DialogBox";
+import EndGame from "./components/EndGame";
 import Fight from "./components/Fight";
 import Footer from "./components/Footer";
-import EndGame from "./components/EndGame";
 import Form from "./components/Form";
 import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
-import Ranking from "./components/Ranking";
 import Pokedex from "./components/Pokedex";
-import Transition from './components/Transition'
+import Ranking from "./components/Ranking";
+import Transition from './components/Transition';
 
 import pkball from './img/logo/pokeball contour fin.png'
 
