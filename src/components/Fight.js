@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import AttackButton from "./AttackButton";
+import AttackButtonP1 from "./AttackButtonP1";
+import AttackButtonP2 from "./AttackButtonP2";
 import Comment from "./Comment";
 import Potion from "./Potion";
 import Picture from "./Picture";
-import StatutPokemon from "./StatutPokemon";
+import StatutPokemonP1 from "./StatutPokemonP1";
+import StatutPokemonP2 from "./StatutPokemonP2";
 
 import "./Fight.css";
 
@@ -17,19 +19,30 @@ import emptyPotion from "../img/potions/02_empty_potion.png";
 
 class Fight extends React.Component {
   state = {
+    //player1: {
     name: "Pikachu",
     number: "025",
     health: 100,
     healthColor: "rgb(100, 182, 75)",
     attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
     attackHit: [20, 10, 15, 30],
-    commentText: "Go! Pikachu !",
+    //},
+    player2: {
+      name: "Raichu",
+      number: "042",
+      health: 100,
+      healthColor: "rgb(100, 182, 75)",
+      attack: ["bolt", "Slam", "Agil", "Thunder"],
+      attackHit: [10, 0, 5, 30],
+    },
+
+    commentText: "Go!",
   };
 
   //random damage TO DO
-  attackRandomHit = (max) => {
-    return Math.floor(Math.random() * Math.floor(max));
-  };
+  //attackRandomHit = (max) => {
+  // return Math.floor(Math.random() * Math.floor(max));
+  //};
 
   //damage
   handleClickHit = (e) => {
@@ -103,11 +116,12 @@ class Fight extends React.Component {
   }
 
   render() {
+    console.log(this.state.name);
     return (
       <div className="fight">
         <div className="pic-stat1">
           <div className="stat">
-            <StatutPokemon
+            <StatutPokemonP2
               name={this.state.name}
               number={this.state.number}
               health={this.state.health}
@@ -118,7 +132,7 @@ class Fight extends React.Component {
           <Picture pic={Png2} />
         </div>
         <div className="button-potion">
-          <AttackButton
+          <AttackButtonP2
             attackHit={this.state.attackHit}
             attack={this.state.attack}
             handleClickHit={this.handleClickHit}
@@ -127,7 +141,7 @@ class Fight extends React.Component {
         </div>
         <div className="pic-stat2">
           <div className="stat">
-            <StatutPokemon
+            <StatutPokemonP1
               name={this.state.name}
               number={this.state.number}
               health={this.state.health}
@@ -137,7 +151,7 @@ class Fight extends React.Component {
           </div>
           <Picture pic={Png} />
         </div>
-        <AttackButton
+        <AttackButtonP1
           attackHit={this.state.attackHit}
           attack={this.state.attack}
           handleClickHit={this.handleClickHit}
