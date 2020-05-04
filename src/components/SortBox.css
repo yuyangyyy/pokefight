@@ -26,14 +26,13 @@
 }
 
 .SortBox select{
-    -webkit-appearance: none;
-	-moz-appearance: none;
     appearance: none;
     
     font-family: 'Baloo Paaji 2', cursive;
     font-size: 1.1rem;
     color: #fff;
     background-color: #313131;
+    border-radius: 5px 0 5px 0;
     padding: 2px;
     text-align: center;
     width: 100%;
