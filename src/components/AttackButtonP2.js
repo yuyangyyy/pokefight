@@ -2,6 +2,7 @@ import React from "react";
 import "./AttackButton.css";
 
 const AttackButtonP2 = (props) => {
+  console.log(props);
   return (
     <div className="mainContainer">
       <div className="container1">
