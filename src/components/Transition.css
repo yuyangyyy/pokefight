@@ -11,13 +11,21 @@
     display: flex;
     position: relative;
 }
+
+.left, .right{
+    padding: 50px;
+}
 .left {
     width: 50%;
-    background-color:rgb(100, 182, 75);
+    background-color:rgb(180, 182, 75);
+}
+
+.left img, .right img{
+    width: 100%;
 }
 .right {
     width: 50%;
-    background-color: rgb(179, 176, 176);
+    background-color: rgb(40, 144, 230);
 }
 
 .white {
@@ -36,4 +44,5 @@
 #count {
     align-self: center;
     font-size: 10em;
+    color: #000;
 }
