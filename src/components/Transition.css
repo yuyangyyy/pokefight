@@ -1,15 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap%27");
+
 * {
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 50%;
-    border: 1px solid black;
-    margin: 10% auto;
-    height: 500px;
+    width: 700px;
+    border: 30px solid #fff;
+    margin-top: 225px;
     display: flex;
     position: relative;
+    border-radius: 5px;
 }
 
 .left, .right{
@@ -30,8 +32,8 @@
 
 .white {
     background-color: #fff;
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     position: absolute; 
     transform: translate(-50%, -50%);
     left: 50%; 
@@ -43,6 +45,20 @@
 
 #count {
     align-self: center;
-    font-size: 10em;
+    font-size: 90px;
     color: #000;
+    font-family: "Baloo Paaji 2", cursive;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        overflow: hidden;
+        width: 60%;
+        margin: 125px auto 50px auto;
+
+    }
+    .left, .right {
+        width: 100%;
+    }
 }
