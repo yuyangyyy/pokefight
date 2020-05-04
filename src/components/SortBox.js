@@ -10,8 +10,8 @@ class SortBox extends React.Component {
 			<div className="SortBox" style={{ width: this.props.sortBoxSize }}>
 				<select onChange={this.props.method} id={this.props.id} >
 					<option value="">{this.props.sortTitle}</option>
-					{sortType.map(type => {
-						return <option value={type}>{type}</option>
+					{sortType.map((type, key) => {
+						return <option value={type} key={key}>{type}</option>
 					})
 					}
 				</select>
