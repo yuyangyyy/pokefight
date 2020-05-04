@@ -14,7 +14,6 @@ class Navbar extends React.Component {
     this.setState({page: event.target.id})
   }
 
-
   render() {
     return (
       <div className="header">
