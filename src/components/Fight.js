@@ -155,7 +155,7 @@ class Fight extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ commentText: `${this.state.player1.name} Go!` });
+    this.setState({ commentText: `Go ${this.state.player1.name}!` });
   }
 
   render() {
