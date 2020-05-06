@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./StatutPokemon.css";
+import "./PokeLoad.css"
 
 class StatutPokemon extends React.Component {
   render() {
