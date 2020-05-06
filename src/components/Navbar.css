@@ -1,222 +1,169 @@
-.navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+.header {
+  background-color: #313131;
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 1;
-  top: 0;
 }
 
-.sousnavbar {
-  display: flex;
-  background-color: #313131;
-}
-
-.sousnavbar .navlogo img {
-  width: 200px;
-  padding: 15px;
-}
-
-.sousnavbar .navlogo .burger {
-  display: none;
-}
-
-.sousnavbar .links ul {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.header ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 100%;
+  overflow: hidden;
 }
 
-.sousnavbar .links ul li {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  /*white-space: nowrap;*/
-  border-left: 1px solid white;
+.header ul a {
+  display: block;
+  padding: 20px 0 20px 50px;
+  border-right: 1px solid #aaa;
+  text-decoration: none;
+  color: #fff;
+  /* text-align: center; */
 }
 
-.sousnavbar .links ul li.new-game {
+.header #orange {
   border-bottom: 5px solid orange;
+  border-left: 1px solid #aaa;
 }
-
-.sousnavbar .links ul li.pokedex {
+.header #orange a:hover {
+  background-color: orange;
+}
+.header #cyan {
   border-bottom: 5px solid turquoise;
 }
-
-.sousnavbar .links ul li.classement {
+.header #cyan a:hover {
+  background-color: turquoise;
+}
+.header #green {
   border-bottom: 5px solid lime;
 }
-
-.sousnavbar .links ul li.contact {
+.header #green a:hover {
+  background-color: lime;
+}
+.header #red {
   border-bottom: 5px solid crimson;
 }
-
-.sousnavbar .links ul li a {
-  display: flex;
-  align-items: center;
-  color: white;
-  padding: 0 30px;
-  font-size: 20px;
-  height: 100%;
-  text-decoration: none;
+.header #red a:hover {
+  background-color: crimson;
+}
+#red a {
+  border-right: none;
 }
 
-.new-game:hover {
+.header ul a:hover {
   background-color: orange;
 }
 
-.pokedex:hover {
-  background-color: turquoise;
+.header .nav-logo {
+  width: 150px;
+  float: left;
+  padding: 15px;
 }
 
-.classement:hover {
-  background-color: lime;
+.header .nav-reminder {
+  float: right;
+  color: #aaa;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 25px 5px;
+  position: absolute;
+  text-align: right;
+  right: 75px;
 }
 
-.contact:hover {
-  background-color: crimson;
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
 }
 
-/* css pour menu burger*/
-.spanbar {
-  display: flex;
-  align-items: center;
-  background-color: #313131;
-  width: 800px;
-  height: 70px;
-  top: -10px;
-  left: -10px;
+.header .menu-icon {
+  padding: 20px 12px;
   position: relative;
-  padding-left: 10px;
-}
-.burger {
-  width: 40px;
-  height: 42px;
+  float: right;
   cursor: pointer;
-  /*position: relative;*/
+  border: 1px solid rgb(77, 75, 75);
+  border-radius: 6px;
+  margin: 18px 18px 18px 0;
 }
 
-.burger span {
-  width: 40px;
-  height: 4px;
-  background-color: grey;
+.header .menu-icon .nav-icon {
+  background-color: #aaa;
   display: block;
-  position: absolute;
-  transform: translateY(-50%);
-  transition: background-color 0.5s ease-in-out;
-}
-
-.burger span::before,
-.burger span::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background-color: grey;
-  transition: transform 0.5s ease-in-out;
-}
-
-.burger span::before {
-  transform: translateY(-10px);
-}
-
-.burger span::after {
-  transform: translateY(10px);
-}
-
-.burger.active span {
-  background-color: transparent;
+  height: 3px;
+  width: 25px;
+  border-radius: 20px;
   position: relative;
-  left: -60px;
+  transition: background 0.2s ease-out;
 }
 
-.burger.active span::before {
-  transform: translateY(0px) rotate(45deg);
+.header .menu-icon .nav-icon:before {
+  background-color: #aaa;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  top: 8px;
 }
 
-.burger.active span::after {
-  transform: translateY(0px) rotate(-45deg);
+.header .menu-icon .nav-icon:after {
+  background-color: #aaa;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  top: -8px;
 }
 
-@media screen and (max-width: 800px) {
+.menu-btn {
+  display: none;
+}
 
-  .navbar {
-    background: #313131;
-    flex-direction: column;
+.header .menu-btn:checked ~ .menu {
+  max-height: 255px;
+}
 
-    width: 100%;
-    left: -100%;
-    transition: all 0.2s;
-    left: -100%;
+.header .menu-btn:checked ~ .menu-icon .nav-icon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+@media (min-width: 800px) {
+  .header {
+    width: 800px;
   }
-  .navbar.isOpen {
-    left: 0;
+  .header li {
+    float: left;
+    height: 100%;
   }
-
-  .sousnavbar {
-    flex-direction: column;
-
-    width: 100%;
-    margin-left: 0px;
+  .header li a {
+    padding: 31px 30px;
   }
-
-  .sousnavbar .navlogo {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
   }
-
-  .sousnavbar .navlogo img {
-    width: 180px;
+  .header .menu-icon, .nav-reminder {
+    display: none;
   }
-
-  .sousnavbar .navlogo .burger {
-    position: absolute;
-    top: 10px;
-    right: -50px;
-    display: block;
+  .header .nav-logo {
+    padding: 12px 0 10px 48px;
+    width: 200px;
   }
-
-  .sousnavbar .links {
-    width: 100%;
-  }
-
-  .sousnavbar .links ul {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .sousnavbar .links ul li {
-    width: 100%;
-    height: 80px;
-  }
-
-  .sousnavbar .links ul li a {
-    color: white;
-    font-size: 28px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 22px;
-  }
-
-  .sousnavbar .navlogo #pokeballnavbar {
-    width: 40px;
-    margin-left: 670px;
-  }
-  .sousnavbar .navlogo #logo-pokefight {
-    width: 150px;
-    text-align: center;
-  }
-
-
 }
