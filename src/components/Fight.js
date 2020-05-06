@@ -44,11 +44,11 @@ class Fight extends React.Component {
     let localP = ""
     let currentPlayer = ''
 
-    if(target === "attackP1"){
+    if (target === "attackP1") {
       localP = this.state.player2
       currentPlayer = this.state.player1
       playerState = "player2"
-    }else{
+    } else {
       localP = this.state.player1
       currentPlayer = this.state.player2
       playerState = "player1"
@@ -57,41 +57,42 @@ class Fight extends React.Component {
     //life reducer
     hit > localP.health ? localP.health = 0 : localP.health -= hit
 
-   
-
-    // //attack comment
+    //attack comment
     this.setState({
       commentText: `${currentPlayer.name} used ${
         currentPlayer.attack[e.target.id]
         }`,
     });
-    this.setState({[playerState]: localP})
-    // //damage comment
-    // setTimeout(() => {
-    //   hit > 20
-    //     ? this.setState({ commentText: "Critical hit!" })
-    //     : hit <= 20 && hit > 10
-    //       ? this.setState({ commentText: "It's super effective!" })
-    //       : hit <= 10 && hit > 0
-    //         ? this.setState({ commentText: "It's effective!" })
-    //         : this.setState({
-    //           commentText: `${this.state.player2.name}'s attack missed!`,
-    //         });
-    // }, 1500);
 
-    // this.endGameP2();
+    //damage comment
+    if (localP.health === 0 || currentPlayer.health === 0) {
+      this.endGame(localP, currentPlayer, currentPlayer.attack[e.target.id]);
+    } else {
+      setTimeout(() => {
+        hit > 20
+          ? this.setState({ commentText: "Critical hit!" })
+          : hit <= 20 && hit > 10
+            ? this.setState({ commentText: "It's super effective!" })
+            : hit <= 10 && hit > 0
+              ? this.setState({ commentText: "It's effective!" })
+              : this.setState({
+                commentText: `${currentPlayer.name}'s attack missed!`,
+              });
+      }, 1000);
+    }
+
+    this.setState({ [playerState]: localP })
+
   };
 
-  endGameP1 = () => {
-    if (this.state.player1.health === 0) {
-      this.setState({ commentText: `${this.player1.state.name} fainted!` });
+  endGame = (localP, currentPlayer, hit) => {
+    if (currentPlayer.health === 0) {
+      this.setState({ commentText: `${currentPlayer.name} fainted after ${localP.name}'s ${hit} !` });
     }
-  };
+    if (localP.health === 0) {
+      this.setState({ commentText: `${localP.name} fainted after ${currentPlayer.name}'s ${hit} !` })
+    }
 
-  endGameP2 = () => {
-    if (this.state.player2.health === 0) {
-      this.setState({ commentText: `${this.state.player2.name} fainted!` });
-    }
   };
 
   //recover

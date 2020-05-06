@@ -2,7 +2,6 @@ import React from "react";
 import "./AttackButton.css";
 
 const AttackButton = (props) => {
-  console.log(props.attackHit[0])
   return (
     <div id={props.id} className="mainContainer">
         <button
