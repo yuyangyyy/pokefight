@@ -40,19 +40,22 @@ class Fight extends React.Component {
   handleClickHit = (e) => {
     const hit = e.target.value;
     const target = e.target.parentNode.id
+    let playerState = ""
     let localP = ""
 
-    target === "attackP1" ? localP = this.state.player1 : localP = this.state.player2
+    if(target === "attackP1"){
+      localP = this.state.player2
+      playerState = "player2"
+    }else{
+      localP = this.state.player1
+      playerState = "player1"
+    }
 
-    console.log(target, 'target')
-    console.log(localP, 'LocalP')
+    //life reducer
+    hit > localP.health ? localP.health = 0 : localP.health -= hit
 
+    this.setState({[playerState]: localP})
 
-    // if (hit > localP1.health) {
-    //   this.setState({ player1: { health: 0 } });
-    // } else {
-    //   this.setState({ player1: { health: this.state.player1.health - hit } });
-    // }
     // // //attack comment
     // this.setState({
     //   commentText: `${this.state.player2.name} used ${
