@@ -4,8 +4,9 @@ import axios from 'axios'
 import SortBox from './SortBox'
 import ModalPokedex from './ModalPokedex'
 
-import './Pokedex.css'
 import logo from "../img/logo/Pokeball.png";
+
+import './Pokedex.css'
 
 const propComparator = (propName) =>
 	(a, b) => a[propName] === b[propName] ? 0 : a[propName] < b[propName] ? -1 : 1
@@ -91,7 +92,7 @@ class Pokedex extends React.Component {
 		this.setState({ [idName]: event.target.value })
 	}
 
-	showPokedex(){
+	showPokedex() {
 		document.getElementById('load').style.display = "none"
 		document.getElementById('pokedex').style.display = "grid"
 	}
@@ -110,7 +111,7 @@ class Pokedex extends React.Component {
 		this.getPokemons()
 		this.getPokemonsType()
 		this.getPokemonDescription()
-		setTimeout(() => this.showPokedex(), 2000)
+		setTimeout(() => this.showPokedex(), 1000)
 	}
 
 	render() {
@@ -145,11 +146,11 @@ class Pokedex extends React.Component {
 					<input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="  Search by Name (EN or FR)" />
 				</div>
 
-				<div id="load" className="loading-box" style={{display: "block"}}>
+				<div id="load" className="loading-box" style={{ display: "block" }}>
 					<img src={logo} />
 				</div>
 
-				<div id="pokedex" className="Pokedex" style={{display: "none"}}>
+				<div id="pokedex" className="Pokedex" style={{ display: "none" }}>
 					{pokemons && pokemons.slice(0, pokemonSearch !== "" || pokemonsType !== "" || pokemonsGene !== "" ? nbPokemons : nbShow)
 						.filter(pokemon => pokemon.name.toLowerCase().startsWith(pokemonSearch.toLowerCase())) //search
 						.filter(pokemon => this.choiceGeneration(pokemon)) //Sort Generation

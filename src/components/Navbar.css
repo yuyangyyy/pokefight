@@ -25,27 +25,35 @@
   border-bottom: 5px solid orange;
   border-left: 1px solid #aaa;
 }
+
 .header #orange a:hover {
   background-color: orange;
 }
+
 .header #cyan {
   border-bottom: 5px solid turquoise;
 }
+
 .header #cyan a:hover {
   background-color: turquoise;
 }
+
 .header #green {
   border-bottom: 5px solid lime;
 }
+
 .header #green a:hover {
   background-color: lime;
 }
+
 .header #red {
   border-bottom: 5px solid crimson;
 }
+
 .header #red a:hover {
   background-color: crimson;
 }
+
 #red a {
   border-right: none;
 }
@@ -125,20 +133,20 @@
   display: none;
 }
 
-.header .menu-btn:checked ~ .menu {
+.header .menu-btn:checked~.menu {
   max-height: 255px;
 }
 
-.header .menu-btn:checked ~ .menu-icon .nav-icon {
+.header .menu-btn:checked~.menu-icon .nav-icon {
   background: transparent;
 }
 
-.header .menu-btn:checked ~ .menu-icon .nav-icon:before {
+.header .menu-btn:checked~.menu-icon .nav-icon:before {
   transform: rotate(-45deg);
   top: 0;
 }
 
-.header .menu-btn:checked ~ .menu-icon .nav-icon:after {
+.header .menu-btn:checked~.menu-icon .nav-icon:after {
   transform: rotate(45deg);
   top: 0;
 }
