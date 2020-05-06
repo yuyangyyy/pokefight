@@ -5,10 +5,6 @@ import './ModalPokedex.css'
 
 class ModalPokedex extends React.Component {
 
-	handleClickPlay() {
-		document.body.style.overflowY = "scroll"
-	}
-
 	render() {
 		let isDisplay = this.props.displayModal ? "block" : "none"
 		const { pokemon } = this.props
@@ -22,7 +18,7 @@ class ModalPokedex extends React.Component {
 					<div className="modal-content">
 						<span onClick={this.props.method} className="close">&times;</span>
 						<h3>{pokemon.name}<span> {pokemon.id <= 9 ? "No.00" + pokemon.id : pokemon.id >= 10 && pokemon.id < 100 ? "No.0" + pokemon.id : "No." + pokemon.id}</span></h3>
-						<Link to='/new-game-5'><button onClick={this.handleClickPlay}>Play</button></Link>
+						<Link to='/new-game-5'><button onClick={this.props.handleClickPlay}>Play</button></Link>
 						<div className="modal-container">
 							<img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt={`pokemon${pokemon.id}`} />
 							<div>
