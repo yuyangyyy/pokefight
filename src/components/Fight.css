@@ -12,3 +12,9 @@
 .stat {
   align-self: flex-end;
 }
+
+.button-potion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
