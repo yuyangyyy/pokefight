@@ -4,12 +4,21 @@
   display: flex;
   justify-content: space-evenly;
   font-family: "Baloo Paaji 2", cursive;
-  margin-top: 200px;
+  margin: 280px auto 150px auto;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 .player {
   margin: 30px;
   width: 40%;
+}
+
+.player h3 {
+  text-align: center;
+  color: #CF283A;
+  border-bottom: 1px solid #a1a1a1;
 }
 
 .list {
@@ -18,18 +27,23 @@
 
 .listContainer {
   display: flex;
+  justify-content: center;
 }
 
 #pts,
 #times {
   padding-left: 60px;
+  font-weight: 800;
 }
 
-@media screen and (max-width: 625px) {
+@media screen and (max-width: 800px) {
   #container {
     flex-direction: column;
+    align-items: center;
+    margin: 125px auto 50px auto;
   }
   .player {
     width: 100%;
   }
+
 }

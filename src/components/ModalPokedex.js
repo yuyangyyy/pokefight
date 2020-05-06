@@ -24,7 +24,7 @@ class ModalPokedex extends React.Component {
 						<h3>{pokemon.name}<span> {pokemon.id <= 9 ? "No.00" + pokemon.id : pokemon.id >= 10 && pokemon.id < 100 ? "No.0" + pokemon.id : "No." + pokemon.id}</span></h3>
 						<Link to='/new-game-5'><button onClick={this.handleClickPlay}>Play</button></Link>
 						<div className="modal-container">
-							<img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt="picture-pokemon" />
+							<img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt={`pokemon${pokemon.id}`} />
 							<div>
 								<p>{this.props.pokemonDescription}</p>
 								<div className="stats-container">
@@ -42,7 +42,7 @@ class ModalPokedex extends React.Component {
 									<div className='weakness-types'>
 										<h4>Weakness Type(s) :</h4>
 										<ul>
-											{weakness.map((weak, id) => <li>{weak}</li>)}
+											{weakness.map((weak, id) => <li key={id}>{weak} </li>)}
 										</ul>
 									</div>
 

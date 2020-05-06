@@ -5,11 +5,9 @@ import "./Ranking.css";
 class Ranking extends React.Component {
   render() {
     return (
-      <div>
         <div id="container">
           <div className="player">
             <h3>TOP 5 PLAYERS RANKING</h3>
-            <hr />
             <div className="listContainer">
               <div>
                 <ul className="list">
@@ -33,7 +31,6 @@ class Ranking extends React.Component {
           </div>
           <div className="player">
             <h3>TOP 5 POKEMON FIGHTERS</h3>
-            <hr />
             <div className="listContainer">
               <div>
                 <ul className="list">
@@ -56,7 +53,6 @@ class Ranking extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
