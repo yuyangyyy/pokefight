@@ -13,8 +13,8 @@ class Transition extends React.Component {
 		const { count } = this.state
 		return (
 			<div className='container'>
-				<div className='left'><img src="https://pokeres.bastionbot.org/images/pokemon/25.png" /></div>
-				<Link to='/new-game-6'><div className='white'><div id='count'>{count}</div></div></Link>
+				<div className='left'><img src={`https://pokeres.bastionbot.org/images/pokemon/${this.props.selectPlayers[0].id}.png`} /></div>
+				<Link to='/fight'><div className='white'><div id='count'>{count}</div></div></Link>
 				<div className='right'><img src="https://pokeres.bastionbot.org/images/pokemon/7.png" /></div>
 				<div className="test"></div>
 			</div>

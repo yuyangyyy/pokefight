@@ -14,20 +14,24 @@ import "./Fight.css";
 
 //pics for ex
 import Png from "../img/pokemon/Png.png";
-import Png2 from "../img/pokemon/Png2.png";
+import Png2 from '../img/pokemon/Png2.png';
+
 
 import emptyPotion from "../img/potions/02_empty_potion.png";
 
+
 const players = [
-  { name: "Pikachu", number: "025", health: 100, healthColor: "rgb(100, 182, 75)", attack: ["Thunderbolt", "Slam", "Agility", "Thunder"], attackHit: [20, 10, 15, 30] },
-  { name: "Raichu", number: "042", health: 100, healthColor: "rgb(100, 182, 75)", attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
+  { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] },
+  { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
 ]
+
 
 class Fight extends React.Component {
   state = {
-    player1: players[0],
-    player2: players[1],
+    player1: this.props.selectPlayers[0],
+    player2: players[0],
     commentText: "",
+    healthColor: "rgb(100, 182, 75)"
   };
 
   //random damage TO DO
@@ -136,6 +140,7 @@ class Fight extends React.Component {
   }
 
   render() {
+    console.log(this.props.selectPlayers[0])
     return (
       <div className="fight">
         <div className="pic-stat1">
@@ -169,7 +174,7 @@ class Fight extends React.Component {
               ChangePvColor={this.changePvColor}
             />
           </div>
-          <Picture pic={Png} />
+          <Picture pic={this.state.player1.sprite} />
         </div>
         <AttackButton
           id="attackP1"

@@ -28,7 +28,7 @@ class App extends React.Component {
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
-    selectP1: []
+    selectPlayers: []
   }
 
   getPokemons = () => {
@@ -68,8 +68,16 @@ class App extends React.Component {
 
   handleClickPlay = () => {
     document.body.style.overflowY = "scroll"
-    this.setState({selectP1: this.state.selectPokemon}, ()=>console.log(this.state.selectP1))
-    
+    const {selectPokemon} = this.state
+    const idFormat = selectPokemon.id <= 9 ? "No.00" + selectPokemon.id : selectPokemon.id >= 10 && selectPokemon.id < 100 ? "No.0" + selectPokemon.id : "No." + selectPokemon.id
+    const attacks = selectPokemon.moves.slice(0, 4).map(attack => attack.move.name)
+    const players = [
+
+      { name: selectPokemon.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 15, 30], sprite: selectPokemon.sprites.back_default},
+      { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
+    ]
+    console.log(players)
+    this.setState({selectPlayers: players}, () => this.setState({displayModal: false}))
   }
   
   componentDidMount() {
@@ -135,9 +143,11 @@ class App extends React.Component {
             </Route>
             <Route path='/new-game-4' component={Pokedex} />
             <Route path='/new-game-5'>
-              <Transition />
+              <Transition selectPlayers={this.state.selectPlayers}/>
             </Route>
-            <Route path='/new-game-6' component={Fight} />
+            <Route path='/fight'>
+              <Fight selectPlayers={this.state.selectPlayers}/>
+            </Route>
             <Route path='/new-game-7' component={EndGame} />
             <Route path="/pokedex">
               <Pokedex 
