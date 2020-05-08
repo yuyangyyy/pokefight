@@ -1,9 +1,4 @@
-.fight {
-  width: 1200px;
-  height: auto;
-  background-color: #a1a1a1;
-  border: 3px solid #313131;
-}
+
 body {
   background-color: #4a524f;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
@@ -28,9 +23,14 @@ body {
 }
 
 .global-Pokedex,
-.boxEndgame,
-.fight {
+.boxEndgame {
   margin: 150px auto;
+}
+
+.fight {
+  background-color: #a1a1a1;
+  border: 3px solid #313131;
+  margin: 150px auto 0 auto;
 }
 
 a {

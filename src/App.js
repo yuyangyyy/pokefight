@@ -89,6 +89,7 @@ class App extends React.Component {
           console.log(this.state.selectPlayer1.length)
         })
     } else {
+      players[0].sprite = selectPokemon.sprites.front_default 
       this.setState({ selectPlayer2: players },
         () => {
           this.setState({ displayModal: false })
@@ -157,7 +158,10 @@ class App extends React.Component {
               />
             </Route>
             <Route path='/fight'>
-              <Fight selectPlayers={this.state.selectPlayers} />
+              <Fight 
+              selectPlayer1={this.state.selectPlayer1} 
+              selectPlayer2={this.state.selectPlayer2} 
+              />
             </Route>
             <Route path='/new-game-7' component={EndGame} />
             <Route path="/pokedex">

@@ -21,15 +21,15 @@ import emptyPotion from "../img/potions/02_empty_potion.png";
 
 
 const players = [
-  { name: "Pikachu", number: "025", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] },
-  { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
+  { name: "Pikachu", number: "025", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30], sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png" },
+  { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30], sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png' }
 ]
 
 
 class Fight extends React.Component {
   state = {
-    player1: players[0],
-    player2: players[1],
+    player1: players[0], //this.props.selectPlayer1[0],
+    player2: players[1], //this.props.selectPlayer2[0],
     commentText: "",
     healthColor: "rgb(100, 182, 75)"
   };
@@ -151,34 +151,12 @@ class Fight extends React.Component {
   }
 
   render() {
-    // console.log(this.props.selectPlayers[0])
+
+
     return (
       <div className="fight">
-        <div className="pic-stat1">
-          <div className="stat">
-            <StatutPokemon
-              name={this.state.player2.name}
-              number={this.state.player2.number}
-              health={this.state.player2.health}
-              healthColor={this.state.player2.healthColor}
-              ChangePvColor={this.changePvColor}
-            />
-          </div>
-          <Picture pic={Png2} />
-        </div>
-        <div className="button-potion">
-          <AttackButton
-            id="attackP2"
-            attackHit={this.state.player2.attackHit}
-            attack={this.state.player2.attack}
-            handleClickHit={this.handleClickHit}
-          />
-          <Potion
-            id="potionP2"
-            method={this.handleClickPotion} />
-        </div>
-        <div className="pic-stat2">
-          <div className="stat">
+        <div className='fight-container'>
+          <div className='fight-left'>
             <StatutPokemon
               name={this.state.player1.name}
               number={this.state.player1.number}
@@ -186,19 +164,45 @@ class Fight extends React.Component {
               healthColor={this.state.player1.healthColor}
               ChangePvColor={this.changePvColor}
             />
+            <div className='zoom-left' style={{background: `url(${this.state.player1.sprite}) no-repeat center -20px`, backgroundSize: "200px"}}>
+              <div className="space"></div>
+              <AttackButton
+                id="attackP1"
+                attackHit={this.state.player1.attackHit}
+                attack={this.state.player1.attack}
+                handleClickHit={this.handleClickHit}
+              />
+            </div>
+            {/* <img className="sprite-image" src={this.state.player1.sprite} alt="" /> */}
+
+            <Potion
+              id="potionP1"
+              method={this.handleClickPotion}
+            />
           </div>
-          <Picture pic={this.state.player1.sprite} />
+          <div className='fight-right'>
+            <StatutPokemon
+              name={this.state.player2.name}
+              number={this.state.player2.number}
+              health={this.state.player2.health}
+              healthColor={this.state.player2.healthColor}
+              ChangePvColor={this.changePvColor}
+            />
+            {/* <img className="sprite-image" src={this.state.player2.sprite} alt="" /> */}
+            <div className='zoom-right' style={{background: `url(${this.state.player2.sprite}) no-repeat center -20px`, backgroundSize: "200px"}}>
+              <div className="space"></div>
+              <AttackButton
+                id="attackP1"
+                attackHit={this.state.player2.attackHit}
+                attack={this.state.player2.attack}
+                handleClickHit={this.handleClickHit}
+              />
+            </div>
+            <Potion
+              id="potionP2"
+              method={this.handleClickPotion} />
+          </div>
         </div>
-        <AttackButton
-          id="attackP1"
-          attackHit={this.state.player1.attackHit}
-          attack={this.state.player1.attack}
-          handleClickHit={this.handleClickHit}
-        />
-        <Potion
-          id="potionP1"
-          method={this.handleClickPotion}
-        />
         <Link to="/new-game-7" className="link">
           <Comment commentText={this.state.commentText} />
         </Link>
