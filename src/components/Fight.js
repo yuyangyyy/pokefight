@@ -21,15 +21,15 @@ import emptyPotion from "../img/potions/02_empty_potion.png";
 
 
 const players = [
-  { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] },
+  { name: "Pikachu", number: "025", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] },
   { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
 ]
 
 
 class Fight extends React.Component {
   state = {
-    player1: this.props.selectPlayers[0],
-    player2: players[0],
+    player1: players[0],
+    player2: players[1],
     commentText: "",
     healthColor: "rgb(100, 182, 75)"
   };
@@ -57,7 +57,7 @@ class Fight extends React.Component {
       currentPlayer = this.state.player2
       playerState = "player1"
     }
-
+    console.log(currentPlayer)
     //life reducer
     hit > localP.health ? localP.health = 0 : localP.health -= hit
 
@@ -101,22 +101,33 @@ class Fight extends React.Component {
 
   //recover
   handleClickPotion = (e) => {
-    e.target.src === emptyPotion
-      ? this.setState({
-        health: this.state.health,
-        commentText: "It's empty..!",
-      })
-      : this.state.health >= 75
-        ? this.setState({
-          health: 100,
-          commentText: `${this.state.name} used RECOVER!`,
-        })
-        : this.setState({
-          health: this.state.health + 25,
-          commentText: `${this.state.name} used RECOVER!`,
-        });
+    let playerState = ""
+    let currentPlayer = ''
+    let target = e.target.parentNode.id
 
-    e.target.src = emptyPotion;
+
+    if (target === "potionP1") {
+      currentPlayer = this.state.player1
+      playerState = "player1"
+    } else {
+      currentPlayer = this.state.player2
+      playerState = "player2"
+    }
+    if (currentPlayer.health < 100 && currentPlayer.health > 0) {
+      if (e.target.src === emptyPotion) {
+        currentPlayer.health = currentPlayer.health
+        this.setState({ commentText: "It's empty..!" })
+      } else if (currentPlayer.health >= 75) {
+        currentPlayer.health = 100
+        this.setState({ commentText: `${currentPlayer.name} used RECOVER!` })
+      } else {
+        currentPlayer.health += 25
+        this.setState({ commentText: `${currentPlayer.name} used RECOVER!` })
+      }
+      e.target.src = emptyPotion;
+    }
+    this.setState({ [playerState]: currentPlayer })
+
   };
   // change PV barr color
   changePvColor = () => {
@@ -140,7 +151,7 @@ class Fight extends React.Component {
   }
 
   render() {
-    console.log(this.props.selectPlayers[0])
+    // console.log(this.props.selectPlayers[0])
     return (
       <div className="fight">
         <div className="pic-stat1">
@@ -162,7 +173,9 @@ class Fight extends React.Component {
             attack={this.state.player2.attack}
             handleClickHit={this.handleClickHit}
           />
-          <Potion method={this.handleClickPotion} />
+          <Potion
+            id="potionP2"
+            method={this.handleClickPotion} />
         </div>
         <div className="pic-stat2">
           <div className="stat">
@@ -182,7 +195,10 @@ class Fight extends React.Component {
           attack={this.state.player1.attack}
           handleClickHit={this.handleClickHit}
         />
-        <Potion method={this.handleClickPotion} />
+        <Potion
+          id="potionP1"
+          method={this.handleClickPotion}
+        />
         <Link to="/new-game-7" className="link">
           <Comment commentText={this.state.commentText} />
         </Link>

@@ -27,10 +27,10 @@ class DialogBox extends React.Component {
             placeholder={this.props.placeholder}
           />
           <div className="button-group">
-            <button className={firstButton ? "" : "display-none"}>
+            <button className={firstButton ? "" : "display-none"} {...this.props.id === "computer" ? this.disabled : ""}>
               {firstButton}
             </button>
-            <button className={scndButton ? "" : "display-none"}>
+            <button className={scndButton ? "" : "display-none"} disabled >
               {scndButton}
             </button>
           </div>
