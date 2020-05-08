@@ -30,11 +30,11 @@ class Pokedex extends React.Component {
 
 	getPokemonsType = () => {
 		axios.get("https://pokeapi.co/api/v2/type")
-		  .then(response => response.data.results.slice(0, 17))
-		  .then(data => {
-			this.setState({ arrPokemonsType: data.map(type => type.name) })
-		  })
-	  }
+			.then(response => response.data.results.slice(0, 17))
+			.then(data => {
+				this.setState({ arrPokemonsType: data.map(type => type.name) })
+			})
+	}
 
 
 	choiceGeneration = (pokemon) => {
@@ -65,14 +65,21 @@ class Pokedex extends React.Component {
 	render() {
 		const arrPokemonGene = ["1st Generation", "2nd Generation", "3rd Generation"]
 		const { nbShow, nbPokemons, arrPokemonsType, pokemonsType, pokemonSearch, pokemonsGene } = this.state
-		const {pokemons} = this.props
+		const { pokemons } = this.props
 
 		if (this.state.showMore)
 			this.setState({ nbShow: nbShow + 12, showMore: false })
 
 		return (
 			<div className="global-pokedex" >
-				<ModalPokedex method={this.props.handleClickModal} pokemon={this.props.selectPokemon} pokemonDescription={this.props.pokemonDescription} displayModal={this.props.displayModal} handleClickPlay={this.props.handleClickPlay}/>
+				<ModalPokedex
+					method={this.props.handleClickModal}
+					pokemon={this.props.selectPokemon}
+					pokemonDescription={this.props.pokemonDescription}
+					displayModal={this.props.displayModal}
+					handleClickPlay={this.props.handleClickPlay}
+					selectPlayer1={this.props.selectPlayer1}
+				/>
 
 				<div className="filter-pokemon" onClick={() => this.setState({ isClick: true })}>
 					<SortBox method={this.handleChange} id="pokemonsGene" sortTitle="Sort by Generation" sortType={arrPokemonGene} sortBoxSize="200px" />

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./DialogBox.css";
 
@@ -12,7 +12,6 @@ class DialogBox extends React.Component {
   }
 
   render() {
-    console.log(this)
     return (
       <div className="box">
         <div className="DialogBox">
@@ -25,11 +24,12 @@ class DialogBox extends React.Component {
             placeholder=' Your Name'
           />
           <div className="button-group">
-              <button style={this.state.firstPlayer !== '' ? {display: 'block'} : {display: 'none'}}>
-                <Link to={{
-                  pathname:"/pokedex",
-                  player1: this.state.firstPlayer}} >Confirm</Link>
-              </button>
+            <button style={this.state.firstPlayer !== '' ? { display: 'block' } : { display: 'none' }}>
+              <Link to={{
+                pathname: "/choose-pokemon",
+                player1: this.state.firstPlayer
+              }} >Confirm</Link>
+            </button>
           </div>
         </div>
       </div>

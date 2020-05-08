@@ -32,7 +32,9 @@ class App extends React.Component {
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
-    selectPlayers: []
+    selectPlayers: [],
+    selectPlayer1: [],
+    selectPlayer2: []
   }
 
   getPokemons = () => {
@@ -75,13 +77,24 @@ class App extends React.Component {
     const { selectPokemon } = this.state
     const idFormat = selectPokemon.id <= 9 ? "No.00" + selectPokemon.id : selectPokemon.id >= 10 && selectPokemon.id < 100 ? "No.0" + selectPokemon.id : "No." + selectPokemon.id
     const attacks = selectPokemon.moves.slice(0, 4).map(attack => attack.move.name)
-    const players = [
-
-      { name: selectPokemon.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 15, 30], sprite: selectPokemon.sprites.back_default },
-      { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
-    ]
-    console.log(players)
-    this.setState({ selectPlayers: players }, () => this.setState({ displayModal: false }))
+    const players =
+      [{ name: selectPokemon.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 15, 30], sprite: selectPokemon.sprites.back_default }]
+    // { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
+    if (this.state.selectPlayer1.length === 0) {
+      console.log("coucou")
+      this.setState({ selectPlayer1: players },
+        () => {
+          this.setState({ displayModal: false })
+          console.log(this.state.selectPlayer1, this.state.selectPlayer2)
+          console.log(this.state.selectPlayer1.length)
+        })
+    } else {
+      this.setState({ selectPlayer2: players },
+        () => {
+          this.setState({ displayModal: false })
+          console.log(this.state.selectPlayer1, this.state.selectPlayer2)
+        })
+    }
   }
 
   componentDidMount() {
@@ -95,8 +108,8 @@ class App extends React.Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route path='/test'>
-              <img class="pokeball-diag" src={pkball} />
+            <Route path='/choose-pokemon'>
+              <img className="pokeball-diag" src={pkball} />
               <DialogBox05 />
               <div className='pokedex-container'>
                 <Pokedex
@@ -106,7 +119,7 @@ class App extends React.Component {
                   pokemonDescription={this.state.pokemonDescription}
                   displayModal={this.state.displayModal}
                   handleClickPlay={this.handleClickPlay}
-                  selectP1={this.state.selectP1} />
+                  selectPlayer1={this.state.selectPlayer1} />
               </div>
             </Route>
             <Route exact path="/" component={Intro} />
@@ -152,7 +165,8 @@ class App extends React.Component {
                 pokemonDescription={this.state.pokemonDescription}
                 displayModal={this.state.displayModal}
                 handleClickPlay={this.handleClickPlay}
-                selectP1={this.state.selectP1} />
+                selectPlayer1={this.state.selectPlayer1}
+              />
             </Route>
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
