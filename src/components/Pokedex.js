@@ -7,7 +7,7 @@ import ModalPokedex from './ModalPokedex'
 import logo from "../img/logo/Pokeball.png";
 
 import './Pokedex.css'
-
+import './Types.css'
 
 
 class Pokedex extends React.Component {
