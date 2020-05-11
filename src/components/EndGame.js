@@ -24,13 +24,13 @@ class EndGame extends React.Component {
 		const { statPotion, statAttackP1, statAttackP2, missedAttackP1, missedAttackP2, totalHitP1, totalHitP2 } = this.props.location
 		return (
 			<div className="boxEndgame">
-				<h3>Fight statistics :</h3>
+				{/* <h3>Fight statistics</h3> */}
 				<div className="container-endgame">
 
 					<div className="EndGame-line1">
-						<p>{this.props.location.firstPlayer}</p>
+						<p>{this.props.location.firstPlayer || "Aux'"}</p>
 						<p>VS</p>
-						<p>{this.props.location.secondPlayer}</p>
+						<p>{this.props.location.secondPlayer || "Jul'"}</p>
 					</div>
 
 					<StatBar
@@ -65,7 +65,7 @@ class EndGame extends React.Component {
 				</div>
 
 				<div className="button-endgame">
-					<button>New Party</button>
+					<button>New Game</button>
 					<button>Revenge</button>
 				</div>
 			</div>

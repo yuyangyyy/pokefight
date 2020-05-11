@@ -1,40 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
-
-.boxEndgame *{
+.boxEndgame * {
     font-family: 'Baloo Paaji 2', cursive;
 }
 
-
-
 .boxEndgame {
     width: 1200px;
-    height: 766px;
-    border : 3px solid #313131 ;
-    background-color: #A1A1A1;
+    background-color: #fff;
     border-radius: 5px;
-    padding-top: 30px;
-    padding-bottom: -30px;
-
+    padding-top: 45px;
+    padding-bottom: 45px;
 }
+
 .boxEndgame h3 {
-    margin-bottom: 60px;
+    margin-bottom: 45px;
     text-align: center;
-    font-size: 23px;
-    
+    font-size: 1.5rem;
 }
 
-
-.EndGame-line1 , .StatusBar {
+.EndGame-line1, .StatusBar {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 20px;
 }
 
+.EndGame-line1 {
+    border-bottom: 2px solid #a1A1A1;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 15px;
+    margin-bottom: 50px;
+}
+
+.EndGame-line1 p {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+
+.EndGame-line1 p:nth-of-type(1), .StatusBar p:nth-of-type(1) {
+    font-weight: bold;
+    color: rgb(197, 47, 47);
+}
+
+.EndGame-line1 p:nth-of-type(3), .StatusBar p:nth-of-type(3) {
+    font-weight: bold;
+    color: rgb(54, 105, 153);
+}
 
 /* PROGRESS BAR */
 
-.stat-name{
+.StatusBar {
+    font-size: 1.2rem;
+}
+
+.stat-name {
     width: 150px;
     text-align: center;
     line-height: 20px;
@@ -42,32 +61,29 @@
 
 .myProgress {
     width: 30%;
-    background-color: white;
-    text-align: center;   
+    background-color: #a1A1A1;
+    text-align: center;
     height: 20px;
     border-radius: 30px;
 }
 
-.myProgress:nth-of-type(1){
+.myProgress:nth-of-type(1) {
     display: flex;
     justify-content: flex-end;
 }
 
-
 .myBar1 {
     width: 25%;
-    background-color: rgb(255, 7, 7);
+    background-color: rgb(197, 47, 47);
     height: 20px;
     border-radius: 30px;
-
 }
-    
+
 .myBar2 {
     width: 75%;
-    background-color: rgb(24, 27, 204);
+    background-color: rgb(54, 105, 153);
     height: 20px;
     border-radius: 30px;
-
 }
 
 /* STATS GLOBAL */
@@ -75,11 +91,11 @@
 .EndGame-stat-global {
     text-align: left;
     width: 40%;
-    margin: 100px auto;
-    background-color: #fff;
-    border: 2px solid #313131 ;
+    margin: 50px auto;
+    background-color: #313131;
     border-radius: 5px;
     padding: 20px;
+    color: #fff;
 }
 
 .EndGame-stat-global p {
@@ -93,26 +109,26 @@
     justify-content: center;
 }
 
-.button-endgame button{
+.button-endgame button {
     font-family: 'Baloo Paaji 2', cursive;
     font-size: 1.2rem;
-    background-color: #313131;
+    background-color: #CF283A;
     color: #fff;
     margin: 0 10px;
     padding: 0 30px;
     height: 40px;
-    border: 2px solid #313131;
+    border: 2px solid #CF283A;
+    border-radius: 5px;
     transition: all .1s ease-in-out;
 }
 
-.button-endgame button:nth-of-type(1){
-    background-color: #CF283A;
-    border: 2px solid transparent;
+.button-endgame button:nth-of-type(1) {
+    color: #fff;
+    background-color: #a1A1a1;
+    border: 2px solid #a1a1a1;
 }
 
-.button-endgame button:hover{
+.button-endgame button:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
-
-

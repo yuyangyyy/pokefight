@@ -11,9 +11,9 @@ class StatBar extends React.Component {
 				<div className="myProgress">
 					<div style={{ width: this.props.statData + "%" }} className="myBar1"></div>
 				</div>
-				<p>{this.props.dataP1}</p>
+				<p>{this.props.dataP1 || 1}</p>
 				<p className="stat-name">  {this.props.statName} </p>
-				<p>{this.props.dataP2}</p>
+				<p>{this.props.dataP2 || 5}</p>
 				<div className="myProgress">
 					<div style={{ width: 100 - this.props.statData + "%" }} className="myBar2"></div>
 				</div>
