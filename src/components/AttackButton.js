@@ -3,7 +3,7 @@ import "./AttackButton.css";
 
 const AttackButton = (props) => {
   return (
-    <div id={props.id} className="mainContainer">
+    <div id={props.id} className="mainContainer" style={props.style}>
         <button
           type="button"
           className="button"

@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Pokemon";
+  src: url("../fonts/Pokemon\ Classic.ttf");
+}
+
+
 .fight {
   width: 50%;
 }
@@ -11,8 +17,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* position: absolute; */
 }
 
 .space{
   height: 150px;
+}
+
+.fight .turn-text{
+  background-color: #fff;
+  border: 1px solid #000;
+  text-align: center;
+  padding: 50px 25px;
+  margin-top: 30px;
+  font-family: "Pokemon";
+  border: 5px solid black;
+  border-radius: 10px;
+  box-shadow: 15px 5px 2px black;
 }

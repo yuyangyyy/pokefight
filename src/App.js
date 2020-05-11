@@ -6,7 +6,6 @@ import DialogBox01 from "./components/DialogBox01";
 import DialogBox02 from "./components/DialogBox02";
 import DialogBox03 from "./components/DialogBox03";
 import DialogBox04 from "./components/DialogBox04";
-import DialogBox05 from "./components/DialogBox05";
 import EndGame from "./components/EndGame";
 import Fight from "./components/Fight";
 import Footer from "./components/Footer";
@@ -32,6 +31,8 @@ class App extends React.Component {
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
+    firstPlayer: '',
+    secondPlayer: '',
     selectPlayers: [],
     selectPlayer1: [],
     selectPlayer2: []
@@ -54,6 +55,14 @@ class App extends React.Component {
       .then(data => {
         this.setState({ pokemonDescription: data.flavor_text })
       })
+  }
+
+  saveNamePlayer1 = (event) => {
+    this.setState({ firstPlayer: event.target.value });
+  }
+
+  saveNamePlayer2 = (event) => {
+    this.setState({ secondPlayer: event.target.value });
   }
 
   handleClickModal = (event) => {
@@ -81,7 +90,6 @@ class App extends React.Component {
       [{ name: selectPokemon.name, type: selectPokemon.types[0].type.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 15, 30], sprite: selectPokemon.sprites.back_default }]
     // { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
     if (this.state.selectPlayer1.length === 0) {
-      console.log("coucou")
       this.setState({ selectPlayer1: players },
         () => {
           this.setState({ displayModal: false })
@@ -111,7 +119,7 @@ class App extends React.Component {
           <Switch>
             <Route path='/choose-pokemon'>
               <img className="pokeball-diag" src={pkball} />
-              <DialogBox05 />
+              <DialogBox04 />
               <div className='pokedex-container'>
                 <Pokedex
                   pokemons={this.state.pokemons}
@@ -127,7 +135,7 @@ class App extends React.Component {
             <Route path="/new-game">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox01 />
+                <DialogBox01 firstPlayer={this.state.firstPlayer} saveNamePlayer1={this.saveNamePlayer1}/>
               </div>
             </Route>
             <Route path="/new-game-1">
@@ -139,7 +147,7 @@ class App extends React.Component {
             <Route path="/new-game-2">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox04 />
+                <DialogBox03 secondPlayer={this.state.secondPlayer} saveNamePlayer2={this.saveNamePlayer2}/>
               </div>
             </Route>
             <Route path="/new-game-3">
@@ -160,7 +168,9 @@ class App extends React.Component {
             <Route path='/fight'>
               <Fight 
               selectPlayer1={this.state.selectPlayer1} 
-              selectPlayer2={this.state.selectPlayer2} 
+              selectPlayer2={this.state.selectPlayer2}
+              firstPlayer={this.state.firstPlayer}
+              secondPlayer={this.state.secondPlayer} 
               />
             </Route>
             <Route path='/new-game-7' component={EndGame} />
