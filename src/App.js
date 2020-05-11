@@ -88,7 +88,7 @@ class App extends React.Component {
     const attacks = selectPokemon.moves.slice(0, 4).map(attack => attack.move.name)
     const players =
       [{ name: selectPokemon.name, type: selectPokemon.types[0].type.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 0, 30], sprite: selectPokemon.sprites.back_default }]
-    // { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
+
     if (this.state.selectPlayer1.length === 0) {
       this.setState({ selectPlayer1: players },
         () => {

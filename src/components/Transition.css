@@ -5,11 +5,21 @@
     padding: 0;
 }
 
+#transition-pic {
+    width: 500px;
+    z-index: 3;
+    display: none;
+    position: absolute;
+    top: 100px;
+}
+
 .container {
     width: 700px;
     border: 30px solid #fff;
     margin-top: 225px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     border-radius: 5px;
 }
