@@ -3,10 +3,13 @@ import { Link, Redirect } from "react-router-dom";
 
 import fight from '../img/logo/fight.png'
 
-import './Transition.css';
-import './Types.css'
+import "./Transition.css";
+import "./Types.css";
 
 class Transition extends React.Component {
+  state = {
+    count: 3,
+  };
 
 	state = {
 		count: 3,
@@ -48,4 +51,4 @@ class Transition extends React.Component {
 	}
 }
 
-export default Transition
+export default Transition;
