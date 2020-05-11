@@ -1,11 +1,9 @@
 import React from "react";
 import "./AttackButton.css";
 
-const AttackButtonP2 = (props) => {
-  console.log(props);
+const AttackButton = (props) => {
   return (
-    <div className="mainContainer">
-      <div className="container1">
+    <div id={props.id} className="mainContainer" style={props.style}>
         <button
           type="button"
           className="button"
@@ -24,8 +22,6 @@ const AttackButtonP2 = (props) => {
         >
           {props.attack[1]}
         </button>
-      </div>
-      <div className="container2">
         <button
           type="button"
           className="button"
@@ -44,9 +40,8 @@ const AttackButtonP2 = (props) => {
         >
           {props.attack[3]}
         </button>
-      </div>
     </div>
   );
 };
 
-export default AttackButtonP2;
+export default AttackButton;

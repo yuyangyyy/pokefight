@@ -8,7 +8,7 @@ class StatutPokemon extends React.Component {
       <div className="statut">
         <div className="name">
           <p>{this.props.name}</p>
-          <p>N.{this.props.number}</p>
+          <p>{this.props.number}</p>
         </div>
         <div className="pv">
           <p>PV</p>

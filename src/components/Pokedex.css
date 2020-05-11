@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
-
-*{
+* {
     padding: 0;
     margin: 0;
 }
 
-.global-pokedex{
+.global-pokedex {
     margin-top: 150px;
 }
 
-.Pokedex, .show-more, .filter-pokemon{
+.Pokedex, .show-more, .filter-pokemon {
     width: 70%;
     background-color: #fff;
-
 }
 
-.filter-pokemon{
+.filter-pokemon {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -27,16 +25,14 @@
     border-radius: 5px 5px 0 0;
 }
 
-.filter-pokemon input{
+.filter-pokemon input {
     margin: 20px 0;
     border: 1px solid #313131;
     border-radius: 2px;
     height: 30px;
-    
 }
 
-
-.Pokedex{
+.Pokedex {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
@@ -45,44 +41,44 @@
     margin-top: 0;
     padding: 30px;
     margin-bottom: 0;
-} 
+}
 
-.Pokedex h3{
+.Pokedex h3 {
     font-weight: normal;
     font-size: 1.6rem;
 }
 
-.pokemon-info{
+.pokemon-info {
     border: 2px solid #313131;
     background-color: #fff;
     padding: 10px;
 }
 
-.pokemon-card{
+.pokemon-card {
     background-color: #a1a1a1;
     transition: .1s ease-out;
 }
 
-.pokemon-card:hover{
+.pokemon-card:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.pokemon-card img{
+.pokemon-card img {
     width: 70%;
     margin: 10px auto;
     display: block;
     background-color: #a1a1a1;
 }
 
-.show-more{
+.show-more {
     padding: 30px;
     padding-top: 0;
     margin: auto;
     text-align: center;
 }
 
-.show-more button{
+.show-more button {
     font-family: 'Baloo Paaji 2', cursive;
     font-size: 1.2rem;
     background-color: #313131;
@@ -94,18 +90,18 @@
     transition: all .1s ease-in-out;
 }
 
-.show-more button:hover{
+.show-more button:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
 
-.display-none{
+.display-none {
     display: none;
 }
 
-
 /* COLOR TYPE */
-.pokemon-type{
+
+.pokemon-type {
     display: inline-block;
     font-size: 0.8rem;
     color: #fff;
@@ -117,81 +113,97 @@
     margin-right: 3px;
 }
 
-.poison{
-    background-color: rgb(127, 107, 218);
+
+/* POKELOAD */
+
+/* Poké Styles */
+
+/* *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+} */
+
+.loading-box {
+    width: 70%;
+    background-color: #fff;
+    padding: 50px 0;
+    margin: auto;
 }
-.fire{
-    background-color: rgb(204, 145, 78);
+
+.loading-box img {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+    width: 100px;
+    z-index: 1;
+    animation: fall 0.25s ease-in-out, shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
 }
-.water{
-    background-color: rgb(69, 138, 194);
+
+/* Animation */
+
+@keyframes blink {
+    from {
+        background: #eee;
+    }
+    to {
+        background: #e74c3c;
+    }
 }
-.flying{
-    background-color: rgb(115, 116, 115);
+
+@keyframes shake {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    }
+    20% {
+        transform: translate(-10px, 0) rotate(-20deg);
+    }
+    30% {
+        transform: translate(10px, 0) rotate(20deg);
+    }
+    50% {
+        transform: translate(-10px, 0) rotate(-10deg);
+    }
+    60% {
+        transform: translate(10px, 0) rotate(10deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0);
+    }
 }
-.grass{
-    background-color: rgb(100, 182, 97);
-}
-.bug{
-    background-color: rgb(48, 99, 46);
-}
-.normal{
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    color: black;
-    line-height: 18px;
-}
-.electric{
-    background-color: rgb(205, 214, 77);
-}
-.ground{
-    background-color: rgb(146, 145, 58);
-}
-.fighting{
-    background-color: rgb(92, 67, 39);
-}
-.psychic{
-    background-color: rgb(26, 22, 80);
-}
-.fairy{
-    background-color: rgb(233, 143, 213);
-}
-.rock{
-    background-color: rgb(92, 92, 92);
-}
-.steel{
-    background-color: rgb(184, 184, 184);
-}
-.dark{
-    background-color: rgb(20, 20, 20);
-}
-.dragon{
-    background-color: rgb(116, 27, 27);
-}
-.ice{
-    background-color: rgb(145, 193, 199);
-}
-.ghost{
-    background-color: rgb(85, 26, 141);
+
+@keyframes fall {
+    0% {
+        top: -200px;
+    }
+    60% {
+        top: 0;
+    }
+    80% {
+        top: -20px;
+    }
+    100% {
+        top: 0;
+    }
 }
 
 /* MEDIA QUERIES */
 
-@media screen and (max-width: 1270px){
-    .Pokedex{
+@media screen and (max-width: 1270px) {
+    .Pokedex {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media screen and (max-width: 950px){
-
-    .Pokedex{
+@media screen and (max-width: 950px) {
+    .Pokedex {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media screen and (max-width: 635px){
-    .Pokedex{
+@media screen and (max-width: 635px) {
+    .Pokedex {
         grid-template-columns: repeat(1, 1fr);
     }
 }

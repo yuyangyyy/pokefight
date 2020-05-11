@@ -1,155 +1,143 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import AttackButtonP1 from "./AttackButtonP1";
-import AttackButtonP2 from "./AttackButtonP2";
+
+
+import AttackButton from "./AttackButton";
 import Comment from "./Comment";
 import Potion from "./Potion";
-import Picture from "./Picture";
-import StatutPokemonP1 from "./StatutPokemonP1";
-import StatutPokemonP2 from "./StatutPokemonP2";
+import StatutPokemon from "./StatutPokemon";
+
 
 import "./Fight.css";
 
-//pics for ex
-import Png from "../img/pokemon/Png.png";
-import Png2 from "../img/pokemon/Png2.png";
-
 import emptyPotion from "../img/potions/02_empty_potion.png";
+
+
+const players = [
+  { name: "Pikachu", number: "025", health: 100, healthColor: "rgb(100, 182, 75)", attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30], sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png" },
+  { name: "Raichu", number: "042", health: 100, healthColor: "rgb(100, 182, 75)", attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30], sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png' }
+]
+
 
 class Fight extends React.Component {
   state = {
-    player1: {
-      name: "Pikachu",
-      number: "025",
-      health: 100,
-      healthColor: "rgb(100, 182, 75)",
-      attack: ["Thunderbolt", "Slam", "Agility", "Thunder"],
-      attackHit: [20, 10, 15, 30],
-    },
-    player2: {
-      name: "Raichu",
-      number: "042",
-      health: 100,
-      healthColor: "rgb(100, 182, 75)",
-      attack: ["bolt", "Sla", "Agil", "Thun"],
-      attackHit: [10, 20, 0, 30],
-    },
-
+    player1: players[0], //this.props.selectPlayer1[0],
+    player2: players[1], //this.props.selectPlayer2[0],
     commentText: "",
-  };
+    tourPlayer1: true,
+    };
 
   //random damage TO DO
   //attackRandomHit = (max) => {
   // return Math.floor(Math.random() * Math.floor(max));
   //};
 
-  //damage player1
-  handleClickHitP1 = (e) => {
+
+  //damage player 1 & 2
+  handleClickHit = (e) => {
     const hit = e.target.value;
-    if (hit > this.state.player2.health) {
-      this.setState({ player2: { health: 0 } });
+    const target = e.target.parentNode.id
+    let playerState = ""
+    let localP = ""
+    let currentPlayer = ''
+
+    if (target === "attackP1") {
+      localP = this.state.player2
+      currentPlayer = this.state.player1
+      playerState = "player2"
     } else {
-      this.setState({ player2: { health: this.state.player2.health - hit } });
+      localP = this.state.player1
+      currentPlayer = this.state.player2
+      playerState = "player1"
     }
+    console.log("localP :", localP, "currentPlayer :", currentPlayer)
+    //life reducer
+    hit > localP.health ? localP.health = 0 : localP.health -= hit
+
     //attack comment
     this.setState({
-      commentText: `${this.state.player1.name} used ${
-        this.state.player1.attack[e.target.id]
-      }`,
+      commentText: `${currentPlayer.name} used ${
+        currentPlayer.attack[e.target.id]
+        }`,
     });
 
     //damage comment
-    setTimeout(() => {
-      hit > 20
-        ? this.setState({ commentText: "Critical hit!" })
-        : hit <= 20 && hit > 10
-        ? this.setState({ commentText: "It's super effective!" })
-        : hit <= 10 && hit > 0
-        ? this.setState({ commentText: "It's effective!" })
-        : this.setState({
-            commentText: `${this.state.player1.name}'s attack missed!`,
-          });
-    }, 1500);
-
-    this.endGameP1();
-  };
-
-  //damage player2
-  handleClickHitP2 = (e) => {
-    const hit = e.target.value;
-    if (hit > this.state.player1.health) {
-      this.setState({ player1: { health: 0 } });
+    if (localP.health === 0 || currentPlayer.health === 0) {
+      this.endGame(localP, currentPlayer, currentPlayer.attack[e.target.id]);
     } else {
-      this.setState({ player1: { health: this.state.player1.health - hit } });
+      setTimeout(() => {
+        hit > 20
+          ? this.setState({ commentText: "Critical hit!" })
+          : hit <= 20 && hit > 10
+            ? this.setState({ commentText: "It's super effective!" })
+            : hit <= 10 && hit > 0
+              ? this.setState({ commentText: "It's effective!" })
+              : this.setState({
+                commentText: `${currentPlayer.name}'s attack missed!`,
+              });
+      }, 1000);
     }
-    //attack comment
-    this.setState({
-      commentText: `${this.state.player2.name} used ${
-        this.state.player2.attack[e.target.id]
-      }`,
-    });
 
-    //damage comment
-    setTimeout(() => {
-      hit > 20
-        ? this.setState({ commentText: "Critical hit!" })
-        : hit <= 20 && hit > 10
-        ? this.setState({ commentText: "It's super effective!" })
-        : hit <= 10 && hit > 0
-        ? this.setState({ commentText: "It's effective!" })
-        : this.setState({
-            commentText: `${this.state.player2.name}'s attack missed!`,
-          });
-    }, 1500);
+    this.setState({ [playerState]: localP, tourPlayer1: !this.state.tourPlayer1 })
 
-    this.endGameP2();
   };
 
-  endGameP1 = () => {
-    if (this.state.player1.health === 0) {
-      this.setState({ commentText: `${this.player1.state.name} fainted!` });
+  endGame = (localP, currentPlayer, hit) => {
+    if (currentPlayer.health === 0) {
+      this.setState({ commentText: `${currentPlayer.name} fainted after ${localP.name}'s ${hit} !` });
     }
-  };
+    if (localP.health === 0) {
+      this.setState({ commentText: `${localP.name} fainted after ${currentPlayer.name}'s ${hit} !` })
+    }
 
-  endGameP2 = () => {
-    if (this.state.player2.health === 0) {
-      this.setState({ commentText: `${this.state.player2.name} fainted!` });
-    }
   };
 
   //recover
   handleClickPotion = (e) => {
-    e.target.src === emptyPotion
-      ? this.setState({
-          health: this.state.health,
-          commentText: "It's empty..!",
-        })
-      : this.state.health >= 75
-      ? this.setState({
-          health: 100,
-          commentText: `${this.state.name} used RECOVER!`,
-        })
-      : this.setState({
-          health: this.state.health + 25,
-          commentText: `${this.state.name} used RECOVER!`,
-        });
+    let playerState = ""
+    let currentPlayer = ''
+    let target = e.target.parentNode.id
 
-    e.target.src = emptyPotion;
+
+    if (target === "potionP1") {
+      currentPlayer = this.state.player1
+      playerState = "player1"
+    } else {
+      currentPlayer = this.state.player2
+      playerState = "player2"
+    }
+    if (currentPlayer.health < 100 && currentPlayer.health > 0) {
+      if (e.target.src === emptyPotion) {
+        currentPlayer.health = currentPlayer.health
+        this.setState({ commentText: "It's empty..!" })
+      } else if (currentPlayer.health >= 75) {
+        currentPlayer.health = 100
+        this.setState({ commentText: `${currentPlayer.name} used RECOVER!` })
+      } else {
+        currentPlayer.health += 25
+        this.setState({ commentText: `${currentPlayer.name} used RECOVER!` })
+      }
+      
+      if(e.target.src !== emptyPotion)
+        this.setState({ [playerState]: currentPlayer, tourPlayer1: !this.state.tourPlayer1 })
+
+      e.target.src = emptyPotion;
+    }
   };
   // change PV barr color
   changePvColor = () => {
-    this.state.health > 50
+    this.state.player1.health > 50
       ? this.setState({ healthColor: "rgb(100, 182, 75)" })
-      : this.state.health <= 50 && this.state.health > 25
-      ? this.setState({ healthColor: "yellow" })
-      : this.state.health <= 25 && this.state.health > 0
-      ? this.setState({ healthColor: "orange" })
-      : this.setState({ healthColor: "red" });
+      : this.state.player1.health <= 50 && this.state.player1.health > 25
+        ? this.setState({ healthColor: "yellow" })
+        : this.state.player1h <= 25 && this.state.player1.health > 0
+          ? this.setState({ healthColor: "orange" })
+          : this.setState({ healthColor: "red" });
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.health !== prevState.health) {
+    if (this.state.player1.health !== prevState.player1.health) {
       this.changePvColor();
     }
   }
@@ -159,46 +147,70 @@ class Fight extends React.Component {
   }
 
   render() {
+  let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
+  let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' } 
+  console.log(this)
+
     return (
       <div className="fight">
-        <div className="pic-stat1">
-          <div className="stat">
-            <StatutPokemonP2
-              name={this.state.player2.name}
-              number={this.state.player2.number}
-              health={this.state.player2.health}
-              healthColor={this.state.player2.healthColor}
-              ChangePvColor={this.changePvColor}
-            />
-          </div>
-          <Picture pic={Png2} />
-        </div>
-        <div className="button-potion">
-          <AttackButtonP2
-            attackHit={this.state.player2.attackHit}
-            attack={this.state.player2.attack}
-            handleClickHit={this.handleClickHitP2}
-          />
-          <Potion method={this.handleClickPotion} />
-        </div>
-        <div className="pic-stat2">
-          <div className="stat">
-            <StatutPokemonP1
+        <div className='fight-container'>
+          {/*PLAYER 1*/}
+          <div className='fight-left'>
+            <StatutPokemon
               name={this.state.player1.name}
               number={this.state.player1.number}
               health={this.state.player1.health}
               healthColor={this.state.player1.healthColor}
               ChangePvColor={this.changePvColor}
             />
+            <div className='zoom-left' style={{ background: `url(${this.state.player1.sprite}) no-repeat center -20px`, backgroundSize: "200px" }}>
+              <div className="space"></div>
+              <div className="turn-text" style={styleTurnP2}>
+                <p>{this.props.secondPlayer}'s turn!</p>
+              </div>
+              <AttackButton
+                id="attackP1"
+                attackHit={this.state.player1.attackHit}
+                attack={this.state.player1.attack}
+                handleClickHit={this.handleClickHit}
+                style={styleTurnP1}
+              />
+            </div>
+            <Potion
+              id="potionP1"
+              method={this.handleClickPotion}
+              style={styleTurnP1} 
+            />
           </div>
-          <Picture pic={Png} />
+           {/*PLAYER 2*/}
+          <div className='fight-right'>
+            <StatutPokemon
+              name={this.state.player2.name}
+              number={this.state.player2.number}
+              health={this.state.player2.health}
+              healthColor={this.state.player2.healthColor}
+              ChangePvColor={this.changePvColor}
+            />
+           
+            <div className='zoom-right' style={{ background: `url(${this.state.player2.sprite}) no-repeat center -20px`, backgroundSize: "200px" }}>
+              <div className="space"></div>
+              <div className="turn-text" style={styleTurnP1}>
+                <p>{this.props.firstPlayer}'s turn!</p>
+              </div>
+              <AttackButton
+                id="attackP2"
+                attackHit={this.state.player2.attackHit}
+                attack={this.state.player2.attack}
+                handleClickHit={this.handleClickHit}
+                style={styleTurnP2}
+              />
+            </div>
+            <Potion
+              id="potionP2"
+              method={this.handleClickPotion}
+              style={styleTurnP2} />
+          </div>
         </div>
-        {/* <AttackButtonP1
-          attackHit={this.state.player1.attackHit}
-          attack={this.state.player1.attack}
-          handleClickHit={this.handleClickHitP1}
-        /> */}
-        <Potion method={this.handleClickPotion} />
         <Link to="/new-game-7" className="link">
           <Comment commentText={this.state.commentText} />
         </Link>

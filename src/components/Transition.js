@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import './Transition.css';
+import './Types.css'
 
 class Transition extends React.Component {
 
@@ -11,12 +12,16 @@ class Transition extends React.Component {
 
 	render() {
 		const { count } = this.state
+		const { selectPlayer1, selectPlayer2 } = this.props
 		return (
-			<div className='container'>
-				<div className='left'><img src="https://pokeres.bastionbot.org/images/pokemon/25.png" /></div>
-				<Link to='/new-game-6'><div className='white'><div id='count'>{count}</div></div></Link>
-				<div className='right'><img src="https://pokeres.bastionbot.org/images/pokemon/7.png" /></div>
-				<div className="test"></div>
+			<div className='container' >
+				<div className={`left ${selectPlayer1[0].type}`}>
+					<img src={`https://pokeres.bastionbot.org/images/pokemon/${selectPlayer1[0].id}.png`} />
+				</div>
+				<Link to='/fight'><div className='white'><div id='count'>{count}</div></div></Link>
+				<div className={`right ${selectPlayer2[0].type}`}>
+					<img src={`https://pokeres.bastionbot.org/images/pokemon/${selectPlayer2[0].id}.png`} />
+				</div>
 			</div>
 		)
 	}
@@ -27,6 +32,12 @@ class Transition extends React.Component {
 					this.setState({ count: this.state.count - 1 })
 				}
 			}, 1000)
+	}
+
+	componentDidUpdate(prevProps, prevState){
+		if(prevState.count === 0){
+			alert("fight")
+		}
 	}
 
 }

@@ -2,12 +2,13 @@
   font-family: "Pokemon";
   src: url("../fonts/Pokemon\ Classic.ttf");
 }
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap");
 * {
   padding: 0;
   margin: 0;
 }
+
 .box {
   position: relative;
   margin: 50px 10px;
@@ -25,6 +26,7 @@
   border: 1px solid;
   border-radius: 3px;
   width: 350px;
+  height: 165px;
   margin: 0 auto;
   background-color: #fff;
 }
@@ -39,8 +41,7 @@
   left: 0;
 }
 
-.DialogBox p,
-.DialogBox input {
+.DialogBox p, .DialogBox input {
   margin-bottom: 20px;
 }
 
@@ -50,8 +51,10 @@
 
 .DialogBox input {
   border-radius: 0px;
-  height: 30px;
+  height: 25px;
   width: 80%;
+  font-family: "Pokemon";
+  font-size: 10px;
 }
 
 .DialogBox button {
@@ -78,4 +81,8 @@
 
 .display-none {
   display: none;
+}
+
+a{
+  color: #fff;
 }

@@ -19,7 +19,6 @@
 }
 .left {
     width: 50%;
-    background-color:rgb(180, 182, 75);
 }
 
 .left img, .right img{
@@ -27,7 +26,6 @@
 }
 .right {
     width: 50%;
-    background-color: rgb(40, 144, 230);
 }
 
 .white {

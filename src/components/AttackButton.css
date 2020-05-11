@@ -5,7 +5,9 @@
 
 .mainContainer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 350px;
+  justify-content: center;
 }
 
 .button {
