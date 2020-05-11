@@ -34,6 +34,12 @@ class Transition extends React.Component {
 			}, 1000)
 	}
 
+	componentDidUpdate(prevProps, prevState){
+		if(prevState.count === 0){
+			alert("fight")
+		}
+	}
+
 }
 
 export default Transition
