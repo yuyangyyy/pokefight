@@ -22,11 +22,19 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: players[0], //this.props.selectPlayer1[0],
-    player2: players[1], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
-    };
+
+    statPotion: 0,
+    statAttackP1: 0,
+    statAttackP2: 0,
+    missedAttackP1 : 0,
+    missedAttackP2 : 0,
+    totalHitP1: 0,
+    totalHitP2: 0
+  };
 
   //random damage TO DO
   //attackRandomHit = (max) => {
@@ -36,22 +44,29 @@ class Fight extends React.Component {
 
   //damage player 1 & 2
   handleClickHit = (e) => {
-    const hit = e.target.value;
+    const hit = parseInt(e.target.value);
     const target = e.target.parentNode.id
     let playerState = ""
     let localP = ""
     let currentPlayer = ''
+    let missedAttack = ''
+    let totalHit = ''
 
     if (target === "attackP1") {
       localP = this.state.player2
       currentPlayer = this.state.player1
       playerState = "player2"
+      missedAttack = "missedAttackP1"
+      totalHit = 'totalHitP1'
+      this.setState({statAttackP1: this.state.statAttackP1 +1})
     } else {
       localP = this.state.player1
       currentPlayer = this.state.player2
       playerState = "player1"
+      missedAttack = "missedAttackP2"
+      totalHit = 'totalHitP2'
+      this.setState({statAttackP2: this.state.statAttackP2 +1})
     }
-    console.log("localP :", localP, "currentPlayer :", currentPlayer)
     //life reducer
     hit > localP.health ? localP.health = 0 : localP.health -= hit
 
@@ -75,11 +90,16 @@ class Fight extends React.Component {
               ? this.setState({ commentText: "It's effective!" })
               : this.setState({
                 commentText: `${currentPlayer.name}'s attack missed!`,
+                [missedAttack]: this.state[missedAttack] + 1
               });
       }, 1000);
     }
 
-    this.setState({ [playerState]: localP, tourPlayer1: !this.state.tourPlayer1 })
+    this.setState({
+      [playerState]: localP,
+      tourPlayer1: !this.state.tourPlayer1,
+      [totalHit]: this.state[totalHit] + hit
+    })
 
   };
 
@@ -113,14 +133,19 @@ class Fight extends React.Component {
         this.setState({ commentText: "It's empty..!" })
       } else if (currentPlayer.health >= 75) {
         currentPlayer.health = 100
-        this.setState({ commentText: `${currentPlayer.name} used RECOVER!` })
+        this.setState({ commentText: `${currentPlayer.name} used RECOVER!`, statPotion: this.state.statPotion + 1 })
       } else {
         currentPlayer.health += 25
-        this.setState({ commentText: `${currentPlayer.name} used RECOVER!` })
+        this.setState({ commentText: `${currentPlayer.name} used RECOVER!`, statPotion: this.state.statPotion + 1 })
       }
-      
-      if(e.target.src !== emptyPotion)
-        this.setState({ [playerState]: currentPlayer, tourPlayer1: !this.state.tourPlayer1 })
+
+      if (e.target.src !== emptyPotion) {
+        this.setState({
+          [playerState]: currentPlayer,
+          tourPlayer1: !this.state.tourPlayer1
+        })
+      }
+
 
       e.target.src = emptyPotion;
     }
@@ -147,10 +172,8 @@ class Fight extends React.Component {
   }
 
   render() {
-  let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
-  let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' } 
-  console.log(this)
-
+    let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
+    let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     return (
       <div className="fight">
         <div className='fight-container'>
@@ -179,10 +202,10 @@ class Fight extends React.Component {
             <Potion
               id="potionP1"
               method={this.handleClickPotion}
-              style={styleTurnP1} 
+              style={styleTurnP1}
             />
           </div>
-           {/*PLAYER 2*/}
+          {/*PLAYER 2*/}
           <div className='fight-right'>
             <StatutPokemon
               name={this.state.player2.name}
@@ -191,7 +214,7 @@ class Fight extends React.Component {
               healthColor={this.state.player2.healthColor}
               ChangePvColor={this.changePvColor}
             />
-           
+
             <div className='zoom-right' style={{ background: `url(${this.state.player2.sprite}) no-repeat center -20px`, backgroundSize: "200px" }}>
               <div className="space"></div>
               <div className="turn-text" style={styleTurnP1}>
@@ -211,7 +234,20 @@ class Fight extends React.Component {
               style={styleTurnP2} />
           </div>
         </div>
-        <Link to="/new-game-7" className="link">
+        <Link
+          to={{
+            pathname: "/new-game-7",
+            statPotion: this.state.statPotion,
+            statAttackP1: this.state.statAttackP1,
+            statAttackP2: this.state.statAttackP2,
+            missedAttackP1: this.state.missedAttackP1,
+            missedAttackP2: this.state.missedAttackP2,
+            totalHitP1: this.state.totalHitP1,
+            totalHitP2: this.state.totalHitP2,
+            firstPlayer: this.props.firstPlayer,
+            secondPlayer: this.props.secondPlayer
+          }}
+          className="link">
           <Comment commentText={this.state.commentText} />
         </Link>
       </div>

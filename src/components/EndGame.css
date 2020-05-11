@@ -24,9 +24,10 @@
 }
 
 
-.EndGame-line1 , .EndGame-line2, .EndGame-line3, .EndGame-line4, .EndGame-line5, .EndGame-line6 {
+.EndGame-line1 , .StatusBar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     margin-bottom: 20px;
 }
 
