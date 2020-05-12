@@ -64,7 +64,7 @@ class EndGame extends React.Component {
 				</div>
 
 				<div className="EndGame-stat-global">
-					<p>Fight duration :</p>
+					<p>Fight duration : {this.props.location.duration} secs</p>
 					<p>Global attacks : {statAttackP1 - missedAttackP1 + statAttackP2 - missedAttackP2}</p>
 					<p>Global damages : {totalHitP1 + totalHitP2}</p>
 					<p>Global missed attacks : {missedAttackP1 + missedAttackP2}</p>

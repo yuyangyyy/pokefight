@@ -22,8 +22,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
-    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
+    player1: players[0], //this.props.selectPlayer1[0],
+    player2: players[1], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
@@ -37,7 +37,9 @@ class Fight extends React.Component {
 
     computerTurn: false,
     computerEnabled: false,
-    computerPotion: 0
+    computerPotion: 0,
+
+    duration: 0
   };
 
   //random damage TO DO
@@ -57,8 +59,6 @@ class Fight extends React.Component {
     let hit
     let hitId
     let target
-
-
 
     let playerState = ""
     let localP = ""
@@ -237,13 +237,17 @@ class Fight extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      commentText: `Go ${this.state.player1.name}!`
-    }, () => this.restoreHealth())
+    this.setState({commentText: `Go ${this.state.player1.name}!`}, () => this.restoreHealth())
+    this.counter = 
+      setInterval(() => {
+        if (this.state.player1.health > 0 && this.state.player2.health > 0) {
+          this.setState({duration: this.state.duration +1})
+        }
+      },1000 )
   }
   render() {
 
-
+    
     let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     return (
@@ -317,7 +321,8 @@ class Fight extends React.Component {
             totalHitP1: this.state.totalHitP1,
             totalHitP2: this.state.totalHitP2,
             firstPlayer: this.props.firstPlayer,
-            secondPlayer: this.props.secondPlayer
+            secondPlayer: this.props.secondPlayer,
+            duration: this.state.duration
           }}
           className="link">
           <Comment commentText={this.state.commentText} />
