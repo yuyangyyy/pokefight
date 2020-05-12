@@ -208,6 +208,15 @@ class Fight extends React.Component {
           : this.setState({ healthColor: "red" });
   };
 
+  restoreHealth = () => {
+    const healthP1 = this.state.player1
+    const healthP2 = this.state.player2
+    healthP1.health = 100
+    healthP2.health = 100
+
+    this.setState({ player1: healthP1, player2: healthP2 })
+  }
+
   componentDidUpdate(prevProps, prevState) {
     // if (this.state.player1.health !== prevState.player1.health) {
     //   this.changePvColor();
@@ -228,16 +237,17 @@ class Fight extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ commentText: `Go ${this.state.player1.name}!` });
+    this.setState({
+      commentText: `Go ${this.state.player1.name}!`
+    }, () => this.restoreHealth())
   }
-
   render() {
-    console.log("render...")
+
 
     let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     return (
-      <div className="fight">
+      <div className="fight" >
         <div className='fight-container'>
           {/*PLAYER 1*/}
           <div className='fight-left'>

@@ -31,9 +31,9 @@ class EndGame extends React.Component {
 				<div className="container-endgame">
 
 					<div className="EndGame-line1">
-						<p>{this.props.location.firstPlayer || "Aux'"}</p>
+						<p>{this.props.location.firstPlayer}</p>
 						<p>VS</p>
-						<p>{this.props.location.secondPlayer || "Jul'"}</p>
+						<p>{this.props.location.secondPlayer}</p>
 					</div>
 
 					<StatBar
