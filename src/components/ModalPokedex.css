@@ -52,7 +52,7 @@
     font-size: 1.3rem;
 }
 
-.ModalPokedex button{
+.ModalPokedex .modal-content button{
     display: block;
     font-family: 'Baloo Paaji 2', cursive;
     font-size: 1.2rem;

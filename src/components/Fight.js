@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
@@ -20,8 +20,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: players[0], //this.props.selectPlayer1[0],
-    player2: players[1], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
@@ -34,7 +34,7 @@ class Fight extends React.Component {
     totalHitP2: 0,
 
     computerTurn: false,
-    computerEnabled: false,
+    computerEnabled: this.props.computerEnabled,
     computerPotion: 0,
 
     duration: 0
@@ -122,8 +122,6 @@ class Fight extends React.Component {
       }, 1000);
     }
 
-    // const newComputer = !this.state.computer
-
     this.setState({
       [playerState]: localP,
       tourPlayer1: !this.state.tourPlayer1,
@@ -146,7 +144,6 @@ class Fight extends React.Component {
     if (localP.health === 0) {
       this.setState({ commentText: `${localP.name} fainted after ${currentPlayer.name}'s ${hit} !` })
     }
-
   };
 
   //recover
@@ -205,9 +202,9 @@ class Fight extends React.Component {
       currentPlayer.healthColor = 'yellow'
     else if (currentPlayer.health <= 25 && currentPlayer.health > 0)
       currentPlayer.healthColor = 'red'
-    else
+    else {
       currentPlayer.healthColor = 'rgba(0, 0 , 0, 0)'
-
+    }
     this.setState({ [player]: currentPlayer })
   };
 
@@ -222,8 +219,24 @@ class Fight extends React.Component {
     this.setState({ player1: player1, player2: player2 })
   }
 
+  getStats = () => {
+    return <Redirect to={{
+      pathname: "/new-game-7",
+      statPotion: this.state.statPotion,
+      statAttackP1: this.state.statAttackP1,
+      statAttackP2: this.state.statAttackP2,
+      missedAttackP1: this.state.missedAttackP1,
+      missedAttackP2: this.state.missedAttackP2,
+      totalHitP1: this.state.totalHitP1,
+      totalHitP2: this.state.totalHitP2,
+      firstPlayer: this.props.firstPlayer,
+      secondPlayer: this.props.secondPlayer,
+      duration: this.state.duration
+    }} />
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    const { computerTurn, tourPlayer1, computerEnabled } = this.state
+    const { computerTurn, tourPlayer1, computerEnabled, player1, player2 } = this.state
 
     if (computerEnabled && computerTurn !== prevState.computerTurn && tourPlayer1 !== prevState.tourPlayer1) {
 
@@ -237,6 +250,26 @@ class Fight extends React.Component {
 
       this.setState({ tourPlayer1: false })
     }
+
+    if (player1.health === 0 || player2.health === 0 && this.state.player1.health !== prevState.player1.health) {
+      console.log("CONNARD")
+      setTimeout(() => {
+        return <Redirect to={{
+          pathname: "/new-game-7",
+          statPotion: this.state.statPotion,
+          statAttackP1: this.state.statAttackP1,
+          statAttackP2: this.state.statAttackP2,
+          missedAttackP1: this.state.missedAttackP1,
+          missedAttackP2: this.state.missedAttackP2,
+          totalHitP1: this.state.totalHitP1,
+          totalHitP2: this.state.totalHitP2,
+          firstPlayer: this.props.firstPlayer,
+          secondPlayer: this.props.secondPlayer,
+          duration: this.state.duration
+        }} />
+      }, 2000)
+    }
+
   }
 
   componentDidMount() {
@@ -247,12 +280,13 @@ class Fight extends React.Component {
           this.setState({ duration: this.state.duration + 1 })
         }
       }, 1000)
+
   }
   render() {
-
-
     let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
+    // this.redirection = setTimeout(() => this.getStats(), 2000)
+
     return (
       <div className="fight" >
         <div className='fight-container'>
@@ -287,8 +321,6 @@ class Fight extends React.Component {
                 style={styleTurnP1}
               />
             </div>
-
-
           </div>
           {/*PLAYER 2*/}
           <div className='fight-right'>
@@ -322,23 +354,9 @@ class Fight extends React.Component {
 
           </div>
         </div>
-        <Link
-          to={{
-            pathname: "/new-game-7",
-            statPotion: this.state.statPotion,
-            statAttackP1: this.state.statAttackP1,
-            statAttackP2: this.state.statAttackP2,
-            missedAttackP1: this.state.missedAttackP1,
-            missedAttackP2: this.state.missedAttackP2,
-            totalHitP1: this.state.totalHitP1,
-            totalHitP2: this.state.totalHitP2,
-            firstPlayer: this.props.firstPlayer,
-            secondPlayer: this.props.secondPlayer,
-            duration: this.state.duration
-          }}
-          className="link">
+        <div className="link">
           <Comment commentText={this.state.commentText} />
-        </Link>
+        </div>
       </div >
     );
   }

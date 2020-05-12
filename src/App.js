@@ -34,9 +34,10 @@ class App extends React.Component {
     appear: false,
     firstPlayer: '',
     secondPlayer: '',
-    // selectPlayers: [],
     selectPlayer1: [],
-    selectPlayer2: []
+    selectPlayer2: [],
+
+    computerEnabled: false
   }
 
   getPokemons = () => {
@@ -59,7 +60,7 @@ class App extends React.Component {
   }
 
   makeVisible = () => {
-    this.setState({appear: true})
+    this.setState({ appear: true })
   }
 
   saveNamePlayer1 = (event) => {
@@ -70,8 +71,16 @@ class App extends React.Component {
     this.setState({ secondPlayer: event.target.value });
   }
 
+  getRandomInt = () => {
+    return Math.floor(Math.random() * Math.floor(this.state.nbPokemons-1));
+  }
+
   handleClickModal = (event) => {
-    const pokemonName = event.target.parentNode.id
+    let pokemonName
+    event.target.id === 'randomPokemon'
+      ? pokemonName = this.state.pokemons[this.getRandomInt()].name
+      : pokemonName = event.target.parentNode.id
+
 
     const pokemonFind = this.state.pokemons.find(pokemon => pokemon.name === pokemonName)
 
@@ -111,6 +120,11 @@ class App extends React.Component {
     }
   }
 
+  handleClickEnemy = (e) => {
+    console.log(e.target.id)
+    e.target.id === "computer" ? this.setState({ computerEnabled: true }) : this.setState({ computerEnabled: false })
+  }
+
   refreshData = () => {
     this.setState({
       firstPlayer: '',
@@ -123,7 +137,6 @@ class App extends React.Component {
   componentDidMount() {
     this.getPokemons()
   }
-
 
   render() {
     return (
@@ -147,7 +160,7 @@ class App extends React.Component {
               </div>
             </Route>
             <Route exact path="/">
-              <Intro makeVisible={this.makeVisible}/>
+              <Intro makeVisible={this.makeVisible} />
             </Route>
             <Route path="/new-game">
               <div className="diag-pack">
@@ -162,13 +175,17 @@ class App extends React.Component {
             <Route path="/new-game-1">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox02 />
+                <DialogBox02
+                  handleClickEnemy={this.handleClickEnemy}
+                />
               </div>
             </Route>
             <Route path="/new-game-2">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox03 secondPlayer={this.state.secondPlayer} saveNamePlayer2={this.saveNamePlayer2} />
+                <DialogBox03
+                  secondPlayer={this.state.secondPlayer}
+                  saveNamePlayer2={this.saveNamePlayer2} />
               </div>
             </Route>
             <Route path="/new-game-3">
@@ -192,6 +209,7 @@ class App extends React.Component {
                 selectPlayer2={this.state.selectPlayer2}
                 firstPlayer={this.state.firstPlayer}
                 secondPlayer={this.state.secondPlayer}
+                computerEnabled={this.state.computerEnabled}
               />
             </Route>
             <Route path='/new-game-7' component={EndGame} />
@@ -209,7 +227,7 @@ class App extends React.Component {
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
           </Switch>
-          <Footer appear={this.state.appear}/>
+          <Footer appear={this.state.appear} />
         </div>
       </Router>
     );

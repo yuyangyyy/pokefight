@@ -44,7 +44,6 @@ class Pokedex extends React.Component {
 
 	handleClick = () => {
 		this.setState({ showMore: true })
-
 	}
 
 	handleChange = (event) => {
@@ -82,6 +81,7 @@ class Pokedex extends React.Component {
 				/>
 
 				<div className="filter-pokemon" onClick={() => this.setState({ isClick: true })}>
+					<button  id="randomPokemon" onClick={this.props.handleClickModal}>Random</button>
 					<SortBox method={this.handleChange} id="pokemonsGene" sortTitle="Sort by Generation" sortType={arrPokemonGene} sortBoxSize="200px" />
 					<SortBox method={this.handleChange} id="pokemonsType" sortTitle="Sort by Type" sortType={arrPokemonsType} sortBoxSize="160px" />
 					<input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="  Search by Name (EN or FR)" />
