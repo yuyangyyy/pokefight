@@ -26,7 +26,7 @@ const propComparator = (propName) =>
 class App extends React.Component {
 
   state = {
-    nbPokemons: 50, //387,
+    nbPokemons: 387, //387,
     pokemons: "",
     pokemonDescription: [],
     selectPokemon: 0,

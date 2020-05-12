@@ -14,7 +14,7 @@ class EndGame extends React.Component {
 		damage: 50
 	}
 	getPercentage = (val1, val2) => {
-			
+
 		if (val1 === 0 && val2 === 0) {
 			return 50
 		} else if (val1 === 0) {
@@ -37,7 +37,7 @@ class EndGame extends React.Component {
 
 					<div className="EndGame-line1">
 						<p>{this.props.location.firstPlayer || "Auxence"}</p>
-						<img src={vs} alt='vs-logo' style={{width: '75px'}} />
+						<img src={vs} alt='vs-logo' style={{ width: '75px' }} />
 						<p>{this.props.location.secondPlayer || "Julien"}</p>
 					</div>
 
@@ -45,7 +45,7 @@ class EndGame extends React.Component {
 						statData={this.getPercentage(statAttackP1, statAttackP2)}
 						dataP1={statAttackP1}
 						dataP2={statAttackP2}
-						statName="Realized attacks"
+						statName="Inflicted attacks"
 					/>
 
 					<StatBar

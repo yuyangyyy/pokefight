@@ -1,8 +1,8 @@
-
 body {
   background-color: #4a524f;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
 }
+
 .App {
   min-height: 100vh;
   display: flex;
@@ -22,30 +22,25 @@ body {
   margin-right: 42px;
 }
 
-.global-Pokedex,
-.boxEndgame {
+.global-Pokedex, .boxEndgame {
   margin: 150px auto;
-}
-
-.fight {
-  background-color: #a1a1a1;
-  border: 3px solid #313131;
-  margin: 150px auto 0 auto;
 }
 
 a {
   text-decoration: none;
 }
+
 .link {
   color: #000;
 }
+
 .header {
   align-self: center;
 }
 
 /*TESTS D'AFFICHAGE POKEDEX IMBRIQUE*/
 
-.pokeball-diag{
+.pokeball-diag {
   width: 100px;
   margin-top: 150px;
   margin-bottom: -40px;
@@ -54,22 +49,22 @@ a {
 
 @keyframes shake {
   0% {
-      transform: translate(0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
   }
   20% {
-      transform: translate(-10px, 0) rotate(-20deg);
+    transform: translate(-10px, 0) rotate(-20deg);
   }
   30% {
-      transform: translate(10px, 0) rotate(20deg);
+    transform: translate(10px, 0) rotate(20deg);
   }
   50% {
-      transform: translate(-10px, 0) rotate(-10deg);
+    transform: translate(-10px, 0) rotate(-10deg);
   }
   60% {
-      transform: translate(10px, 0) rotate(10deg);
+    transform: translate(10px, 0) rotate(10deg);
   }
   100% {
-      transform: translate(0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
   }
 }
 
