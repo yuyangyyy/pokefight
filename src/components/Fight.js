@@ -228,7 +228,7 @@ class Fight extends React.Component {
     if (computerEnabled && computerTurn !== prevState.computerTurn && tourPlayer1 !== prevState.tourPlayer1) {
 
       setTimeout(() => {
-        if (this.state.player2.health < 50 && this.state.computerPotion <= 2) {
+        if (this.state.player2.health < 50 && this.state.computerPotion <= 1) {
           this.handleClickPotion('computer')
         }
         else

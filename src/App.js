@@ -31,6 +31,7 @@ class App extends React.Component {
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
+    appear: false,
     firstPlayer: '',
     secondPlayer: '',
     // selectPlayers: [],
@@ -55,6 +56,10 @@ class App extends React.Component {
       .then(data => {
         this.setState({ pokemonDescription: data.flavor_text })
       })
+  }
+
+  makeVisible = () => {
+    this.setState({appear: true})
   }
 
   saveNamePlayer1 = (event) => {
@@ -124,7 +129,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          <Navbar appear={this.state.appear} />
           <Switch>
             <Route path='/choose-pokemon'>
               <img className="pokeball-diag" src={pkball} />
@@ -141,7 +146,9 @@ class App extends React.Component {
                 />
               </div>
             </Route>
-            <Route exact path="/" component={Intro} />
+            <Route exact path="/">
+              <Intro makeVisible={this.makeVisible}/>
+            </Route>
             <Route path="/new-game">
               <div className="diag-pack">
                 <img src={pkball} />
@@ -202,7 +209,7 @@ class App extends React.Component {
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
           </Switch>
-          <Footer />
+          <Footer appear={this.state.appear}/>
         </div>
       </Router>
     );

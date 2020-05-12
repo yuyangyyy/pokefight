@@ -6,11 +6,16 @@
 }
 
 #transition-pic {
-    width: 500px;
+    width: 0px;
     z-index: 3;
     display: none;
     position: absolute;
     top: 100px;
+    animation: zoom .5s ease-out forwards;
+}
+@keyframes zoom {
+    from {width: 0px}
+    to {width: 400px}
 }
 
 .container {

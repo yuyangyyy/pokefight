@@ -11,7 +11,7 @@ import './Footer.css';
 class Footer extends React.Component {
 	render() {
 		return (
-			<footer>
+			<footer id='footer' style={this.props.appear ? {opacity: 1} : {opacity: 0}}>
 				<div className="flex-footer">
 
 
