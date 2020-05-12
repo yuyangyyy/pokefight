@@ -4,6 +4,7 @@ import StatBar from './StatBar'
 import { Link, Redirect } from "react-router-dom";
 
 import './EndGame.css'
+import vs from "../img/logo/versus.png"
 
 
 class EndGame extends React.Component {
@@ -35,9 +36,9 @@ class EndGame extends React.Component {
 				<div className="container-endgame">
 
 					<div className="EndGame-line1">
-						<p>{this.props.location.firstPlayer}</p>
-						<p>VS</p>
-						<p>{this.props.location.secondPlayer}</p>
+						<p>{this.props.location.firstPlayer || "Auxence"}</p>
+						<img src={vs} alt='vs-logo' style={{width: '75px'}} />
+						<p>{this.props.location.secondPlayer || "Julien"}</p>
 					</div>
 
 					<StatBar
