@@ -13,11 +13,15 @@ class EndGame extends React.Component {
 		damage: 50
 	}
 	getPercentage = (val1, val2) => {
-		if (val1 > 0 && val2 > 0) {
-			return val1 / (val1 + val2) * 100
-		}
+			
 		if (val1 === 0 && val2 === 0) {
 			return 50
+		} else if (val1 === 0) {
+			return 0
+		} else if (val2 === 0) {
+			return 100
+		} else {
+			return val1 / (val1 + val2) * 100
 		}
 	}
 	refreshPage = () => {
