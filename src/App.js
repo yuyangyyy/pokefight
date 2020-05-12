@@ -33,7 +33,7 @@ class App extends React.Component {
     displayModal: false,
     firstPlayer: '',
     secondPlayer: '',
-    selectPlayers: [],
+    // selectPlayers: [],
     selectPlayer1: [],
     selectPlayer2: []
   }
@@ -97,13 +97,22 @@ class App extends React.Component {
           console.log(this.state.selectPlayer1.length)
         })
     } else {
-      players[0].sprite = selectPokemon.sprites.front_default 
+      players[0].sprite = selectPokemon.sprites.front_default
       this.setState({ selectPlayer2: players },
         () => {
           this.setState({ displayModal: false })
           console.log(this.state.selectPlayer1, this.state.selectPlayer2)
         })
     }
+  }
+
+  refreshData = () => {
+    this.setState({
+      firstPlayer: '',
+      secondPlayer: '',
+      selectPlayer1: [],
+      selectPlayer2: []
+    })
   }
 
   componentDidMount() {
@@ -128,14 +137,19 @@ class App extends React.Component {
                   pokemonDescription={this.state.pokemonDescription}
                   displayModal={this.state.displayModal}
                   handleClickPlay={this.handleClickPlay}
-                  selectPlayer1={this.state.selectPlayer1} />
+                  selectPlayer1={this.state.selectPlayer1}
+                />
               </div>
             </Route>
             <Route exact path="/" component={Intro} />
             <Route path="/new-game">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox01 firstPlayer={this.state.firstPlayer} saveNamePlayer1={this.saveNamePlayer1}/>
+                <DialogBox01
+                  firstPlayer={this.state.firstPlayer}
+                  saveNamePlayer1={this.saveNamePlayer1}
+                  refreshData={this.refreshData}
+                />
               </div>
             </Route>
             <Route path="/new-game-1">
@@ -147,7 +161,7 @@ class App extends React.Component {
             <Route path="/new-game-2">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox03 secondPlayer={this.state.secondPlayer} saveNamePlayer2={this.saveNamePlayer2}/>
+                <DialogBox03 secondPlayer={this.state.secondPlayer} saveNamePlayer2={this.saveNamePlayer2} />
               </div>
             </Route>
             <Route path="/new-game-3">
@@ -160,17 +174,17 @@ class App extends React.Component {
             </Route>
             <Route path='/new-game-4' component={Pokedex} />
             <Route path='/new-game-5'>
-              <Transition 
-              selectPlayer1={this.state.selectPlayer1} 
-              selectPlayer2={this.state.selectPlayer2} 
+              <Transition
+                selectPlayer1={this.state.selectPlayer1}
+                selectPlayer2={this.state.selectPlayer2}
               />
             </Route>
             <Route path='/fight'>
-              <Fight 
-              selectPlayer1={this.state.selectPlayer1} 
-              selectPlayer2={this.state.selectPlayer2}
-              firstPlayer={this.state.firstPlayer}
-              secondPlayer={this.state.secondPlayer} 
+              <Fight
+                selectPlayer1={this.state.selectPlayer1}
+                selectPlayer2={this.state.selectPlayer2}
+                firstPlayer={this.state.firstPlayer}
+                secondPlayer={this.state.secondPlayer}
               />
             </Route>
             <Route path='/new-game-7' component={EndGame} />

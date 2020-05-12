@@ -22,18 +22,22 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: players[0], //this.props.selectPlayer1[0],
-    player2: players[1], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
     statPotion: 0,
     statAttackP1: 0,
     statAttackP2: 0,
-    missedAttackP1 : 0,
-    missedAttackP2 : 0,
+    missedAttackP1: 0,
+    missedAttackP2: 0,
     totalHitP1: 0,
-    totalHitP2: 0
+    totalHitP2: 0,
+
+    computerTurn: false,
+    computerEnabled: false,
+    computerPotion: 0
   };
 
   //random damage TO DO
@@ -43,29 +47,54 @@ class Fight extends React.Component {
 
 
   //damage player 1 & 2
+
+  getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
   handleClickHit = (e) => {
-    const hit = parseInt(e.target.value);
-    const target = e.target.parentNode.id
+
+    let hit
+    let hitId
+    let target
+
+
+
     let playerState = ""
     let localP = ""
     let currentPlayer = ''
     let missedAttack = ''
     let totalHit = ''
 
+    //Condition to assign hit or hitId if is a computer or player
+    if (e.target !== undefined) {
+      hit = parseInt(e.target.value);
+      hitId = e.target.id
+      target = e.target.parentNode.id
+    } else {
+      currentPlayer = this.state.player2
+      const randomHit = this.getRandomInt(3)
+      hit = currentPlayer.attackHit[randomHit]
+      hitId = randomHit
+    }
+
+    //Condition to assign state to array according to player 1 or 2(and computer)
     if (target === "attackP1") {
       localP = this.state.player2
       currentPlayer = this.state.player1
       playerState = "player2"
       missedAttack = "missedAttackP1"
       totalHit = 'totalHitP1'
-      this.setState({statAttackP1: this.state.statAttackP1 +1})
+      this.setState({ statAttackP1: this.state.statAttackP1 + 1 })
+
     } else {
       localP = this.state.player1
       currentPlayer = this.state.player2
       playerState = "player1"
       missedAttack = "missedAttackP2"
       totalHit = 'totalHitP2'
-      this.setState({statAttackP2: this.state.statAttackP2 +1})
+      this.setState({ statAttackP2: this.state.statAttackP2 + 1 })
+
     }
     //life reducer
     hit > localP.health ? localP.health = 0 : localP.health -= hit
@@ -73,13 +102,13 @@ class Fight extends React.Component {
     //attack comment
     this.setState({
       commentText: `${currentPlayer.name} used ${
-        currentPlayer.attack[e.target.id]
+        currentPlayer.attack[hitId]
         }`,
     });
 
     //damage comment
     if (localP.health === 0 || currentPlayer.health === 0) {
-      this.endGame(localP, currentPlayer, currentPlayer.attack[e.target.id]);
+      this.endGame(localP, currentPlayer, currentPlayer.attack[hitId]);
     } else {
       setTimeout(() => {
         hit > 20
@@ -95,11 +124,20 @@ class Fight extends React.Component {
       }, 1000);
     }
 
+    // const newComputer = !this.state.computer
+
     this.setState({
       [playerState]: localP,
       tourPlayer1: !this.state.tourPlayer1,
-      [totalHit]: this.state[totalHit] + hit
+      [totalHit]: this.state[totalHit] + hit,
     })
+
+    //on force computer à false lors de son tour poue éviter qu'il change lui même
+    if (e !== "computer")
+      this.setState({ computerTurn: !this.state.computerTurn })
+    else
+      this.setState({ computerTurn: false })
+
 
   };
 
@@ -117,8 +155,11 @@ class Fight extends React.Component {
   handleClickPotion = (e) => {
     let playerState = ""
     let currentPlayer = ''
-    let target = e.target.parentNode.id
+    const idPotionComputer = this.state.computerPotion
+    const potionImgComputer = document.getElementById('potionP2')
 
+    let target = e.target == undefined ? "" : e.target.parentNode.id
+    let targetImg = e.target === undefined ? potionImgComputer.childNodes[idPotionComputer].src : e.target.src
 
     if (target === "potionP1") {
       currentPlayer = this.state.player1
@@ -128,7 +169,7 @@ class Fight extends React.Component {
       playerState = "player2"
     }
     if (currentPlayer.health < 100 && currentPlayer.health > 0) {
-      if (e.target.src === emptyPotion) {
+      if (targetImg === emptyPotion) {
         currentPlayer.health = currentPlayer.health
         this.setState({ commentText: "It's empty..!" })
       } else if (currentPlayer.health >= 75) {
@@ -139,15 +180,21 @@ class Fight extends React.Component {
         this.setState({ commentText: `${currentPlayer.name} used RECOVER!`, statPotion: this.state.statPotion + 1 })
       }
 
-      if (e.target.src !== emptyPotion) {
+      if (targetImg !== emptyPotion) {
         this.setState({
           [playerState]: currentPlayer,
           tourPlayer1: !this.state.tourPlayer1
         })
+
+        if (e !== "computer") {
+          this.setState({ computerTurn: !this.state.computerTurn })
+          e.target.src = emptyPotion
+        }
+        else {
+          this.setState({ computerTurn: false, computerPotion: idPotionComputer + 1 })
+          potionImgComputer.childNodes[idPotionComputer].src = emptyPotion
+        }
       }
-
-
-      e.target.src = emptyPotion;
     }
   };
   // change PV barr color
@@ -156,14 +203,27 @@ class Fight extends React.Component {
       ? this.setState({ healthColor: "rgb(100, 182, 75)" })
       : this.state.player1.health <= 50 && this.state.player1.health > 25
         ? this.setState({ healthColor: "yellow" })
-        : this.state.player1h <= 25 && this.state.player1.health > 0
+        : this.state.player1.health <= 25 && this.state.player1.health > 0
           ? this.setState({ healthColor: "orange" })
           : this.setState({ healthColor: "red" });
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.player1.health !== prevState.player1.health) {
-      this.changePvColor();
+    // if (this.state.player1.health !== prevState.player1.health) {
+    //   this.changePvColor();
+    // }
+    const { computerTurn, tourPlayer1, computerEnabled } = this.state
+    if (computerEnabled && computerTurn !== prevState.computerTurn && tourPlayer1 !== prevState.tourPlayer1) {
+
+      setTimeout(() => {
+        if (this.state.player2.health < 50 && this.state.computerPotion <= 2) {
+          this.handleClickPotion('computer')
+        }
+        else
+          this.handleClickHit('computer')
+      }, 1000)
+
+      this.setState({ tourPlayer1: false })
     }
   }
 
@@ -172,6 +232,8 @@ class Fight extends React.Component {
   }
 
   render() {
+    console.log("render...")
+
     let styleTurnP1 = this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     let styleTurnP2 = !this.state.tourPlayer1 ? { display: 'flex' } : { display: 'none' }
     return (

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import StatBar from './StatBar'
+import { Link, Redirect } from "react-router-dom";
 
 import './EndGame.css'
 
@@ -18,6 +19,9 @@ class EndGame extends React.Component {
 		if (val1 === 0 && val2 === 0) {
 			return 50
 		}
+	}
+	refreshPage = () => {
+		return <Redirect to='/new-game' />
 	}
 
 	render() {
@@ -64,8 +68,12 @@ class EndGame extends React.Component {
 				</div>
 
 				<div className="button-endgame">
-					<button>New Game</button>
-					<button>Revenge</button>
+
+					<Link to='/new-game'><button>New Game</button></Link>
+
+					<Link to="/fight">
+						<button>Revenge</button>
+					</Link>
 				</div>
 			</div>
 

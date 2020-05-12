@@ -3,31 +3,35 @@ import { Link } from "react-router-dom";
 
 import "./DialogBox.css";
 
-const DialogBox = (props) => {
-
-  return (
-    <div className="box">
-      <div className="DialogBox">
-        <p>Welcome to the World of PokeFight !</p>
-        <p>First, please enter your name :</p>
-        <input
-          type="text"
-          value={props.firstPlayer}
-          onChange={props.saveNamePlayer1}
-          placeholder=' Your Name'
-        />
-        <div className="button-group">
+class DialogBox extends React.Component {
+  componentDidMount() {
+    this.props.refreshData()
+  }
+  render() {
+    return (
+      <div className="box" >
+        <div className="DialogBox">
+          <p>Welcome to the World of PokeFight !</p>
+          <p>First, please enter your name :</p>
+          <input
+            type="text"
+            value={this.props.firstPlayer}
+            onChange={this.props.saveNamePlayer1}
+            placeholder=' Your Name'
+          />
+          <div className="button-group">
             <Link to={{
               pathname: "/choose-pokemon",
-              player1: props.firstPlayer
+              player1: this.props.firstPlayer
             }}>
-              <button style={props.firstPlayer !== '' ? { display: 'block' } : { display: 'none' }}>Confirm</button>
-              </Link>
-          
+              <button style={this.props.firstPlayer !== '' ? { display: 'block' } : { display: 'none' }}>Confirm</button>
+            </Link>
+
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default DialogBox;
