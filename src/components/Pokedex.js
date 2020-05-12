@@ -64,7 +64,7 @@ class Pokedex extends React.Component {
 	render() {
 		const arrPokemonGene = ["1st Generation", "2nd Generation", "3rd Generation"]
 		const { nbShow, nbPokemons, arrPokemonsType, pokemonsType, pokemonSearch, pokemonsGene } = this.state
-		const { pokemons } = this.props
+		const { pokemons, frenchPokemons} = this.props
 
 		if (this.state.showMore)
 			this.setState({ nbShow: nbShow + 12, showMore: false })
@@ -93,7 +93,8 @@ class Pokedex extends React.Component {
 
 				<div id="pokedex" className="Pokedex" style={{ display: "none" }}>
 					{pokemons && pokemons.slice(0, pokemonSearch !== "" || pokemonsType !== "" || pokemonsGene !== "" ? nbPokemons : nbShow)
-						.filter(pokemon => pokemon.name.toLowerCase().startsWith(pokemonSearch.toLowerCase())) //search
+						.filter((pokemon, id) => pokemon.name.startsWith(pokemonSearch.toLowerCase())) //search
+						// .filter(pokemon => frenchPokemons.map(elt => elt.name).toLowerCase().startsWith(pokemonSearch.toLowerCase()))
 						.filter(pokemon => this.choiceGeneration(pokemon)) //Sort Generation
 						.filter(pokemon => pokemon.types[0].type.name.includes(pokemonsType) || pokemon.types[1] && pokemon.types[1].type.name.includes(pokemonsType)) //Sort Type
 						.map((pokemon, id) => {

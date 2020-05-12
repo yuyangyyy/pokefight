@@ -26,8 +26,9 @@ const propComparator = (propName) =>
 class App extends React.Component {
 
   state = {
-    nbPokemons: 387, //387,
+    nbPokemons: 80, //387,
     pokemons: "",
+    frenchPokemons: [],
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
@@ -47,6 +48,17 @@ class App extends React.Component {
         .then(response => {
           this.setState({ pokemons: [...this.state.pokemons, response.data] })
           this.state.pokemons.sort(propComparator("id"))
+        })
+    }
+  }
+
+  getFrenchPokemons = () => {
+    for (let i = 0; i < this.state.nbPokemons; i++) {
+      axios.get(`https://pokeapi.co/api/v2/pokemon-species/${i}/`)
+        .then(response => {
+          const dataPokemon = {name: response.data.names[6].name, id: response.data.id}
+          this.setState({ frenchPokemons: [...this.state.frenchPokemons, dataPokemon]})
+          this.state.frenchPokemons.sort(propComparator("id"))
         })
     }
   }
@@ -136,6 +148,8 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getPokemons()
+    this.getFrenchPokemons()
+    
   }
 
   render() {
@@ -150,6 +164,7 @@ class App extends React.Component {
               <div className='pokedex-container'>
                 <Pokedex
                   pokemons={this.state.pokemons}
+                  frenchPokemons={this.state.frenchPokemons}
                   selectPokemon={this.state.selectPokemon}
                   handleClickModal={this.handleClickModal}
                   pokemonDescription={this.state.pokemonDescription}
@@ -216,6 +231,7 @@ class App extends React.Component {
             <Route path="/pokedex">
               <Pokedex
                 pokemons={this.state.pokemons}
+                frenchPokemons={this.state.frenchPokemons}
                 selectPokemon={this.state.selectPokemon}
                 handleClickModal={this.handleClickModal}
                 pokemonDescription={this.state.pokemonDescription}
