@@ -65,8 +65,6 @@ class Fight extends React.Component {
     let missedAttack = ''
     let totalHit = ''
 
-    console.log('dégats:', e.target.value)
-
     //Condition to assign hit or hitId if is a computer or player
     if (e.target !== undefined) {
       hit = parseInt(e.target.value);
@@ -98,6 +96,24 @@ class Fight extends React.Component {
 
     }
     //life reducer
+    //0-3 :hit = 0
+    //4-6: hit = hit *1
+    //7-8: hit = hit * 1.25
+    //9 ou +: hit = hit * 1.5
+    console.log("avant",hit)
+    const luckyHit = this.getRandomInt(10)
+    console.log("random",luckyHit)
+    if (luckyHit < 4) {
+      hit = 0
+    }else if(luckyHit < 7){
+      hit = hit * 1
+    }else if (luckyHit < 9){
+      hit = Math.floor(hit * 1.25)
+    }else{
+      hit = Math.floor(hit * 1.5)
+    }
+    console.log("après",hit)
+
     hit > localP.health ? localP.health = 0 : localP.health -= hit
 
     //attack comment
@@ -106,17 +122,16 @@ class Fight extends React.Component {
         currentPlayer.attack[hitId]
         }`,
     });
-
     //damage comment
     if (localP.health === 0 || currentPlayer.health === 0) {
       this.endGame(localP, currentPlayer, currentPlayer.attack[hitId]);
     } else {
       setTimeout(() => {
-        hit > 20
+        hit > 35
           ? this.setState({ commentText: "Critical hit!" })
-          : hit <= 20 && hit > 10
+          : hit <= 35 && hit > 20
             ? this.setState({ commentText: "It's super effective!" })
-            : hit <= 10 && hit > 0
+            : hit <= 20 && hit >=15
               ? this.setState({ commentText: "It's effective!" })
               : this.setState({
                 commentText: `${currentPlayer.name}'s attack missed!`,
