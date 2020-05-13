@@ -20,8 +20,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
-    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
+    player1: players[0], //this.props.selectPlayer1[0],
+    player2: players[1], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
@@ -34,7 +34,7 @@ class Fight extends React.Component {
     totalHitP2: 0,
 
     computerTurn: false,
-    computerEnabled: this.props.computerEnabled,
+    computerEnabled: true, //this.props.computerEnabled
     computerPotion: 0,
 
     duration: 0,
@@ -267,7 +267,7 @@ class Fight extends React.Component {
         }
         else
           this.handleClickHit('computer')
-      }, 1000)
+      }, 6000)
 
       this.setState({ tourPlayer1: false })
     }
@@ -307,7 +307,7 @@ class Fight extends React.Component {
             />
             <img src={this.state.player1.sprite} className="pokemon-sprite" />
             <div className="turn-text" style={styleTurnP2}>
-              <p>{this.props.secondPlayer}'s turn!</p>
+              <p>{this.props.secondPlayer || "Computer"}'s turn!</p>
             </div>
             <div className="actions-right">
               <Potion
@@ -349,6 +349,7 @@ class Fight extends React.Component {
                 attack={this.state.player2.attack}
                 handleClickHit={this.handleClickHit}
                 style={styleTurnP2}
+                computerEnabled={this.state.computerEnabled}
               />
             </div>
 
