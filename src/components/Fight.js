@@ -20,8 +20,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
-    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
+    player1: players[0], //this.props.selectPlayer1[0],
+    player2: players[1], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
@@ -38,7 +38,7 @@ class Fight extends React.Component {
     computerPotion: 0,
 
     duration: 0,
-    duration2:0,
+    duration2: 0,
   };
 
   //random damage TO DO
@@ -120,7 +120,7 @@ class Fight extends React.Component {
                 commentText: `${currentPlayer.name}'s attack missed!`,
                 [missedAttack]: this.state[missedAttack] + 1
               });
-      }, 1000);
+      }, 2500);
     }
 
     this.setState({
@@ -140,11 +140,11 @@ class Fight extends React.Component {
 
   endGame = (localP, currentPlayer, hit) => {
     if (currentPlayer.health === 0) {
-      this.setState({ commentText: `${currentPlayer.name} fainted after ${localP.name}'s ${hit} !`});
+      this.setState({ commentText: `${currentPlayer.name} fainted after ${localP.name}'s ${hit} !` });
 
     }
     if (localP.health === 0) {
-      this.setState({ commentText: `${localP.name} fainted after ${currentPlayer.name}'s ${hit} !`})
+      this.setState({ commentText: `${localP.name} fainted after ${currentPlayer.name}'s ${hit} !` })
     }
   };
 
@@ -222,20 +222,20 @@ class Fight extends React.Component {
   }
 
   getStats = () => {
-    if(this.state.duration2 === 3) {
-    return <Redirect to={{
-      pathname: "/new-game-7",
-      statPotion: this.state.statPotion,
-      statAttackP1: this.state.statAttackP1,
-      statAttackP2: this.state.statAttackP2,
-      missedAttackP1: this.state.missedAttackP1,
-      missedAttackP2: this.state.missedAttackP2,
-      totalHitP1: this.state.totalHitP1,
-      totalHitP2: this.state.totalHitP2,
-      firstPlayer: this.props.firstPlayer,
-      secondPlayer: this.props.secondPlayer,
-      duration: this.state.duration
-    }} />
+    if (this.state.duration2 === 3) {
+      return <Redirect to={{
+        pathname: "/new-game-7",
+        statPotion: this.state.statPotion,
+        statAttackP1: this.state.statAttackP1,
+        statAttackP2: this.state.statAttackP2,
+        missedAttackP1: this.state.missedAttackP1,
+        missedAttackP2: this.state.missedAttackP2,
+        totalHitP1: this.state.totalHitP1,
+        totalHitP2: this.state.totalHitP2,
+        firstPlayer: this.props.firstPlayer,
+        secondPlayer: this.props.secondPlayer,
+        duration: this.state.duration
+      }} />
     }
   }
 
@@ -266,9 +266,9 @@ class Fight extends React.Component {
         }
       }, 1000)
     this.counter2 =
-      setInterval(()=> {
+      setInterval(() => {
         if (this.state.player1.health === 0 || this.state.player2.health === 0) {
-          this.setState({duration2: this.state.duration2 +1})
+          this.setState({ duration2: this.state.duration2 + 1 })
         }
       }, 1000)
   }

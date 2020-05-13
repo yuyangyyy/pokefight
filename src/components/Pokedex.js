@@ -64,7 +64,7 @@ class Pokedex extends React.Component {
 	render() {
 		const arrPokemonGene = ["1st Generation", "2nd Generation", "3rd Generation"]
 		const { nbShow, nbPokemons, arrPokemonsType, pokemonsType, pokemonSearch, pokemonsGene } = this.state
-		const { pokemons, frenchPokemons} = this.props
+		const { pokemons, frenchPokemons } = this.props
 
 		if (this.state.showMore)
 			this.setState({ nbShow: nbShow + 12, showMore: false })
@@ -82,10 +82,10 @@ class Pokedex extends React.Component {
 				/>
 
 				<div className="filter-pokemon" onClick={() => this.setState({ isClick: true })}>
-					<button  id="randomPokemon" onClick={this.props.handleClickModal}>Random</button>
+					<button id="randomPokemon" onClick={this.props.handleClickModal}>Random</button>
 					<SortBox method={this.handleChange} id="pokemonsGene" sortTitle="Sort by Generation" sortType={arrPokemonGene} sortBoxSize="200px" />
 					<SortBox method={this.handleChange} id="pokemonsType" sortTitle="Sort by Type" sortType={arrPokemonsType} sortBoxSize="160px" />
-					<input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="  Search by Name (EN or FR)" />
+					<input id="pokemonSearch" type="search" onChange={this.handleChange} value={pokemonSearch} placeholder="  Search by Name (EN)" />
 				</div>
 
 				<div id="load" className="loading-box" style={{ display: "block" }}>

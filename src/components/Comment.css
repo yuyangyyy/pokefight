@@ -23,3 +23,12 @@
   display: flex;
   justify-content: center;
 }
+
+@keyframes typewriter {
+  0% {
+    width: 0ch;
+  }
+  100% {
+    width: 11ch;
+  }
+}
