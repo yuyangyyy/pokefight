@@ -19,3 +19,12 @@
   cursor: pointer;
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 600px) {
+  .Potions{
+    flex-direction: row;
+  }
+  .Potions img:nth-of-type(2) {
+    margin-top: 0px;
+  }
+}

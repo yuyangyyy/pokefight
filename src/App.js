@@ -26,7 +26,7 @@ const propComparator = (propName) =>
 class App extends React.Component {
 
   state = {
-    nbPokemons: 80, //387,
+    nbPokemons: 300, //387,
     pokemons: "",
     frenchPokemons: [],
     pokemonDescription: [],
@@ -76,11 +76,15 @@ class App extends React.Component {
   }
 
   saveNamePlayer1 = (event) => {
+    if(event.target.value.length <= 7){
     this.setState({ firstPlayer: event.target.value });
+    }
   }
 
   saveNamePlayer2 = (event) => {
+    if(event.target.value.length <= 7){
     this.setState({ secondPlayer: event.target.value });
+    }
   }
 
   getRandomInt = () => {

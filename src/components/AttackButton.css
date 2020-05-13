@@ -29,3 +29,10 @@
   background-color: #a1a1a1;
   color: #313131;
 }
+
+@media screen and (max-width: 600px) {
+  .mainContainer{
+    flex-direction: column;
+    align-items: center;
+  }
+}

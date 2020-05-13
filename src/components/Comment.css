@@ -4,9 +4,10 @@
 }
 
 .commentBox {
+  margin-top: 10px;
   width: 90%;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: "Pokemon";
   display: flex;
   align-items: center;
