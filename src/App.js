@@ -32,6 +32,7 @@ class App extends React.Component {
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
+    modalButton: true,
     appear: false,
     firstPlayer: '',
     secondPlayer: '',
@@ -175,6 +176,7 @@ class App extends React.Component {
                   displayModal={this.state.displayModal}
                   handleClickPlay={this.handleClickPlay}
                   selectPlayer1={this.state.selectPlayer1}
+                  modalButton={this.state.modalButton}
                 />
               </div>
             </Route>

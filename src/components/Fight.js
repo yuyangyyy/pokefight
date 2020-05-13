@@ -20,8 +20,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: players[0], //this.props.selectPlayer1[0],
-    player2: players[1], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 

@@ -78,6 +78,7 @@ class Pokedex extends React.Component {
 					displayModal={this.props.displayModal}
 					handleClickPlay={this.props.handleClickPlay}
 					selectPlayer1={this.props.selectPlayer1}
+					modalButton={this.props.modalButton}
 				/>
 
 				<div className="filter-pokemon" onClick={() => this.setState({ isClick: true })}>
