@@ -36,9 +36,9 @@ class EndGame extends React.Component {
 				<div className="container-endgame">
 
 					<div className="EndGame-line1">
-						<p>{this.props.location.firstPlayer || "Auxence"}</p>
+						<p>{this.props.location.firstPlayer}</p>
 						<img src={vs} alt='vs-logo' style={{ width: '75px' }} />
-						<p>{this.props.location.secondPlayer || "Julien"}</p>
+						<p>{this.props.location.secondPlayer}</p>
 					</div>
 
 					<StatBar

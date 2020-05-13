@@ -65,6 +65,8 @@ class Fight extends React.Component {
     let missedAttack = ''
     let totalHit = ''
 
+    console.log('dégats:', e.target.value)
+
     //Condition to assign hit or hitId if is a computer or player
     if (e.target !== undefined) {
       hit = parseInt(e.target.value);
@@ -290,7 +292,7 @@ class Fight extends React.Component {
             />
             <img src={this.state.player1.sprite} className="pokemon-sprite" />
             <div className="turn-text" style={styleTurnP2}>
-              <p>{this.props.secondPlayer}Auxence's turn!</p>
+              <p>{this.props.secondPlayer}'s turn!</p>
             </div>
             <div className="actions-right">
               <Potion
@@ -318,7 +320,7 @@ class Fight extends React.Component {
             />
             <img src={this.state.player2.sprite} className="pokemon-sprite" />
             <div className="turn-text" style={styleTurnP1}>
-              <p>{this.props.firstPlayer}Julien's turn!</p>
+              <p>{this.props.firstPlayer}'s turn!</p>
             </div>
             <div className="actions-left">
               <Potion

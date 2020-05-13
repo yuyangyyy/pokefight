@@ -42,7 +42,7 @@
     color: rgb(197, 47, 47);
 }
 
-.EndGame-line1 p:nth-of-type(3), .StatusBar p:nth-of-type(3) {
+.EndGame-line1 p:nth-of-type(2), .StatusBar p:nth-of-type(3) {
     font-weight: bold;
     color: rgb(54, 105, 153);
 }
