@@ -2,7 +2,14 @@ footer {
   background-color: #313131;
   width: 100%;
   margin-top: auto;
+  /* animation: appearance 1s 4s ease-out forwards; */
+  transition: 1s ease-in-out;
   }
+
+  /* @keyframes appearance {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  } */
 
 .logo-poke {
   width: 40vh;

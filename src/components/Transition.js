@@ -1,13 +1,34 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-import './Transition.css';
-import './Types.css'
+import fight from '../img/logo/fight.png'
+
+import "./Transition.css";
+import "./Types.css";
 
 class Transition extends React.Component {
+	state = {
+		count: 3,
+	};
 
 	state = {
-		count: 5
+		count: 3,
+
+	}
+
+	redirect = () => {
+		if (this.state.count === -2) {
+			return <Redirect to='/fight' />
+		}
+	}
+
+	componentDidMount() {
+		this.countDown =
+			setInterval(() => {
+				if (this.state.count > -2) {
+					this.setState({ count: this.state.count - 1 }, () => console.log(this.state.count))
+				}
+			}, 1000)
 	}
 
 	render() {
@@ -15,31 +36,21 @@ class Transition extends React.Component {
 		const { selectPlayer1, selectPlayer2 } = this.props
 		return (
 			<div className='container' >
+				<img id='transition-pic' src={fight} alt='' style={this.state.count <= 0 ? { display: 'block' } : { display: 'none' }} />
 				<div className={`left ${selectPlayer1[0].type}`}>
-					<img src={`https://pokeres.bastionbot.org/images/pokemon/${selectPlayer1[0].id}.png`} />
+					<img src={`https://pokeres.bastionbot.org/images/pokemon/${selectPlayer1[0].id}.png`} alt='' />
 				</div>
-				<Link to='/fight'><div className='white'><div id='count'>{count}</div></div></Link>
+				<div className='white' style={this.state.count <= 0 ? { display: 'none' } : { display: 'flex' }}>
+					<div id='count'>{count}</div>
+				</div>
 				<div className={`right ${selectPlayer2[0].type}`}>
-					<img src={`https://pokeres.bastionbot.org/images/pokemon/${selectPlayer2[0].id}.png`} />
+					<img src={`https://pokeres.bastionbot.org/images/pokemon/${selectPlayer2[0].id}.png`} alt='' />
 				</div>
+				{this.redirect()}
 			</div>
 		)
-	}
-	componentDidMount() {
-		this.countDown =
-			setInterval(() => {
-				if (this.state.count > 0) {
-					this.setState({ count: this.state.count - 1 })
-				}
-			}, 1000)
-	}
-
-	componentDidUpdate(prevProps, prevState){
-		if(prevState.count === 0){
-			alert("fight")
-		}
 	}
 
 }
 
-export default Transition
+export default Transition;

@@ -26,16 +26,20 @@ const propComparator = (propName) =>
 class App extends React.Component {
 
   state = {
-    nbPokemons: 50, //387,
+    nbPokemons: 300, //387,
     pokemons: "",
+    frenchPokemons: [],
     pokemonDescription: [],
     selectPokemon: 0,
     displayModal: false,
+    modalButton: true,
+    appear: false,
     firstPlayer: '',
     secondPlayer: '',
-    selectPlayers: [],
     selectPlayer1: [],
-    selectPlayer2: []
+    selectPlayer2: [],
+
+    computerEnabled: false
   }
 
   getPokemons = () => {
@@ -49,6 +53,17 @@ class App extends React.Component {
     }
   }
 
+  getFrenchPokemons = () => {
+    for (let i = 0; i < this.state.nbPokemons; i++) {
+      axios.get(`https://pokeapi.co/api/v2/pokemon-species/${i}/`)
+        .then(response => {
+          const dataPokemon = {name: response.data.names[6].name, id: response.data.id}
+          this.setState({ frenchPokemons: [...this.state.frenchPokemons, dataPokemon]})
+          this.state.frenchPokemons.sort(propComparator("id"))
+        })
+    }
+  }
+
   getPokemonDescription = (idPokemon) => {
     axios.get(`https://pokeapi.co/api/v2/pokemon-species/${idPokemon}/`)
       .then(response => response.data.flavor_text_entries.find(lang => lang.language.name === 'en'))
@@ -57,16 +72,32 @@ class App extends React.Component {
       })
   }
 
+  makeVisible = () => {
+    this.setState({ appear: true })
+  }
+
   saveNamePlayer1 = (event) => {
+    if(event.target.value.length <= 7){
     this.setState({ firstPlayer: event.target.value });
+    }
   }
 
   saveNamePlayer2 = (event) => {
+    if(event.target.value.length <= 7){
     this.setState({ secondPlayer: event.target.value });
+    }
+  }
+
+  getRandomInt = () => {
+    return Math.floor(Math.random() * Math.floor(this.state.nbPokemons-1));
   }
 
   handleClickModal = (event) => {
-    const pokemonName = event.target.parentNode.id
+    let pokemonName
+    event.target.id === 'randomPokemon'
+      ? pokemonName = this.state.pokemons[this.getRandomInt()].name
+      : pokemonName = event.target.parentNode.id
+
 
     const pokemonFind = this.state.pokemons.find(pokemon => pokemon.name === pokemonName)
 
@@ -87,8 +118,8 @@ class App extends React.Component {
     const idFormat = selectPokemon.id <= 9 ? "No.00" + selectPokemon.id : selectPokemon.id >= 10 && selectPokemon.id < 100 ? "No.0" + selectPokemon.id : "No." + selectPokemon.id
     const attacks = selectPokemon.moves.slice(0, 4).map(attack => attack.move.name)
     const players =
-      [{ name: selectPokemon.name, type: selectPokemon.types[0].type.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 15, 30], sprite: selectPokemon.sprites.back_default }]
-    // { name: "Raichu", number: "042", health: 100, attack: ["bolt", "Sla", "Agil", "Thun"], attackHit: [10, 20, 0, 30] }
+      [{ name: selectPokemon.name, type: selectPokemon.types[0].type.name, id: selectPokemon.id, number: idFormat, health: 100, attack: attacks, attackHit: [20, 10, 0, 30], sprite: selectPokemon.sprites.back_default }]
+
     if (this.state.selectPlayer1.length === 0) {
       this.setState({ selectPlayer1: players },
         () => {
@@ -97,7 +128,7 @@ class App extends React.Component {
           console.log(this.state.selectPlayer1.length)
         })
     } else {
-      players[0].sprite = selectPokemon.sprites.front_default 
+      players[0].sprite = selectPokemon.sprites.front_default
       this.setState({ selectPlayer2: players },
         () => {
           this.setState({ displayModal: false })
@@ -106,16 +137,31 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.getPokemons()
+  handleClickEnemy = (e) => {
+    console.log(e.target.id)
+    e.target.id === "computer" ? this.setState({ computerEnabled: true }) : this.setState({ computerEnabled: false })
   }
 
+  refreshData = () => {
+    this.setState({
+      firstPlayer: '',
+      secondPlayer: '',
+      selectPlayer1: [],
+      selectPlayer2: []
+    })
+  }
+
+  componentDidMount() {
+    this.getPokemons()
+    this.getFrenchPokemons()
+    
+  }
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          <Navbar appear={this.state.appear} />
           <Switch>
             <Route path='/choose-pokemon'>
               <img className="pokeball-diag" src={pkball} />
@@ -123,31 +169,44 @@ class App extends React.Component {
               <div className='pokedex-container'>
                 <Pokedex
                   pokemons={this.state.pokemons}
+                  frenchPokemons={this.state.frenchPokemons}
                   selectPokemon={this.state.selectPokemon}
                   handleClickModal={this.handleClickModal}
                   pokemonDescription={this.state.pokemonDescription}
                   displayModal={this.state.displayModal}
                   handleClickPlay={this.handleClickPlay}
-                  selectPlayer1={this.state.selectPlayer1} />
+                  selectPlayer1={this.state.selectPlayer1}
+                  modalButton={this.state.modalButton}
+                />
               </div>
             </Route>
-            <Route exact path="/" component={Intro} />
+            <Route exact path="/">
+              <Intro makeVisible={this.makeVisible} />
+            </Route>
             <Route path="/new-game">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox01 firstPlayer={this.state.firstPlayer} saveNamePlayer1={this.saveNamePlayer1}/>
+                <DialogBox01
+                  firstPlayer={this.state.firstPlayer}
+                  saveNamePlayer1={this.saveNamePlayer1}
+                  refreshData={this.refreshData}
+                />
               </div>
             </Route>
             <Route path="/new-game-1">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox02 />
+                <DialogBox02
+                  handleClickEnemy={this.handleClickEnemy}
+                />
               </div>
             </Route>
             <Route path="/new-game-2">
               <div className="diag-pack">
                 <img src={pkball} />
-                <DialogBox03 secondPlayer={this.state.secondPlayer} saveNamePlayer2={this.saveNamePlayer2}/>
+                <DialogBox03
+                  secondPlayer={this.state.secondPlayer}
+                  saveNamePlayer2={this.saveNamePlayer2} />
               </div>
             </Route>
             <Route path="/new-game-3">
@@ -160,23 +219,25 @@ class App extends React.Component {
             </Route>
             <Route path='/new-game-4' component={Pokedex} />
             <Route path='/new-game-5'>
-              <Transition 
-              selectPlayer1={this.state.selectPlayer1} 
-              selectPlayer2={this.state.selectPlayer2} 
+              <Transition
+                selectPlayer1={this.state.selectPlayer1}
+                selectPlayer2={this.state.selectPlayer2}
               />
             </Route>
             <Route path='/fight'>
-              <Fight 
-              selectPlayer1={this.state.selectPlayer1} 
-              selectPlayer2={this.state.selectPlayer2}
-              firstPlayer={this.state.firstPlayer}
-              secondPlayer={this.state.secondPlayer} 
+              <Fight
+                selectPlayer1={this.state.selectPlayer1}
+                selectPlayer2={this.state.selectPlayer2}
+                firstPlayer={this.state.firstPlayer}
+                secondPlayer={this.state.secondPlayer}
+                computerEnabled={this.state.computerEnabled}
               />
             </Route>
             <Route path='/new-game-7' component={EndGame} />
             <Route path="/pokedex">
               <Pokedex
                 pokemons={this.state.pokemons}
+                frenchPokemons={this.state.frenchPokemons}
                 selectPokemon={this.state.selectPokemon}
                 handleClickModal={this.handleClickModal}
                 pokemonDescription={this.state.pokemonDescription}
@@ -188,7 +249,7 @@ class App extends React.Component {
             <Route path="/ranking" component={Ranking} />
             <Route path="/contact" component={Form} />
           </Switch>
-          <Footer />
+          <Footer appear={this.state.appear} />
         </div>
       </Router>
     );

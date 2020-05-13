@@ -5,6 +5,7 @@ import "./Intro.css";
 import {Link} from "react-router-dom"
 
 class Intro extends React.Component {
+
   render() {
     return (
       <div>

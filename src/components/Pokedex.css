@@ -78,19 +78,19 @@
     text-align: center;
 }
 
-.show-more button {
+.global-pokedex button {
     font-family: 'Baloo Paaji 2', cursive;
     font-size: 1.2rem;
     background-color: #313131;
     color: #fff;
     margin: 0 10px;
     padding: 0 30px;
-    height: 40px;
+    height: 49px;
     border: 2px solid #313131;
     transition: all .1s ease-in-out;
 }
 
-.show-more button:hover {
+.global-pokedex button:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
