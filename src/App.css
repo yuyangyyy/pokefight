@@ -71,3 +71,15 @@ a {
 .pokedex-container {
   margin-top: -150px;
 }
+
+@media screen and (max-width: 800px) {
+  .diag-pack {
+    flex-direction: column;
+  }
+  .diag-pack img {
+    margin: -50px auto 0 auto;
+  }
+  .DialogBox {
+    width: 95%;
+  }
+}
