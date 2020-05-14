@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import fight from '../img/logo/fight.png'
 
@@ -10,11 +10,6 @@ class Transition extends React.Component {
 	state = {
 		count: 3,
 	};
-
-	state = {
-		count: 3,
-
-	}
 
 	redirect = () => {
 		if (this.state.count === -2) {

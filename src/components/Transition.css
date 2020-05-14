@@ -74,4 +74,20 @@
     .left, .right {
         width: 100%;
     }
+    #transition-pic {
+        top: 500px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        width: 70%;
+    }
+    #transition-pic {
+        top: 300px;
+    }
+    @keyframes zoom {
+        from {width: 0px}
+        to {width: 250px}
+    }
 }
