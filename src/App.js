@@ -17,7 +17,6 @@ import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 
 import pkball from "./img/logo/pokeball contour fin.png";
-import song from './img/pokefight.mp3'
 
 import "./App.css";
 
@@ -204,7 +203,7 @@ class App extends React.Component {
           <Navbar appear={this.state.appear} />
           <Switch>
             <Route path="/choose-pokemon">
-              <img className="pokeball-diag" src={pkball} />
+              <img className="pokeball-diag" src={pkball} alt="pokeball logo" />
               <DialogBox04 />
               <div className="pokedex-container">
                 <Pokedex
@@ -224,8 +223,8 @@ class App extends React.Component {
               <Intro makeVisible={this.makeVisible} />
             </Route>
             <Route path="/new-game">
-              <div className="diag-pack">
-                <img src={pkball} />
+              <div className="diag-pack" alt="pokeball logo" >
+                <img src={pkball} alt="pokeball logo" />
                 <DialogBox01
                   firstPlayer={this.state.firstPlayer}
                   saveNamePlayer1={this.saveNamePlayer1}
@@ -235,13 +234,13 @@ class App extends React.Component {
             </Route>
             <Route path="/new-game-1">
               <div className="diag-pack">
-                <img src={pkball} />
+                <img src={pkball} alt="pokeball logo" />
                 <DialogBox02 handleClickEnemy={this.handleClickEnemy} />
               </div>
             </Route>
             <Route path="/new-game-2">
               <div className="diag-pack">
-                <img src={pkball} />
+                <img src={pkball} alt="pokeball logo" />
                 <DialogBox03
                   secondPlayer={this.state.secondPlayer}
                   saveNamePlayer2={this.saveNamePlayer2}
@@ -251,7 +250,7 @@ class App extends React.Component {
             <Route path="/new-game-3">
               <div className="diag-pack">
                 <Link to="/new-game-4">
-                  <img src={pkball} />
+                  <img src={pkball} alt="pokeball logo" />
                 </Link>
                 <DialogBox02 />
               </div>

@@ -9,10 +9,6 @@ import vs from "../img/logo/versus.png"
 
 class EndGame extends React.Component {
 
-	state = {
-		missAttack: 80,
-		damage: 50
-	}
 	getPercentage = (val1, val2) => {
 
 		if (val1 === 0 && val2 === 0) {

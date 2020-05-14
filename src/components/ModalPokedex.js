@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import './ModalPokedex.css'
 
 class ModalPokedex extends React.Component {
-	state = {
-		test: false
-	}
+
 	render() {
 		let isDisplay = this.props.displayModal ? "block" : "none"
 		const { pokemon } = this.props
@@ -41,7 +39,7 @@ class ModalPokedex extends React.Component {
 									<div className="usual-attacks">
 										<h4>Usual attacks :</h4>
 										<ul>
-											{attacks && attacks.map((attack, id) => <li>{id === 3 ? attack : attack + " - "}</li>)}
+											{attacks && attacks.map((attack, id) => <li key={id}>{id === 3 ? attack : attack + " - "}</li>)}
 										</ul>
 									</div>
 									<div className='weakness-types'>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
@@ -128,13 +128,13 @@ class Fight extends React.Component {
         hit > 35
           ? this.setState({ commentText: "Critical hit!" })
           : hit <= 35 && hit > 20
-          ? this.setState({ commentText: "It's super effective!" })
-          : hit <= 20 && hit >= 15
-          ? this.setState({ commentText: "It's effective!" })
-          : this.setState({
-              commentText: `${currentPlayer.name}'s attack missed!`,
-              [missedAttack]: this.state[missedAttack] + 1,
-            });
+            ? this.setState({ commentText: "It's super effective!" })
+            : hit <= 20 && hit >= 15
+              ? this.setState({ commentText: "It's effective!" })
+              : this.setState({
+                commentText: `${currentPlayer.name}'s attack missed!`,
+                [missedAttack]: this.state[missedAttack] + 1,
+              });
       }, 2500);
     }
 
@@ -173,7 +173,7 @@ class Fight extends React.Component {
     const idPotionComputer = this.state.computerPotion;
     const potionImgComputer = document.getElementById("potionP2");
 
-    let target = e.target == undefined ? "" : e.target.parentNode.id;
+    let target = e.target === undefined ? "" : e.target.parentNode.id;
     let targetImg =
       e.target === undefined
         ? potionImgComputer.childNodes[idPotionComputer].src
@@ -188,7 +188,7 @@ class Fight extends React.Component {
     }
     if (currentPlayer.health < 100 && currentPlayer.health > 0) {
       if (targetImg === emptyPotion) {
-        currentPlayer.health = currentPlayer.health;
+        currentPlayer.health *= currentPlayer.health;
         this.setState({ commentText: "It's empty..!" });
       } else if (currentPlayer.health >= 75) {
         currentPlayer.health = 100;
@@ -276,13 +276,7 @@ class Fight extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const {
-      computerTurn,
-      tourPlayer1,
-      computerEnabled,
-      player1,
-      player2,
-    } = this.state;
+    const {computerTurn, tourPlayer1, computerEnabled} = this.state;
 
     if (
       computerEnabled &&
@@ -341,16 +335,17 @@ class Fight extends React.Component {
                   id="ko-player1"
                   className="ko-player"
                   src={ko}
-                  alt="kop1"
                   style={
                     this.state.player1.health === 0
                       ? { display: "block" }
                       : { display: "none" }
                   }
+                  alt="KO"
                 />
                 <img
                   src={this.state.player1.sprite}
                   className="pokemon-sprite"
+                  alt="pokemon-player1"
                 />
               </div>
               <div className="turn-text" style={styleTurnP2}>
@@ -385,16 +380,17 @@ class Fight extends React.Component {
                   id="ko-player2"
                   className="ko-player"
                   src={ko}
-                  alt="kop1"
                   style={
                     this.state.player2.health === 0
                       ? { display: "block" }
                       : { display: "none" }
                   }
+                  alt="KO"
                 />
                 <img
                   src={this.state.player2.sprite}
                   className="pokemon-sprite"
+                  alt="pokemon-player2"
                 />
               </div>
               <div className="turn-text" style={styleTurnP1}>
@@ -422,7 +418,7 @@ class Fight extends React.Component {
           </div>
           {this.getStats()}
         </div>
-        <audio style={{marginTop: '20px'}} src={song} controls autoPlay></audio>
+        <audio style={{ marginTop: '20px' }} src={song} controls autoPlay></audio>
       </>
     );
   }
