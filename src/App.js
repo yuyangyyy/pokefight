@@ -11,13 +11,13 @@ import Fight from "./components/Fight";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Intro from "./components/Intro";
+import Landing from "./components/Landing"
 import Navbar from "./components/Navbar";
 import Pokedex from "./components/Pokedex";
 import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 
 import pkball from "./img/logo/pokeball contour fin.png";
-import song from './img/pokefight.mp3'
 
 import "./App.css";
 
@@ -223,6 +223,7 @@ class App extends React.Component {
             <Route exact path="/">
               <Intro makeVisible={this.makeVisible} />
             </Route>
+            <Route path='/landing' component={Landing} />
             <Route path="/new-game">
               <div className="diag-pack">
                 <img src={pkball} />

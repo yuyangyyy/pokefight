@@ -17,7 +17,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="header" id='navbar' style={ this.props.appear ? {opacity: 1} : {opacity: 0}}>
-        <Link exact to="/" className="logo">
+        <Link to="/landing" className="logo">
           <img className="nav-logo" src={logo} />
         </Link>
     <p className='nav-reminder'>{this.state.page}</p>
