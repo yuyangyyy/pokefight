@@ -1,9 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import "./DialogBox.css";
 
 class DialogBox extends React.Component {
+  //handleKey = (e) => {
+  //if (e.key === "Enter") {
+  //alert("hello");
+  //return (
+  //<Redirect
+  //to={{
+  //pathname: "/choose-pokemon",
+  //player1: this.props.firstPlayer,
+  //}}
+  ///>
+  //);
+  //}
+  //};
+
   componentDidMount() {
     this.props.refreshData();
   }
@@ -18,6 +32,7 @@ class DialogBox extends React.Component {
             value={this.props.firstPlayer}
             onChange={this.props.saveNamePlayer1}
             placeholder=" Your Name"
+            //onKeyDown={this.handleKey}
           />
           <div className="button-group">
             <Link

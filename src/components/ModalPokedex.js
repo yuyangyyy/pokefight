@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import "./ModalPokedex.css";
 
 class ModalPokedex extends React.Component {
-  state = {
-    test: false,
-  };
-
   render() {
     let isDisplay = this.props.displayModal ? "block" : "none";
     const { pokemon } = this.props;
