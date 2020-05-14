@@ -5,26 +5,72 @@
   animation: titleDown 1.5s forwards;
   position: relative;
 }
-.pokeball{
-    width: 0%;
-    margin: 0 auto;
-    display: block;
-    animation: grow 1.3s 2s forwards;
-    transition: 0.2s ease-out;
+
+.pokeball {
+  width: 0%;
+  margin: 0 auto;
+  display: block;
+  animation: grow 1.3s 2s forwards;
+  transition: 0.2s ease-out;
 }
 
 .pokeball:hover {
-    transform: scale(1.089);
-    cursor: pointer;
+  transform: scale(1.089);
+  cursor: pointer;
 }
 
-@keyframes  titleDown { 
-    0% {top: -350px}
-    70% {top: 50px}
-    85% {top: 0px}
-    100% {top: 50px}}
+@keyframes titleDown {
+  0% {
+    top: -350px;
+  }
+  70% {
+    top: 50px;
+  }
+  85% {
+    top: 0px;
+  }
+  100% {
+    top: 50px;
+  }
+}
 
 @keyframes grow {
-    from {width: 0%;}
-    to {width: 13%;}
+  from {
+    width: 0%;
+  }
+  to {
+    width: 13%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .titre {
+    width: 80%;
+  }
+  @keyframes titleDown {
+    0% {
+      top: -350px;
+    }
+    70% {
+      top: 120px;
+    }
+    85% {
+      top: 70px;
+    }
+    100% {
+      top: 120px;
+    }
+  }
+
+  .pokeball {
+    margin-top: 130px;
+  }
+  @keyframes grow {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 50%;
+    }
+  }
 }

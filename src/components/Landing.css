@@ -1,0 +1,12 @@
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.landing-container img {
+  width: 80%;
+  opacity: 0.25;
+}
+

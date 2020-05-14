@@ -2,7 +2,8 @@ footer {
   background-color: #313131;
   width: 100%;
   margin-top: auto;
-  }
+  transition: 1s ease-in-out;
+}
 
 .logo-poke {
   width: 40vh;
@@ -46,8 +47,9 @@ footer {
   align-self: center;
   margin: 0 auto;
 }
-.flex-logoReseau img {
-  margin: 0px 5px;
+
+.flex-footer audio {
+  margin: 0 20px;
 }
 
 .flex-list a {
@@ -64,16 +66,26 @@ footer {
   .flex-footer {
     flex-direction: column;
   }
+
+  .flex-list {
+    flex-direction: column;
+    text-align: center;
+  }
+
   hr {
     display: none;
   }
+
   footer {
     height: 60%;
   }
+
   .flex-logoReseau {
     margin-bottom: 5%;
   }
-  .logo-poke {
-    margin-bottom: 3%;
+
+  .flex-footer audio {
+    margin: 20px 0 40px 0;
   }
+  
 }

@@ -7,11 +7,10 @@ class Picture extends React.Component {
     picture1: "",
     picture2: "",
   };
-
   render() {
     return (
       <div className="picture">
-        <img src={this.props.pic} alt="Pikachu" />
+        <img src={this.props.pic} alt="" />
       </div>
     );
   }

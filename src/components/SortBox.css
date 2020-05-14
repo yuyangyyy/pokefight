@@ -1,41 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap");
 
-.SortBox{
-    position: relative; 
-    width: 200px;
-    margin: 15px 0;
+.SortBox {
+  position: relative;
+  width: 200px;
+  margin: 15px 0;
 }
 
-.SortBox select:hover{
-    cursor: pointer;
+.SortBox select:hover {
+  cursor: pointer;
 }
 
-.SortBox::before { 
-	content: '';
-	position: absolute;
-	top: 50%; 
-	margin-top: -3px;
-	right: .75em;  
-	display: block; 
-	width: 0; height: 0;
-	border-color: transparent;
-	border-top-color: #fff; 
-	border-width: 6px;
-	border-style: solid;
-	pointer-events: none;
+.SortBox::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -3px;
+  right: 0.75em;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-top-color: #fff;
+  border-width: 6px;
+  border-style: solid;
+  pointer-events: none;
 }
 
-.SortBox select{
-    -webkit-appearance: none;
-	-moz-appearance: none;
-    appearance: none;
-    
-    font-family: 'Baloo Paaji 2', cursive;
-    font-size: 1.1rem;
-    color: #fff;
-    background-color: #313131;
-    padding: 2px;
-    text-align: center;
-    width: 100%;
-    border: 6px solid transparent;
+.SortBox select {
+  appearance: none;
+
+  font-family: "Baloo Paaji 2", cursive;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #313131;
+  border-radius: 5px 0 5px 0;
+  padding: 2px;
+  text-align: center;
+  width: 100%;
+  border: 6px solid transparent;
 }

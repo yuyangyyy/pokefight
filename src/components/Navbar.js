@@ -1,56 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./Navbar.css";
 import logo from "../img/logo/LogoPokeBlanc.png";
 
-class Navbar extends React.Component {
-  state = { isOpen: false };
+import "./Navbar.css";
 
-  toggleNavbar = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
+class Navbar extends React.Component {
+  state = {
+    page: "",
+  };
+  getPageName = (event) => {
+    this.setState({ page: event.target.id });
   };
 
   render() {
     return (
-      <div className={this.state.isOpen ? "navbar isOpen" : "navbar"}>
-        <div className="sousnavbar">
-          <div className="navlogo">
-            <div
-              onClick={this.toggleNavbar}
-              className={this.state.isOpen ? "burger active" : "burger"}
-            >
-              <div className="spanbar">
-                <span></span>
-              </div>
-            </div>
-            <Link to="/">
-              <img src={logo} alt="logoPokemon" />
+      <div
+        className="header"
+        id="navbar"
+        style={this.props.appear ? { opacity: 1 } : { opacity: 0 }}
+      >
+        <Link to="/landing" className="logo">
+          <img className="nav-logo" src={logo} alt="logo-pokefight"/>
+        </Link>
+        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="nav-icon"></span>
+        </label>
+        <ul className="menu" onClick={this.getPageName}>
+          <li id="orange">
+            <Link to="/new-game" id="New Game">
+              New Game
             </Link>
-          </div>
-
-          <div className="links">
-            <ul>
-              <li className="new-game">
-                <Link to="/new-game">New game</Link>
-              </li>
-
-              <li className="pokedex">
-                <Link to="/pokedex">PokéDex</Link>
-              </li>
-
-              <li className="classement">
-                <Link to='/ranking'>Ranking</Link>
-              </li>
-
-              <li className="contact">
-                <Link to='contact'>Contact</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+          </li>
+          <li id="cyan">
+            <Link to="/pokedex" id="Pokedex">
+              Pokédex
+            </Link>
+          </li>
+          <li id="green">
+            <Link to="/ranking" id="Ranking">
+              Ranking
+            </Link>
+          </li>
+          <li id="red">
+            <Link to="/contact" id="Contact">
+              Contact
+            </Link>
+          </li>
+        </ul>
       </div>
     );
   }
