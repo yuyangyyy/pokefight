@@ -96,7 +96,7 @@ class Pokedex extends React.Component {
           className="filter-pokemon"
           onClick={() => this.setState({ isClick: true })}
         >
-          <button onClick={this.props.handleClickModal}>
+          <button id="randomPokemon" onClick={this.props.handleClickModal}>
             Random
           </button>
           <SortBox
