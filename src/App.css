@@ -23,7 +23,7 @@ body {
 }
 
 .global-Pokedex, .boxEndgame {
-  margin: 150px auto;
+  margin: 150px auto 75px auto;
 }
 
 a {
