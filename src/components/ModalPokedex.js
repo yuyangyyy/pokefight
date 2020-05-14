@@ -22,11 +22,12 @@ class ModalPokedex extends React.Component {
 						<h3>{pokemon.name}<span> {pokemon.id <= 9 ? "No.00" + pokemon.id : pokemon.id >= 10 && pokemon.id < 100 ? "No.0" + pokemon.id : "No." + pokemon.id}</span></h3>
 						<Link to={this.props.selectPlayer1.length > 0 ? '/new-game-5' : '/new-game-1'}>
 							<button 
-								style={this.props.modalButton ? {visibility: 'visible'} : {visibility: 'hidden'}}
+								style={this.props.modalButton ? {display: 'block'} : {display: 'none'}}
 								id="play" 
 								onClick={this.props.handleClickPlay}
 								>Play</button>
 						</Link>
+						<div style={!this.props.modalButton ? {height: '50px'} : {height: 0}}></div>
 						<div className="modal-container">
 							<img src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt={`pokemon${pokemon.id}`} />
 							<div>

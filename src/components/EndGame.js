@@ -25,6 +25,26 @@ class EndGame extends React.Component {
 			return val1 / (val1 + val2) * 100
 		}
 	}
+
+	convertDuration = (duration) => {
+		if (duration > 59 && duration < 120) {
+			return `1m${duration - 60}`
+		} else if (duration >= 120 && duration < 180) {
+			return `2m${duration - 120}`
+		} else if (duration >= 180 && duration < 240) {
+			return `3m${duration - 180}`
+		} else if (duration >= 240 && duration < 300) {
+			return `4m${duration - 240}`
+		}else if (duration >= 300 && duration < 360) {
+			return `5m${duration - 300}`
+		}else if (duration >= 360 && duration < 720) {
+			return `6m${duration - 360}`
+		}else {
+			return duration
+		}
+
+	}	
+
 	refreshPage = () => {
 		return <Redirect to='/new-game' />
 	}
@@ -36,9 +56,9 @@ class EndGame extends React.Component {
 				<div className="container-endgame">
 
 					<div className="EndGame-line1">
-						<p>{this.props.location.firstPlayer || "Auxence"}</p>
+						<p>{this.props.location.firstPlayer}</p>
 						<img src={vs} alt='vs-logo' style={{ width: '75px' }} />
-						<p>{this.props.location.secondPlayer || "Julien"}</p>
+						<p>{this.props.location.secondPlayer || "Computer" }</p>
 					</div>
 
 					<StatBar
@@ -65,7 +85,7 @@ class EndGame extends React.Component {
 				</div>
 
 				<div className="EndGame-stat-global">
-					<p>Fight duration : {this.props.location.duration} secs</p>
+					<p>Fight duration : {this.convertDuration(this.props.location.duration)}s</p>
 					<p>Global attacks : {statAttackP1 - missedAttackP1 + statAttackP2 - missedAttackP2}</p>
 					<p>Global damages : {totalHitP1 + totalHitP2}</p>
 					<p>Global missed attacks : {missedAttackP1 + missedAttackP2}</p>

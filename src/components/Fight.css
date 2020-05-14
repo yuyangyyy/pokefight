@@ -29,6 +29,18 @@
   align-items: center;
 }
 
+.ko-container {
+  position: relative;
+}
+.ko-player {
+  position: absolute;
+  top: 10px;
+  animation: ko .5s ease-out forwards;
+}
+@keyframes ko {
+    from {width: 0px}
+    to {width: 250px}
+}
 
 .actions-right, .actions-left{
   display: flex;
