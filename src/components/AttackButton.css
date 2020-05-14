@@ -31,7 +31,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .mainContainer{
+  .mainContainer {
     flex-direction: column;
     align-items: center;
   }
