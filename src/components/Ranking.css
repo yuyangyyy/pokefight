@@ -17,7 +17,7 @@
 
 .player h3 {
   text-align: center;
-  color: #CF283A;
+  color: #cf283a;
   border-bottom: 1px solid #a1a1a1;
 }
 
@@ -45,5 +45,4 @@
   .player {
     width: 100%;
   }
-
 }

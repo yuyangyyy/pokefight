@@ -41,7 +41,8 @@
   left: 0;
 }
 
-.DialogBox p, .DialogBox input {
+.DialogBox p,
+.DialogBox input {
   margin-bottom: 20px;
 }
 
@@ -83,6 +84,6 @@
   display: none;
 }
 
-a{
+a {
   color: #fff;
 }
