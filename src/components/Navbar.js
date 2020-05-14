@@ -20,8 +20,8 @@ class Navbar extends React.Component {
         id="navbar"
         style={this.props.appear ? { opacity: 1 } : { opacity: 0 }}
       >
-        <Link exact to="/" className="logo">
-          <img className="nav-logo" src={logo} />
+        <Link to="/" className="logo">
+          <img className="nav-logo" src={logo} alt="logo pokefight"/>
         </Link>
         <p className="nav-reminder">{this.state.page}</p>
         <input className="menu-btn" type="checkbox" id="menu-btn" />

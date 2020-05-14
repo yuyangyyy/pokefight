@@ -11,7 +11,6 @@ import "./Types.css";
 
 class Pokedex extends React.Component {
   state = {
-    showMore: false,
     arrPokemonsType: [],
     showMore: false,
     nbShow: 12,

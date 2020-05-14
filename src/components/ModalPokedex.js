@@ -82,7 +82,7 @@ class ModalPokedex extends React.Component {
                     <ul>
                       {attacks &&
                         attacks.map((attack, id) => (
-                          <li>{id === 3 ? attack : attack + " - "}</li>
+                          <li key={id}>{id === 3 ? attack : attack + " - "}</li>
                         ))}
                     </ul>
                   </div>
