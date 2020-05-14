@@ -6,12 +6,11 @@ import Comment from "./Comment";
 import Potion from "./Potion";
 import StatutPokemon from "./StatutPokemon";
 
-import "./Fight.css";
-
 import emptyPotion from "../img/potions/02_empty_potion.png";
-
-import song from "../img/fight.mp3";
 import ko from "../img/logo/versus.png";
+import song from "../soundtrack/fight.mp3";
+
+import "./Fight.css";
 
 const players = [
   {
@@ -38,8 +37,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
-    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
@@ -52,7 +51,7 @@ class Fight extends React.Component {
     totalHitP2: 0,
 
     computerTurn: false,
-    computerEnabled: this.props.computerEnabled, //this.props.computerEnabled
+    computerEnabled: this.props.computerEnabled,
     computerPotion: 0,
 
     duration: 0,
@@ -147,7 +146,7 @@ class Fight extends React.Component {
       () => this.changePvColor(playerState)
     );
 
-    //on force computer à false lors de son tour poue éviter qu'il change lui même
+    //computer to false on his turn to avoid a own change
     if (e !== "computer")
       this.setState({ computerTurn: !this.state.computerTurn });
     else this.setState({ computerTurn: false });
@@ -422,7 +421,12 @@ class Fight extends React.Component {
           </div>
           {this.getStats()}
         </div>
-        <audio style={{marginTop: '20px'}} src={song} controls autoPlay></audio>
+        <audio
+          style={{ marginTop: "20px" }}
+          src={song}
+          controls
+          autoPlay
+        ></audio>
       </>
     );
   }

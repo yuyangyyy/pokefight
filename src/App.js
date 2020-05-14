@@ -17,7 +17,6 @@ import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 
 import pkball from "./img/logo/pokeball contour fin.png";
-import song from './img/pokefight.mp3'
 
 import "./App.css";
 
@@ -26,7 +25,7 @@ const propComparator = (propName) => (a, b) =>
 
 class App extends React.Component {
   state = {
-    nbPokemons: 300, //387,
+    nbPokemons: 300,
     pokemons: "",
     frenchPokemons: [],
     pokemonDescription: [],
@@ -104,7 +103,7 @@ class App extends React.Component {
 
   getRandomHit = (max) => {
     const hit = Math.floor(Math.random() * Math.floor(max));
-      return hit >= 15 ? hit : 15;
+    return hit >= 15 ? hit : 15;
   };
 
   handleClickModal = (event) => {
@@ -147,7 +146,7 @@ class App extends React.Component {
     const attacks = selectPokemon.moves
       .slice(random, random + 4)
       .map((attack) => attack.move.name);
-    
+
     const players = [
       {
         name: selectPokemon.name,
@@ -156,28 +155,29 @@ class App extends React.Component {
         number: idFormat,
         health: 100,
         attack: attacks,
-        attackHit: [this.getRandomHit(35), this.getRandomHit(35), this.getRandomHit(35), this.getRandomHit(35)],
+        attackHit: [
+          this.getRandomHit(35),
+          this.getRandomHit(35),
+          this.getRandomHit(35),
+          this.getRandomHit(35),
+        ],
         sprite: selectPokemon.sprites.back_default,
       },
     ];
-    
+
     if (this.state.selectPlayer1.length === 0) {
       this.setState({ selectPlayer1: players }, () => {
         this.setState({ displayModal: false });
-        console.log(this.state.selectPlayer1, this.state.selectPlayer2);
-        console.log(this.state.selectPlayer1.length);
       });
     } else {
       players[0].sprite = selectPokemon.sprites.front_default;
       this.setState({ selectPlayer2: players }, () => {
         this.setState({ displayModal: false });
-        console.log(this.state.selectPlayer1, this.state.selectPlayer2);
       });
     }
   };
 
   handleClickEnemy = (e) => {
-    console.log(e.target.id);
     e.target.id === "computer"
       ? this.setState({ computerEnabled: true })
       : this.setState({ computerEnabled: false });

@@ -3,12 +3,11 @@ import React from "react";
 import "./DialogBox.css";
 
 class DialogBox extends React.Component {
-
   state = { firstPlayer: "" };
 
   handleChange = (event) => {
     this.setState({ firstPlayer: event.target.value });
-  }
+  };
 
   render() {
     const { firstButton, scndButton, idDialogBox } = this.props;
@@ -27,10 +26,13 @@ class DialogBox extends React.Component {
             placeholder={this.props.placeholder}
           />
           <div className="button-group">
-            <button className={firstButton ? "" : "display-none"} {...this.props.id === "computer" ? this.disabled : ""}>
+            <button
+              className={firstButton ? "" : "display-none"}
+              {...(this.props.id === "computer" ? this.disabled : "")}
+            >
               {firstButton}
             </button>
-            <button className={scndButton ? "" : "display-none"} disabled >
+            <button className={scndButton ? "" : "display-none"} disabled>
               {scndButton}
             </button>
           </div>

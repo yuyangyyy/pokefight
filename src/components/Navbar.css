@@ -4,9 +4,7 @@
   width: 100%;
   z-index: 1;
   transition: 1s ease-in-out;
-  /* animation: appearance 1s 3s ease-out forwards */
 }
-
 
 .header ul {
   margin: 0;
@@ -21,7 +19,6 @@
   border-right: 1px solid #aaa;
   text-decoration: none;
   color: #fff;
-  /* text-align: center; */
 }
 
 .header #orange {
@@ -136,20 +133,20 @@
   display: none;
 }
 
-.header .menu-btn:checked~.menu {
+.header .menu-btn:checked ~ .menu {
   max-height: 255px;
 }
 
-.header .menu-btn:checked~.menu-icon .nav-icon {
+.header .menu-btn:checked ~ .menu-icon .nav-icon {
   background: transparent;
 }
 
-.header .menu-btn:checked~.menu-icon .nav-icon:before {
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before {
   transform: rotate(-45deg);
   top: 0;
 }
 
-.header .menu-btn:checked~.menu-icon .nav-icon:after {
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after {
   transform: rotate(45deg);
   top: 0;
 }
@@ -158,21 +155,27 @@
   .header {
     width: 800px;
   }
+
   .header li {
     float: left;
     height: 100%;
   }
+
   .header li a {
     padding: 31px 30px;
   }
+
   .header .menu {
     clear: none;
     float: right;
     max-height: none;
   }
-  .header .menu-icon, .nav-reminder {
+
+  .header .menu-icon,
+  .nav-reminder {
     display: none;
   }
+
   .header .nav-logo {
     padding: 12px 0 10px 48px;
     width: 200px;

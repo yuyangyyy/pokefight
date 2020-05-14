@@ -18,7 +18,7 @@
 .form label {
   padding-top: 15px;
   font-size: 20px;
-  color: #A1A1A1;
+  color: #a1a1a1;
   font-weight: 900;
 }
 
@@ -53,7 +53,7 @@
   height: 50px;
   border: 0;
   border-radius: 5px;
-  background-color: #CF283A;
+  background-color: #cf283a;
   color: #fff;
   font-weight: bold;
   font-size: 23px;
@@ -70,11 +70,4 @@
     margin: 125px auto 50px auto;
     width: 80%;
   }
-  /* .form input {
-    width: 100%;
-  }
-  #message {
-    width: 100%;
-  }
- */
 }
