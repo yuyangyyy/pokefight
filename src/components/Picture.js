@@ -7,7 +7,6 @@ class Picture extends React.Component {
     picture1: "",
     picture2: "",
   };
-
   render() {
     return (
       <div className="picture">

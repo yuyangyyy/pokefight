@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .Potions{
+  .Potions {
     flex-direction: row;
   }
   .Potions img:nth-of-type(2) {

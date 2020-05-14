@@ -26,7 +26,7 @@ const propComparator = (propName) => (a, b) =>
 
 class App extends React.Component {
   state = {
-    nbPokemons: 300, //387,
+    nbPokemons: 300,
     pokemons: "",
     frenchPokemons: [],
     pokemonDescription: [],
@@ -104,7 +104,7 @@ class App extends React.Component {
 
   getRandomHit = (max) => {
     const hit = Math.floor(Math.random() * Math.floor(max));
-      return hit >= 15 ? hit : 15;
+    return hit >= 15 ? hit : 15;
   };
 
   handleClickModal = (event) => {
@@ -147,7 +147,7 @@ class App extends React.Component {
     const attacks = selectPokemon.moves
       .slice(random, random + 4)
       .map((attack) => attack.move.name);
-    
+
     const players = [
       {
         name: selectPokemon.name,
@@ -156,28 +156,29 @@ class App extends React.Component {
         number: idFormat,
         health: 100,
         attack: attacks,
-        attackHit: [this.getRandomHit(35), this.getRandomHit(35), this.getRandomHit(35), this.getRandomHit(35)],
+        attackHit: [
+          this.getRandomHit(35),
+          this.getRandomHit(35),
+          this.getRandomHit(35),
+          this.getRandomHit(35),
+        ],
         sprite: selectPokemon.sprites.back_default,
       },
     ];
-    
+
     if (this.state.selectPlayer1.length === 0) {
       this.setState({ selectPlayer1: players }, () => {
         this.setState({ displayModal: false });
-        console.log(this.state.selectPlayer1, this.state.selectPlayer2);
-        console.log(this.state.selectPlayer1.length);
       });
     } else {
       players[0].sprite = selectPokemon.sprites.front_default;
       this.setState({ selectPlayer2: players }, () => {
         this.setState({ displayModal: false });
-        console.log(this.state.selectPlayer1, this.state.selectPlayer2);
       });
     }
   };
 
   handleClickEnemy = (e) => {
-    console.log(e.target.id);
     e.target.id === "computer"
       ? this.setState({ computerEnabled: true })
       : this.setState({ computerEnabled: false });
@@ -204,7 +205,7 @@ class App extends React.Component {
           <Navbar appear={this.state.appear} />
           <Switch>
             <Route path="/choose-pokemon">
-              <img className="pokeball-diag" src={pkball} />
+              <img className="pokeball-diag" src={pkball} alt="pokeball logo" />
               <DialogBox04 />
               <div className="pokedex-container">
                 <Pokedex
@@ -225,8 +226,8 @@ class App extends React.Component {
             </Route>
             <Route path='/landing' component={Landing} />
             <Route path="/new-game">
-              <div className="diag-pack">
-                <img src={pkball} />
+              <div className="diag-pack" alt="pokeball logo" >
+                <img src={pkball} alt="pokeball logo" />
                 <DialogBox01
                   firstPlayer={this.state.firstPlayer}
                   saveNamePlayer1={this.saveNamePlayer1}
@@ -236,13 +237,13 @@ class App extends React.Component {
             </Route>
             <Route path="/new-game-1">
               <div className="diag-pack">
-                <img src={pkball} />
+                <img src={pkball} alt="pokeball logo" />
                 <DialogBox02 handleClickEnemy={this.handleClickEnemy} />
               </div>
             </Route>
             <Route path="/new-game-2">
               <div className="diag-pack">
-                <img src={pkball} />
+                <img src={pkball} alt="pokeball logo" />
                 <DialogBox03
                   secondPlayer={this.state.secondPlayer}
                   saveNamePlayer2={this.saveNamePlayer2}
@@ -252,7 +253,7 @@ class App extends React.Component {
             <Route path="/new-game-3">
               <div className="diag-pack">
                 <Link to="/new-game-4">
-                  <img src={pkball} />
+                  <img src={pkball} alt="pokeball logo" />
                 </Link>
                 <DialogBox02 />
               </div>

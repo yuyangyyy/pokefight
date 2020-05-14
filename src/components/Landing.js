@@ -1,15 +1,15 @@
-import React from "react"
+import React from "react";
 
-import logo from "../img/logo/LogoPokeBlanc.png"
+import logo from "../img/logo/LogoPokeBlanc.png";
 
-import "./Landing.css"
+import "./Landing.css";
 
 const Landing = () => {
-    return(
-        <div className='landing-container'>
-            <img src={logo} alt='pokemon-logo' />
-        </div>
-    )
-}
+  return (
+    <div className="landing-container">
+      <img src={logo} alt="pokemon-logo" />
+    </div>
+  );
+};
 
-export default Landing
+export default Landing;

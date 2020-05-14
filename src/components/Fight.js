@@ -1,48 +1,23 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import AttackButton from "./AttackButton";
 import Comment from "./Comment";
 import Potion from "./Potion";
 import StatutPokemon from "./StatutPokemon";
 
-import "./Fight.css";
-
 import emptyPotion from "../img/potions/02_empty_potion.png";
-
-import song from "../img/fight.mp3";
 import ko from "../img/logo/KO.png";
+import song from "../soundtrack/fight-music.mp3";
 
-const players = [
-  {
-    name: "Pikachu",
-    number: "025",
-    health: 100,
-    healthColor: "rgb(100, 182, 75)",
-    attack: ["power-up-punch", "Sla", "Agil", "Thun"],
-    attackHit: [90, 90, 90, 90],
-    sprite:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png",
-  },
-  {
-    name: "Raichu",
-    number: "042",
-    health: 100,
-    healthColor: "rgb(100, 182, 75)",
-    attack: ["bolt", "Sla", "Agil", "Thun"],
-    attackHit: [90, 90, 90, 90],
-    sprite:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-  },
-];
+import "./Fight.css";
 
 class Fight extends React.Component {
   state = {
-    player1: players[0], //this.props.selectPlayer1[0],
-    player2: players[1], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
-
     statPotion: 0,
     statAttackP1: 0,
     statAttackP2: 0,
@@ -50,11 +25,9 @@ class Fight extends React.Component {
     missedAttackP2: 0,
     totalHitP1: 0,
     totalHitP2: 0,
-
     computerTurn: false,
-    computerEnabled: this.props.computerEnabled, //this.props.computerEnabled
+    computerEnabled: this.props.computerEnabled,
     computerPotion: 0,
-
     duration: 0,
     duration2: 0,
   };
@@ -128,13 +101,13 @@ class Fight extends React.Component {
         hit > 35
           ? this.setState({ commentText: "Critical hit!" })
           : hit <= 35 && hit > 20
-          ? this.setState({ commentText: "It's super effective!" })
-          : hit <= 20 && hit >= 15
-          ? this.setState({ commentText: "It's effective!" })
-          : this.setState({
-              commentText: `${currentPlayer.name}'s attack missed!`,
-              [missedAttack]: this.state[missedAttack] + 1,
-            });
+            ? this.setState({ commentText: "It's super effective!" })
+            : hit <= 20 && hit >= 15
+              ? this.setState({ commentText: "It's effective!" })
+              : this.setState({
+                commentText: `${currentPlayer.name}'s attack missed!`,
+                [missedAttack]: this.state[missedAttack] + 1,
+              });
       }, 2500);
     }
 
@@ -147,7 +120,7 @@ class Fight extends React.Component {
       () => this.changePvColor(playerState)
     );
 
-    //on force computer à false lors de son tour poue éviter qu'il change lui même
+    //computer to false on his turn to avoid a own change
     if (e !== "computer")
       this.setState({ computerTurn: !this.state.computerTurn });
     else this.setState({ computerTurn: false });
@@ -173,7 +146,7 @@ class Fight extends React.Component {
     const idPotionComputer = this.state.computerPotion;
     const potionImgComputer = document.getElementById("potionP2");
 
-    let target = e.target == undefined ? "" : e.target.parentNode.id;
+    let target = e.target === undefined ? "" : e.target.parentNode.id;
     let targetImg =
       e.target === undefined
         ? potionImgComputer.childNodes[idPotionComputer].src
@@ -188,7 +161,7 @@ class Fight extends React.Component {
     }
     if (currentPlayer.health < 100 && currentPlayer.health > 0) {
       if (targetImg === emptyPotion) {
-        currentPlayer.health = currentPlayer.health;
+        currentPlayer.health *= currentPlayer.health;
         this.setState({ commentText: "It's empty..!" });
       } else if (currentPlayer.health >= 75) {
         currentPlayer.health = 100;
@@ -276,13 +249,7 @@ class Fight extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const {
-      computerTurn,
-      tourPlayer1,
-      computerEnabled,
-      player1,
-      player2,
-    } = this.state;
+    const {computerTurn, tourPlayer1, computerEnabled} = this.state;
 
     if (
       computerEnabled &&
@@ -341,16 +308,17 @@ class Fight extends React.Component {
                   id="ko-player1"
                   className="ko-player"
                   src={ko}
-                  alt="kop1"
                   style={
                     this.state.player1.health === 0
                       ? { display: "block" }
                       : { display: "none" }
                   }
+                  alt="KO"
                 />
                 <img
                   src={this.state.player1.sprite}
                   className="pokemon-sprite"
+                  alt="pokemon-player1"
                 />
               </div>
               <div className="turn-text" style={styleTurnP2}>
@@ -385,16 +353,17 @@ class Fight extends React.Component {
                   id="ko-player2"
                   className="ko-player"
                   src={ko}
-                  alt="kop1"
                   style={
                     this.state.player2.health === 0
                       ? { display: "block" }
                       : { display: "none" }
                   }
+                  alt="KO"
                 />
                 <img
                   src={this.state.player2.sprite}
                   className="pokemon-sprite"
+                  alt="pokemon-player2"
                 />
               </div>
               <div className="turn-text" style={styleTurnP1}>
@@ -422,7 +391,12 @@ class Fight extends React.Component {
           </div>
           {this.getStats()}
         </div>
-        <audio style={{marginTop: '20px'}} src={song} controls autoPlay></audio>
+        <audio
+          style={{ marginTop: "20px" }}
+          src={song}
+          controls
+          autoPlay
+        ></audio>
       </>
     );
   }

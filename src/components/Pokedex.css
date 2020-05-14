@@ -1,78 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap");
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .global-pokedex {
     margin: 110px auto 50px auto;
 }
 
-.Pokedex, .show-more, .filter-pokemon {
-    width: 70%;
-    background-color: #fff;
-}
-
-#randomPokemon {
-    border-radius: 5px 0 5px 0;
+.Pokedex,
+.show-more,
+.filter-pokemon {
+  width: 70%;
+  background-color: #fff;
 }
 
 .filter-pokemon {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 30px;
-    padding-bottom: 10px;
-    margin: 20px auto;
-    margin-bottom: 0;
-    border-radius: 5px 5px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px;
+  padding-bottom: 10px;
+  margin: 20px auto;
+  margin-bottom: 0;
+  border-radius: 5px 5px 0 0;
 }
 
 .filter-pokemon input {
-    margin: 20px 0;
-    border: 1px solid #313131;
-    border-radius: 2px;
-    height: 30px;
+  margin: 20px 0;
+  border: 1px solid #313131;
+  border-radius: 2px;
+  height: 30px;
 }
 
 .Pokedex {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
-    font-family: 'Baloo Paaji 2', cursive;
-    margin: 20px auto;
-    margin-top: 0;
-    padding: 30px;
-    margin-bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  font-family: "Baloo Paaji 2", cursive;
+  margin: 20px auto;
+  margin-top: 0;
+  padding: 30px;
+  margin-bottom: 0;
 }
 
 .Pokedex h3 {
-    font-weight: normal;
-    font-size: 1.6rem;
+  font-weight: normal;
+  font-size: 1.6rem;
 }
 
 .pokemon-info {
-    border: 2px solid #313131;
-    background-color: #fff;
-    padding: 10px;
+  border: 2px solid #313131;
+  background-color: #fff;
+  padding: 10px;
 }
 
 .pokemon-card {
-    background-color: #a1a1a1;
-    transition: .1s ease-out;
+  background-color: #a1a1a1;
+  transition: 0.1s ease-out;
 }
 
 .pokemon-card:hover {
-    cursor: pointer;
-    transform: scale(1.05);
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .pokemon-card img {
-    width: 70%;
-    margin: 10px auto;
-    display: block;
-    background-color: #a1a1a1;
+  width: 70%;
+  margin: 10px auto;
+  display: block;
+  background-color: #a1a1a1;
 }
 
 .show-more {
@@ -84,131 +82,124 @@
 }
 
 .global-pokedex button {
-    font-family: 'Baloo Paaji 2', cursive;
-    font-size: 1.2rem;
-    background-color: #313131;
-    color: #fff;
-    margin: 0 10px;
-    padding: 0 30px;
-    height: 49px;
-    border: 2px solid #313131;
-    transition: all .1s ease-in-out;
+  font-family: "Baloo Paaji 2", cursive;
+  font-size: 1.2rem;
+  background-color: #313131;
+  color: #fff;
+  margin: 0 10px;
+  padding: 0 30px;
+  height: 47px;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  border-radius: 5px 0 5px 0;
 }
 
 .global-pokedex button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .display-none {
-    display: none;
+  display: none;
 }
 
 /* COLOR TYPE */
 
 .pokemon-type {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #fff;
-    text-align: center;
-    width: 90px;
-    height: 20px;
-    line-height: 20px;
-    border-radius: 3px;
-    margin-right: 3px;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  width: 90px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 3px;
+  margin-right: 3px;
 }
-
 
 /* POKELOAD */
 
-/* Poké Styles */
-
-/* *, *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-} */
-
 .loading-box {
-    width: 70%;
-    background-color: #fff;
-    padding: 50px 0;
-    margin: auto;
+  width: 70%;
+  background-color: #fff;
+  padding: 50px 0;
+  margin: auto;
 }
 
 .loading-box img {
-    position: relative;
-    overflow: hidden;
-    display: block;
-    margin: auto;
-    width: 100px;
-    z-index: 1;
-    animation: fall 0.25s ease-in-out, shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+  width: 100px;
+  z-index: 1;
+  animation: fall 0.25s ease-in-out,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
 }
 
 /* Animation */
 
 @keyframes blink {
-    from {
-        background: #eee;
-    }
-    to {
-        background: #e74c3c;
-    }
+  from {
+    background: #eee;
+  }
+  to {
+    background: #e74c3c;
+  }
 }
 
 @keyframes shake {
-    0% {
-        transform: translate(0, 0) rotate(0);
-    }
-    20% {
-        transform: translate(-10px, 0) rotate(-20deg);
-    }
-    30% {
-        transform: translate(10px, 0) rotate(20deg);
-    }
-    50% {
-        transform: translate(-10px, 0) rotate(-10deg);
-    }
-    60% {
-        transform: translate(10px, 0) rotate(10deg);
-    }
-    100% {
-        transform: translate(0, 0) rotate(0);
-    }
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-10px, 0) rotate(-20deg);
+  }
+  30% {
+    transform: translate(10px, 0) rotate(20deg);
+  }
+  50% {
+    transform: translate(-10px, 0) rotate(-10deg);
+  }
+  60% {
+    transform: translate(10px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
 }
 
 @keyframes fall {
-    0% {
-        top: -200px;
-    }
-    60% {
-        top: 0;
-    }
-    80% {
-        top: -20px;
-    }
-    100% {
-        top: 0;
-    }
+  0% {
+    top: -200px;
+  }
+  60% {
+    top: 0;
+  }
+  80% {
+    top: -20px;
+  }
+  100% {
+    top: 0;
+  }
 }
 
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1270px) {
-    .Pokedex {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .Pokedex {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (max-width: 950px) {
-    .Pokedex {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .Pokedex {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 635px) {
-    .Pokedex {
-        grid-template-columns: repeat(1, 1fr);
-    }
+  .Pokedex {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

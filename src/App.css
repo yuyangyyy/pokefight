@@ -22,7 +22,8 @@ body {
   margin-right: 42px;
 }
 
-.global-Pokedex, .boxEndgame {
+.global-Pokedex,
+.boxEndgame {
   margin: 150px auto 75px auto;
 }
 
@@ -37,8 +38,6 @@ a {
 .header {
   align-self: center;
 }
-
-/*TESTS D'AFFICHAGE POKEDEX IMBRIQUE*/
 
 .pokeball-diag {
   width: 100px;

@@ -23,8 +23,7 @@
   align-items: center;
   color: #313131;
   padding: 15px 10px;
-  border: 1px solid;
-  border-radius: 3px;
+  border-radius: 5px;
   width: 350px;
   height: 165px;
   margin: 0 auto;
@@ -41,7 +40,8 @@
   left: 0;
 }
 
-.DialogBox p, .DialogBox input {
+.DialogBox p,
+.DialogBox input {
   margin-bottom: 20px;
 }
 
@@ -65,6 +65,7 @@
   padding: 0 20px;
   height: 40px;
   border: 2px solid #313131;
+  border-radius: 5px;
   transition: all 0.1s ease-in-out;
 }
 
@@ -83,6 +84,6 @@
   display: none;
 }
 
-a{
+a {
   color: #fff;
 }

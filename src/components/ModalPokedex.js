@@ -1,14 +1,13 @@
-import React from "react"
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './ModalPokedex.css'
+import "./ModalPokedex.css";
 
-const ModalPokedex = (props) => {
+const ModalPokedex = props => {
 	
 		let isDisplay = props.displayModal ? "block" : "none"
 		const { pokemon } = props
 		const attacks = pokemon && pokemon.moves.slice(0, 4).map(attack => attack.move.name)
-		const weakness = ['Fire', 'Flight', 'Psy', 'Ice']
 		const firstType = pokemon && pokemon.types[0].type.name
 		const scdType = pokemon && pokemon.types[1] ? pokemon.types[1].type.name : ""
 		return (
@@ -38,16 +37,9 @@ const ModalPokedex = (props) => {
 									<div className="usual-attacks">
 										<h4>Usual attacks :</h4>
 										<ul className='attacks-list'>
-											{attacks && attacks.map((attack, id) => <li>{id === 3 ? attack : attack + " - "}</li>)}
+											{attacks && attacks.map((attack, id) => <li key={id}>{id === 3 ? attack : attack + " - "}</li>)}
 										</ul>
 									</div>
-									<div className='weakness-types'>
-										<h4>Weakness Type(s) :</h4>
-										<ul>
-											{weakness.map((weak, id) => <li key={id}>{weak} </li>)}
-										</ul>
-									</div>
-
 								</div>
 							</div>
 						</div>
@@ -57,4 +49,4 @@ const ModalPokedex = (props) => {
 		)
 }
 
-export default ModalPokedex
+export default ModalPokedex;
