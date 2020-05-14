@@ -28,3 +28,22 @@
     from {width: 0%;}
     to {width: 13%;}
 }
+
+@media screen and (max-width: 800px) {
+    .titre {
+        width: 80%;
+    }
+    @keyframes  titleDown { 
+        0% {top: -350px}
+        70% {top: 120px}
+        85% {top: 70px}
+        100% {top: 120px}}
+
+    .pokeball {
+        margin-top: 130px;
+    }
+    @keyframes grow {
+        from {width: 0%;}
+        to {width: 50%;}
+    }
+}
