@@ -10,6 +10,7 @@ import "./Fight.css";
 
 import emptyPotion from "../img/potions/02_empty_potion.png";
 
+import song from "../img/fight.mp3";
 import ko from "../img/logo/versus.png";
 
 const players = [
@@ -37,8 +38,8 @@ const players = [
 
 class Fight extends React.Component {
   state = {
-    player1: players[0], //this.props.selectPlayer1[0],
-    player2: players[1], //this.props.selectPlayer2[0],
+    player1: this.props.selectPlayer1[0], //this.props.selectPlayer1[0],
+    player2: this.props.selectPlayer2[0], //this.props.selectPlayer2[0],
     commentText: "",
     tourPlayer1: true,
 
@@ -51,7 +52,7 @@ class Fight extends React.Component {
     totalHitP2: 0,
 
     computerTurn: false,
-    computerEnabled: false, //this.props.computerEnabled
+    computerEnabled: this.props.computerEnabled, //this.props.computerEnabled
     computerPotion: 0,
 
     duration: 0,
@@ -323,81 +324,106 @@ class Fight extends React.Component {
       : { display: "none" };
 
     return (
-      <div className="fight">
-        <div className="fight-container">
-          {/*PLAYER 1*/}
-          <div className="fight-left">
-            <StatutPokemon
-              name={this.state.player1.name}
-              number={this.state.player1.number}
-              health={this.state.player1.health}
-              healthColor={this.state.player1.healthColor}
-              ChangePvColor={this.changePvColor}
-            />
-            <div className="ko-container">
-              <img id="ko-player1" className="ko-player" src={ko} alt="kop1"
-                style={this.state.player1.health === 0 ? {display: "block"} : {display: "none"}}
+      <>
+        <div className="fight">
+          <div className="fight-container">
+            {/*PLAYER 1*/}
+            <div className="fight-left">
+              <StatutPokemon
+                name={this.state.player1.name}
+                number={this.state.player1.number}
+                health={this.state.player1.health}
+                healthColor={this.state.player1.healthColor}
+                ChangePvColor={this.changePvColor}
               />
-              <img src={this.state.player1.sprite} className="pokemon-sprite" />
+              <div className="ko-container">
+                <img
+                  id="ko-player1"
+                  className="ko-player"
+                  src={ko}
+                  alt="kop1"
+                  style={
+                    this.state.player1.health === 0
+                      ? { display: "block" }
+                      : { display: "none" }
+                  }
+                />
+                <img
+                  src={this.state.player1.sprite}
+                  className="pokemon-sprite"
+                />
+              </div>
+              <div className="turn-text" style={styleTurnP2}>
+                <p>{this.props.secondPlayer || "Computer"}'s turn!</p>
+              </div>
+              <div className="actions-right">
+                <Potion
+                  id="potionP1"
+                  method={this.handleClickPotion}
+                  style={styleTurnP1}
+                />
+                <AttackButton
+                  id="attackP1"
+                  attackHit={this.state.player1.attackHit}
+                  attack={this.state.player1.attack}
+                  handleClickHit={this.handleClickHit}
+                  style={styleTurnP1}
+                />
+              </div>
             </div>
-            <div className="turn-text" style={styleTurnP2}>
-              <p>{this.props.secondPlayer || "Computer"}'s turn!</p>
-            </div>
-            <div className="actions-right">
-              <Potion
-                id="potionP1"
-                method={this.handleClickPotion}
-                style={styleTurnP1}
+            {/*PLAYER 2*/}
+            <div className="fight-right">
+              <StatutPokemon
+                name={this.state.player2.name}
+                number={this.state.player2.number}
+                health={this.state.player2.health}
+                healthColor={this.state.player2.healthColor}
+                ChangePvColor={this.changePvColor}
               />
-              <AttackButton
-                id="attackP1"
-                attackHit={this.state.player1.attackHit}
-                attack={this.state.player1.attack}
-                handleClickHit={this.handleClickHit}
-                style={styleTurnP1}
-              />
+              <div className="ko-container">
+                <img
+                  id="ko-player2"
+                  className="ko-player"
+                  src={ko}
+                  alt="kop1"
+                  style={
+                    this.state.player2.health === 0
+                      ? { display: "block" }
+                      : { display: "none" }
+                  }
+                />
+                <img
+                  src={this.state.player2.sprite}
+                  className="pokemon-sprite"
+                />
+              </div>
+              <div className="turn-text" style={styleTurnP1}>
+                <p>{this.props.firstPlayer}'s turn!</p>
+              </div>
+              <div className="actions-left">
+                <Potion
+                  id="potionP2"
+                  method={this.handleClickPotion}
+                  style={styleTurnP2}
+                />
+                <AttackButton
+                  id="attackP2"
+                  attackHit={this.state.player2.attackHit}
+                  attack={this.state.player2.attack}
+                  handleClickHit={this.handleClickHit}
+                  style={styleTurnP2}
+                  computerEnabled={this.state.computerEnabled}
+                />
+              </div>
             </div>
           </div>
-          {/*PLAYER 2*/}
-          <div className="fight-right">
-            <StatutPokemon
-              name={this.state.player2.name}
-              number={this.state.player2.number}
-              health={this.state.player2.health}
-              healthColor={this.state.player2.healthColor}
-              ChangePvColor={this.changePvColor}
-            />
-            <div className="ko-container">
-              <img id="ko-player2" className="ko-player" src={ko} alt="kop1" 
-                style={this.state.player2.health === 0 ? {display: "block"} : {display: "none"}}
-              />
-              <img src={this.state.player2.sprite} className="pokemon-sprite" />
-            </div>
-            <div className="turn-text" style={styleTurnP1}>
-              <p>{this.props.firstPlayer}'s turn!</p>
-            </div>
-            <div className="actions-left">
-              <Potion
-                id="potionP2"
-                method={this.handleClickPotion}
-                style={styleTurnP2}
-              />
-              <AttackButton
-                id="attackP2"
-                attackHit={this.state.player2.attackHit}
-                attack={this.state.player2.attack}
-                handleClickHit={this.handleClickHit}
-                style={styleTurnP2}
-                computerEnabled={this.state.computerEnabled}
-              />
-            </div>
+          <div className="link">
+            <Comment commentText={this.state.commentText} />
           </div>
+          {this.getStats()}
         </div>
-        <div className="link">
-          <Comment commentText={this.state.commentText} />
-        </div>
-        {this.getStats()}
-      </div>
+        <audio style={{marginTop: '20px'}} src={song} controls autoPlay></audio>
+      </>
     );
   }
 }

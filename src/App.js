@@ -17,6 +17,7 @@ import Ranking from "./components/Ranking";
 import Transition from "./components/Transition";
 
 import pkball from "./img/logo/pokeball contour fin.png";
+import song from './img/pokefight.mp3'
 
 import "./App.css";
 
