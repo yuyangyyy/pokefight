@@ -68,13 +68,13 @@
 @media screen and (max-width: 800px) {
   .form {
     margin: 125px auto 50px auto;
-    width: 80%;
+    width: 50%;
   }
-  /* .form input {
-    width: 100%;
+  .form input {
+    width: 110%;
   }
   #message {
-    width: 100%;
+    width: 110%;
   }
- */
+
 }
