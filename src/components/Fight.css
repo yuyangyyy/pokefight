@@ -67,11 +67,27 @@
   font-size: 80%;
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 800px) {
   .fight {
-    width: 100%
+    width: 100%;
   }
-  .actions-right{
+  
+  .fight-container .pokemon-sprite {
+    width: 150px;
+  }
+  audio {
+    margin-bottom: 75px;
+  }
+  
+  @keyframes ko {
+  from {width: 0px}
+  to {width: 150px}
+  }
+  }
+
+@media screen and (max-width: 400px) {
+   .actions-right{
     flex-direction: column;
   }
   .actions-left{
@@ -81,8 +97,7 @@
     padding: 75px 10px;
     margin: 54px 4px 0 4px;
     height: 22px;
-    /* width: 130px; */
-  }
+  } 
   .fight-container .pokemon-sprite {
     width: 150px;
   }
