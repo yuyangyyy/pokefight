@@ -5,12 +5,16 @@
 }
 
 .global-pokedex {
-    margin-top: 150px;
+    margin: 110px auto 50px auto;
 }
 
 .Pokedex, .show-more, .filter-pokemon {
     width: 70%;
     background-color: #fff;
+}
+
+#randomPokemon {
+    border-radius: 5px 0 5px 0;
 }
 
 .filter-pokemon {
@@ -76,6 +80,7 @@
     padding-top: 0;
     margin: auto;
     text-align: center;
+    border-radius: 0 0 5px 5px;
 }
 
 .global-pokedex button {
